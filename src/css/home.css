@@ -1,0 +1,56 @@
+.navbar{
+    margin-bottom: 0;
+    border: 0;
+    background-color: #5cb85c;
+}
+
+.navbar-form{
+    margin: 0 -15px 0 -15px;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.searchBar-top-fixed{
+    /*position: absolute;*/
+    /*width: 90%;*/
+    /*margin-top:1%;*/
+    /*z-index: 50;*/
+    /*opacity: 0.5;*/
+}
+
+.searchBar-body{
+    margin:0 auto;
+}
+
+.carousel-size{
+    margin: 0 auto;
+    height: 30%;
+}
+
+.button-frame{
+    width:100%;
+    margin-top: 1%;
+    height: auto;
+}
+
+.buttonSide{
+    width: 96%;
+    margin:0 auto;
+    height: auto;
+}
+
+.function-button{
+    float: left;
+    margin-left: 4%;
+    width:20%;
+}
+
+.classic-frame{
+    margin-top: 1%;
+}
+
+.classic-size{
+    width: 33.33%;
+    float: left;
+    border: 1px solid red;
+}

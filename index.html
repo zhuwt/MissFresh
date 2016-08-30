@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="thisApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>小鲜来了</title>
+    <!-- TODO: At last we need use min file for execute-->
+    <script src="component/jquery/dist/jquery.js"></script>
+    <!-- Angular library-->
+    <script src="component/angular/angular.js"></script>
+    <!-- Angular route-->
+    <script src="component/angular-route/angular-route.js"></script>
+    <script src="module.js"></script>
+    <script src="config.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="component/bootstrap/dist/css/bootstrap.css">
+    <script src="component/bootstrap/dist/js/bootstrap.js"></script>
+
+
+    <!-- controller -->
+    <script src="src/model/home/home.js"></script>
+
+    <!--custom css-->
+    <link rel="stylesheet" href="src/css/index.css">
+    <link rel="stylesheet" href="src/css/home.css">
+</head>
+<body>
+    <!--<div ng-controller="homeController as home">-->
+        <!--<p>{{home.value}}</p>-->
+    <!--</div>-->
+    <!--<h1>main body scope</h1>-->
+    <div ng-view></div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<div ng-controller="thisApp.homeController as vm">
+    <!--Search bar-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!--<div class="row">-->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="container-fluid">
+                        <div class="form-group has-feedback" style="vertical-align: middle;">
+                            <input type="text" class="form-control" placeholder="搜索商品">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </div>
+                </form>
+            <!--</div>-->
+        </div>
+    </nav>
+
+    <div class="carousel-size">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <!--<div class="item" ng-class="{active:$index==0}" ng-repeat="item in vm.carousel">-->
+                <!--<img src="{{item.src}}" alt="...">-->
+                <!--<div class="carousel-caption"></div>-->
+                <!--</div>-->
+
+                <div class="item active">
+                    <img src="src/resource/image/carousel/Desert.jpg" alt="...">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="src/resource/image/carousel/Chrysanthemum.jpg" alt="...">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="src/resource/image/carousel/Hydrangeas.jpg" alt="...">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--function button-->
+    <div class="button-frame">
+        <div class="buttonSide">
+            <!--<img ng-repeat="item in vm.functionButton" src={{item.src}} class="img-responsive function-button" alt="Responsive image">-->
+            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
+                 alt="Responsive image">
+            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
+                 alt="Responsive image">
+            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
+                 alt="Responsive image">
+            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
+                 alt="Responsive image">
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    <!--Class tile-->
+    <div class="classic-frame">
+        <div>
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+        </div>
+        <div>
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+        </div>
+        <div>
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
+                 alt="Responsive image">
+        </div>
+    </div>
+</div>

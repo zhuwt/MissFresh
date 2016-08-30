@@ -1,0 +1,25 @@
+{
+  "name": "component",
+  "authors": [
+    "zhuwt"
+  ],
+  "description": "componentConfigFile",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "component",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.7",
+    "angular-route": "^1.5.8"
+  }
+}

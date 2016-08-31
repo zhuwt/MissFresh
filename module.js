@@ -4,4 +4,5 @@
 var routeApp = angular.module('thisApp',[
     'ngRoute'
     ,'thisApp.home'
+    ,'thisApp.detail'
 ]);

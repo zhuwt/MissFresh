@@ -21,7 +21,9 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
         .when('/home', {
             templateUrl: 'src/model/home/home.html'
-            // ,controller:'thisApp.homeController'
+        })
+        .when('/detail', {
+            templateUrl: 'src/model/detail/detail.html'
         })
         .otherwise({
             redirectTo: '/home'

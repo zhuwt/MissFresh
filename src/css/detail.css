@@ -1,3 +1,23 @@
 .button-group-size{
     width: 20%;
 }
+
+.item-size{
+    width: 80%;
+    height: 20%;
+}
+
+.item-img-size{
+    width: 20%;
+    height: auto;
+}
+
+.item-info{
+    width: auto;
+    height: auto;
+}
+
+.good-font{
+    margin:0;
+    font-family: 'Microsoft Yahei';
+}

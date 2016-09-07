@@ -1,18 +1,15 @@
 <div ng-controller="thisApp.homeController as vm">
     <!--Search bar-->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
-            <!--<div class="row">-->
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="container-fluid">
-                        <div class="form-group has-feedback" style="vertical-align: middle;">
-                            <input type="text" class="form-control" placeholder="搜索商品">
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group has-feedback nav-input-offset">
+                        <input type="text" class="form-control" placeholder="搜索商品">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
-                </form>
-            <!--</div>-->
+                </div>
+            </div>
         </div>
     </nav>
 

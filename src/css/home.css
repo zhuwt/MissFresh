@@ -1,24 +1,19 @@
 html,body{
     height: 100%;
+    width: 100%;
 }
+
+.full-height{
+    height: 100%;
+}
+
+.nav-input-offset{
+    margin-top: 7px;
+    margin-bottom: 0;
+}
+
 .navbar{
     margin-bottom: 0;
-    border: 0;
-    background-color: #5cb85c;
-}
-
-.navbar-form{
-    margin: 0 -15px 0 -15px;
-    border-top: 0;
-    border-bottom: 0;
-}
-
-.searchBar-top-fixed{
-    /*position: absolute;*/
-    /*width: 90%;*/
-    /*margin-top:1%;*/
-    /*z-index: 50;*/
-    /*opacity: 0.5;*/
 }
 
 .searchBar-body{

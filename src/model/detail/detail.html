@@ -1,56 +1,63 @@
 <div ng-controller="thisApp.detailController as vm" style="height: 100%">
-    <nav class="navbar navbar-default">
+    <!--Search bar-->
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
-            <!--<div class="row">-->
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <form class="navbar-form navbar-left" role="search">
-                <div class="container-fluid">
-                    <div class="form-group has-feedback" style="vertical-align: middle;">
+            <div class="row">
+                <div class="col-xs-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a><span class="glyphicon glyphicon-chevron-left"></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-10">
+                    <div class="form-group has-feedback nav-input-offset">
                         <input type="text" class="form-control" placeholder="搜索商品">
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                 </div>
-            </form>
-            <!--</div>-->
+                <div class="col-xs-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
-
-    <div style="height: 100%"><!--body-->
-        <div class="btn-group-vertical button-group-size pull-left" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">蔬菜</button>
-            <button type="button" class="btn btn-default">水果</button>
-            <button type="button" class="btn btn-default">鱼类</button>
-            <button type="button" class="btn btn-default">海产</button>
-        </div>
-        <div class="item-size pull-left">
-            <!--<img src="src/resource/image/classic/134247703836.png" class="item-img">-->
-            <!--<div class="pull-left">-->
-                <img src="src/resource/image/classic/134247703836.png" class="item-img-size pull-left">
-            <!--</div>-->
-            <div class="item-info pull-left">
-                <p class="good-font">商品名称</p>
-                <p class="good-font">详细介绍</p>
-                <small class="good-font">销量xxx份 好评率XX%</small>
-                <p class="good-font">售价</p>
+    <!-- body-->
+    <div class="full-height">
+        <!--classification-->
+        <ul class="nav nav-tabs nav-stacked pull-left" role="tablist">
+            <li role="presentation" ng-repeat="item in vm.goodInfo" ng-class="{active:item.active}"
+                ng-click="vm.clickClassification($index)">
+                <a>{{item.classification}}</a>
+            </li>
+        </ul>
+        <!--detail-->
+        <div class="item-frame pull-right" ng-repeat="item in vm.goodInfo" ng-if="item.active">
+            <div ng-repeat="subItem in item.goods" class="item-size">
+                <img class="item-img-size pull-left" ng-src={{subItem.src}}>
+                <div class="item-info pull-right">
+                    <p class="good-font good-name">{{subItem.goodName}}</p>
+                    <small class="good-font good-detail">{{subItem.goodDetail}}</small>
+                    <br>
+                    <small class="good-font">销量{{subItem.sellCount}}份　　好评率{{subItem.goodEvaluate}}%</small>
+                    <div>
+                        <p class="good-font good-price pull-left">¥{{subItem.price}}</p>
+                        <div>
+                            <span class="glyphicon glyphicon glyphicon-plus-sign plus-picture-position pull-right"
+                                  ng-click="vm.addGoodsCount($parent.$index,$index)"></span>
+                            <p class="pull-right">{{subItem.bookingCount}}</p>
+                            <span class="glyphicon glyphicon glyphicon-minus-sign plus-picture-position pull-right"
+                                  ng-click="vm.reduceGoodsCount($parent.$index,$index)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
             </div>
         </div>
         <div style="clear: both"></div>
-        <!--<div style="clear: both"></div>-->
-        <!--<div class="btn-group-vertical button-group-size pull-left" role="group" aria-label="...">-->
-            <!--<button type="button" class="btn btn-default">蔬菜</button>-->
-            <!--<button type="button" class="btn btn-default">水果</button>-->
-            <!--<button type="button" class="btn btn-default">鱼类</button>-->
-            <!--<button type="button" class="btn btn-default">海产</button>-->
-        <!--</div>-->
-        <!--<div class="pull-left">-->
-            <!--<div>-->
-                <!--<div class="item-img">-->
-                    <!--<img src="src/resource/image/classic/134247703836.png" class="item-img">-->
-                <!--</div>-->
-                <!--<div class="item-info">-->
-
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
     </div>
 </div>

@@ -80,7 +80,7 @@ angular.module('thisApp.detail', [])
                 ]
             }
             , {
-                classification: '鱼类',
+                classification: '海产',
                 active: false,
                 goods: [
                     {

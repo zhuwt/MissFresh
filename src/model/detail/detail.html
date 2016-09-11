@@ -1,63 +1,19 @@
 <div ng-controller="thisApp.detailController as vm" style="height: 100%">
-    <!--Search bar-->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-1">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a><span class="glyphicon glyphicon-chevron-left"></span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-10">
-                    <div class="form-group has-feedback nav-input-offset">
-                        <input type="text" class="form-control" placeholder="搜索商品">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                </div>
-                <div class="col-xs-1">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a><span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- body-->
-    <div class="full-height">
-        <!--classification-->
-        <ul class="nav nav-tabs nav-stacked pull-left" role="tablist">
-            <li role="presentation" ng-repeat="item in vm.goodInfo" ng-class="{active:item.active}"
-                ng-click="vm.clickClassification($index)">
-                <a>{{item.classification}}</a>
-            </li>
-        </ul>
-        <!--detail-->
-        <div class="item-frame pull-right" ng-repeat="item in vm.goodInfo" ng-if="item.active">
-            <div ng-repeat="subItem in item.goods" class="item-size">
-                <img class="item-img-size pull-left" ng-src={{subItem.src}}>
-                <div class="item-info pull-right">
-                    <p class="good-font good-name">{{subItem.goodName}}</p>
-                    <small class="good-font good-detail">{{subItem.goodDetail}}</small>
-                    <br>
-                    <small class="good-font">销量{{subItem.sellCount}}份　　好评率{{subItem.goodEvaluate}}%</small>
-                    <div>
-                        <p class="good-font good-price pull-left">¥{{subItem.price}}</p>
-                        <div>
-                            <span class="glyphicon glyphicon glyphicon-plus-sign plus-picture-position pull-right"
-                                  ng-click="vm.addGoodsCount($parent.$index,$index)"></span>
-                            <p class="pull-right">{{subItem.bookingCount}}</p>
-                            <span class="glyphicon glyphicon glyphicon-minus-sign plus-picture-position pull-right"
-                                  ng-click="vm.reduceGoodsCount($parent.$index,$index)"></span>
-                        </div>
-                    </div>
-                </div>
-                <div style="clear: both"></div>
-            </div>
-        </div>
-        <div style="clear: both"></div>
+    <div class="am-header-left am-header-nav return">
+        <a href="javascript:history.back()" class="" style="border: 0;">
+            <i class="am-icon-chevron-left"></i>
+        </a>
+    </div>
+    <div class="share">
+        <!--<i class="am-icon-share-alt"></i>-->
+    </div>
+    <div class="banner"><img src="src/resource/image/detail/tomato.jpg"></div>
+    <div class="detail">
+        <span>番茄</span>
+        <p>￥25.00</p>
+        <a href="" class="shopcart">加入购物车</a>
+    </div>
+    <div class="yd_img" style="display: none;">
+        <img src="images/mmexport.png" >
     </div>
 </div>

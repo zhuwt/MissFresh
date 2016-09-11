@@ -1,0 +1,64 @@
+<div ng-controller="thisApp.orderController as vm" style="height: 100%">
+    <header data-am-widget="header" class="am-header am-header-default sq-head">
+        <div class="am-header-left am-header-nav">
+            <a href="index.html" class="">继续购买</a>
+        </div>
+        <div class="am-header-right am-header-nav">
+            <button type="button" class="am-btn am-btn-warning" id="doc-confirm-toggle" style="background: none; border: 0; font-size: 24px;">
+                <i class="am-header-icon am-icon-trash"></i>
+            </button>
+        </div>
+    </header>
+    <div style="height: 49px;"></div>
+    <ul class="eat-list">
+        <li>
+            <span class="name">青菜</span>
+            <em class="price">￥2.0</em>
+            <div class="d-stock ">
+                <a class="decrease">-</a>
+                <input id="num" readonly="" class="text_box" name="" type="text" value="1">
+                <a class="increase">+</a>
+            </div>
+        </li>
+        <li>
+            <span class="name">莴笋</span>
+            <em class="price">￥2.0</em>
+            <div class="d-stock ">
+                <a class="decrease">-</a>
+                <input id="num" readonly="" class="text_box" name="" type="text" value="1">
+                <a class="increase">+</a>
+            </div>
+        </li>
+    </ul>
+    <div class="juli"></div>
+    <ul class="list-detail">
+        <li class="time" ng-click="vm.popDate()">
+            <span>送餐时间：</span><input id="endTime" class="kbtn" placeholder="立即配送"/>
+            <i class="am-icon-angle-right"></i>
+        </li>
+        <div id="datePlugin"></div>
+        <li class="time" ng-click="vm.popAddress()">
+            <span>送餐地址：</span>
+            <a href="add.html" class="address"><p>陕西省西安市高新区高新一路</p></a>
+            <i class="am-icon-angle-right"></i>
+        </li>
+    </ul>
+    <div class="juli"></div>
+    <textarea placeholder="备注说明" class="bz-infor"></textarea>
+    <div class="juli"></div>
+    <div class="pricebox">
+        <p>总价：<i>12.00</i>元（含运费10元）（<em>1</em>份）</p>
+        <p>请选择支付方式并确认下单：</p>
+        <button class="paybtn" type="button" > 微信支付</button>
+    </div>
+
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+        <div class="am-modal-dialog">
+            <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要清空饮品吗？</div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+</div>

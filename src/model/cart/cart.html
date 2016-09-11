@@ -1,0 +1,160 @@
+<div ng-controller="thisApp.cartController as vm" style="height: 100%">
+    <!--顶部通栏-->
+    <header class="jd_topBar">
+        <a href="#" class="icon_back"></a>
+        <h3>购物车</h3>
+        <!--<a href="#"class="icon_menu"></a>-->
+    </header>
+
+    <!--店铺-->
+    <div class="jd_shop">
+        <div class="jd_shop_tit">
+            <div class="check_box">
+                <a href="#" class="jd_check_box"></a>
+            </div>
+            <div class="shop_info">
+                <div class="jd_logo f_left">
+                    <!--<img src="images/buy-logo.png" alt="">-->
+                    <span>小鲜来了</span>
+                </div>
+                <!--<div class="f_right tip m_r10">-->
+                    <!--您享受满79元免运费服务-->
+                <!--</div>-->
+
+            </div>
+        </div>
+        <div class="jd_shop_con">
+            <div class="product">
+                <div class="check_box">
+                    <a href="#" class="jd_check_box" checked></a>
+                </div>
+                <div class="shop_info clearfix">
+                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/tomato.jpg" alt=""></a>
+                    <div class="info_box">
+                        <a class="p_name" href="#">西红柿1000g</a>
+                        <p class="p_price">&yen;1000.00</p>
+                        <div class="p_opition">
+                            <div class="change_num f_left">
+                                <span>-</span>
+                                <input type="tel">
+                                <span>+</span>
+                            </div>
+                            <div class="delete_box f_right">
+                                <span class="delete_up"></span>
+                                <span class="delete_down"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="check_box">
+                    <a href="#" class="jd_check_box" checked></a>
+                </div>
+                <div class="shop_info clearfix">
+                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/broccoli.jpg" alt=""></a>
+                    <div class="info_box">
+                        <a class="p_name" href="#">西兰花500g</a>
+                        <p class="p_price">&yen;1000.00</p>
+                        <div class="p_opition">
+                            <div class="change_num f_left">
+                                <span>-</span>
+                                <input type="tel">
+                                <span>+</span>
+                            </div>
+                            <div class="delete_box f_right">
+                                <span class="delete_up"></span>
+                                <span class="delete_down"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="check_box">
+                    <a href="#" class="jd_check_box" checked></a>
+                </div>
+                <div class="shop_info clearfix">
+                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/egg.jpg" alt=""></a>
+                    <div class="info_box">
+                        <a class="p_name" href="#">鸡蛋500g</a>
+                        <p class="p_price">&yen;1000.00</p>
+                        <div class="p_opition">
+                            <div class="change_num f_left">
+                                <span>-</span>
+                                <input type="tel">
+                                <span>+</span>
+                            </div>
+                            <div class="delete_box f_right">
+                                <span class="delete_up"></span>
+                                <span class="delete_down"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="check_box">
+                    <a href="#" class="jd_check_box" checked></a>
+                </div>
+                <div class="shop_info clearfix">
+                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/cherry.jpg" alt=""></a>
+                    <div class="info_box">
+                        <a class="p_name" href="#">樱桃500g</a>
+                        <p class="p_price">&yen;1000.00</p>
+                        <div class="p_opition">
+                            <div class="change_num f_left">
+                                <span>-</span>
+                                <input type="tel">
+                                <span>+</span>
+                            </div>
+                            <div class="delete_box f_right">
+                                <span class="delete_up"></span>
+                                <span class="delete_down"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="check_box">
+                    <a href="#" class="jd_check_box" checked></a>
+                </div>
+                <div class="shop_info clearfix">
+                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/lemon.jpg" alt=""></a>
+                    <div class="info_box">
+                        <a class="p_name" href="#">柠檬300g</a>
+                        <p class="p_price">&yen;1000.00</p>
+                        <div class="p_opition">
+                            <div class="change_num f_left">
+                                <span>-</span>
+                                <input type="tel">
+                                <span>+</span>
+                            </div>
+                            <div class="delete_box f_right">
+                                <span class="delete_up"></span>
+                                <span class="delete_down"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jd_win">
+        <div class="jd_win_box">
+            <div class="jd_win_tit">你确定删除该商品吗？</div>
+            <div class="jd_btn clearfix">
+                <a href="#" class="cancle f_left">取消</a>
+                <a href="#" class="submit f_right">确定</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- boot -->
+    <div class="fix-bot">
+        <a href="" class="list-js">合计：<i>0元</i><em>(0份)</em></a>
+        <a href="" class="list-jsk">去结账</a>
+    </div>
+</div>

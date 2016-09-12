@@ -4,6 +4,9 @@
 routeApp.config(['$routeProvider',function ($routeProvider) {
     console.log('enter the route function!');
     $routeProvider
+        .when('/login', {
+            templateUrl: 'src/model/login/login.html'
+        })
         .when('/home', {
             templateUrl: 'src/model/home/home.html'
         })

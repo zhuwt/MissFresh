@@ -7,6 +7,8 @@ var routeApp = angular.module('thisApp',[
     ,'thisApp.detail'
     ,'thisApp.cart'
     ,'thisApp.menu'
+    ,'thisApp.orders'
     ,'thisApp.order'
     ,'thisApp.login'
+    ,'thisApp.account'
 ]);

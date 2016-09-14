@@ -16,23 +16,34 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="component/bootstrap/dist/css/bootstrap.css">
     <script src="component/bootstrap/dist/js/bootstrap.js"></script>
-
+    <!-- amaze UI -->
+    <script src="component/amazeui.min.js"></script>
+    <script src="src/model/order/iscroll.js"></script>
+    <script src="src/model/order/date.js"></script>
 
     <!-- controller -->
     <script src="src/model/home/home.js"></script>
     <script src="src/model/detail/detail.js"></script>
+    <script src="src/model/cart/cart.js"></script>
+    <script src="src/model/menu/menu.js"></script>
+    <script src="src/model/order/order.js"></script>
+    <script src="src/model/login/login.js"></script>
+    <script src="src/model/account/account.js"></script>
+    <script src="src/model/orders/orders.js"></script>
 
     <!--custom css-->
+    <link rel="stylesheet" href="src/css/amazeui.min.css">
     <link rel="stylesheet" href="src/css/index.css">
     <link rel="stylesheet" href="src/css/home.css">
     <link rel="stylesheet" href="src/css/detail.css">
+    <link rel="stylesheet" href="src/css/cart.css">
+    <link rel="stylesheet" href="src/css/menu.css">
+    <link rel="stylesheet" href="src/css/order.css">
+    <link rel="stylesheet" href="src/css/login.css">
+    <link rel="stylesheet" href="src/css/account.css">
+    <link rel="stylesheet" href="src/css/orders.css">
 </head>
 <body>
-    <!--<div ng-controller="homeController as home">-->
-        <!--<p>{{home.value}}</p>-->
-    <!--</div>-->
-    <!--<h1>main body scope</h1>-->
-    <div ng-view style="height: 100%"></div>
-    <!-- TODO:尽快处理掉这些暴露在外面的style属性-->
+    <div ng-view class="full-height"></div>
 </body>
 </html>

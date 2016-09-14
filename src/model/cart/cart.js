@@ -1,8 +1,9 @@
 /**
- * Created by Bucky.Zhu on 07/18/2016.
+ * Created by zhuwt on 2016/9/7.
  */
-angular.module('thisApp.home', [])
-    .controller('thisApp.homeController', function () {
+angular.module('thisApp.cart', [])
+    .controller('thisApp.cartController', function () {
+        // console.log('controller initial finished!');
         var vm = this;
         // vm.carousel = [
         //     {src:'src/resource/image/carousel/Desert.jpg'}

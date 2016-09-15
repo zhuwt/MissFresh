@@ -16,6 +16,10 @@ html,body{
     margin-bottom: 0;
 }
 
+.searchBar-body{
+    margin:0 auto;
+}
+
 .carousel-size{
     margin: 0 auto;
     height: 30%;

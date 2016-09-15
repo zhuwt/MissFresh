@@ -20,12 +20,37 @@
     font-size: 18px;
     margin:0;
 }
-
+.icon_back,.icon_menu{
+    position: absolute;
+    top:0;
+    background: url("../resource/image/commonControl/sprites.png");
+    background-size: 200px 200px;
+    width: 40px;
+    height: 44px;
+    padding: 12px 10px;
+    background-origin:content-box ;
+    background-clip: content-box;
+}
 .icon_back{
     left:0;
     background-position: -21px 0;
 }
+.icon_menu{
+    right:0;
+    background-position: -60px 0;
+}
 
+/*<!--安全提示-->*/
+.safety-tip{
+    height: 34px;
+    line-height: 34px;
+    width: 100%;
+    background-color: #fff;
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
 .safety-tip p{
     position: relative;
     padding-left: 23px;
@@ -309,7 +334,16 @@ textarea,input{
     clear:both;
     height: 0;
 }
+.m_r10{
+    margin-right: 10px;
+}
+.ml10{
+    margin-left: 10px;
 
+}
+
+
+/*¾«ÁéÍ¼±ê*/
 [class^='icon_'],[class*=' icon_']{
     background-image:url("../resource/image/commonControl/sprites.png");
     background-size: 200px 200px;

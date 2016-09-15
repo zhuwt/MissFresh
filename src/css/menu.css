@@ -79,6 +79,11 @@ ul {
     padding-bottom: 50px;
 }
 
+.list-right .am-gallery-item {
+    text-align: center;
+    position: relative;
+}
+
 .list-right .am-gallery li {
     margin: 1rem 0;
 }
@@ -88,6 +93,12 @@ ul {
     height: auto;
     height: 8.5rem;
     border-radius: 5px;
+}
+
+.list-right .am-gallery-default .am-gallery-title {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-top: 10px;
 }
 
 .list-pro {
@@ -146,8 +157,30 @@ ul {
     text-align: center;
 }
 
+.list-cart .d-stock .decreaseInline {
+    border-radius: 50%;
+    color: #666;
+    float: left;
+    border: 1px solid #dadada;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    display: inline;
+}
+
 .list-cart .d-stock .text_box {
     display: none;
+    float: left;
+    border: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+
+.list-cart .d-stock .text_box_display {
+    /*display: none;*/
     float: left;
     border: 0;
     width: 2.5rem;
@@ -192,6 +225,16 @@ ul {
     background: #fff;
 }
 
+.fix-bot-cart {
+    background: url(../images/shopcart.png) no-repeat;
+    float: left;
+    margin-left: 3%;
+    margin-top: -12px;
+    width: 5rem;
+    height: 5rem;
+    background-size: contain;
+}
+
 .fix-bot-cart i {
     width: 20px;
     height: 20px;
@@ -224,6 +267,10 @@ ul {
     overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
+}
+
+.shop-list-mid .shop-list-price {
+    color: #cb2527;
 }
 
 .list-js {
@@ -470,6 +517,16 @@ ul {
     top: -2px;
 }
 
+#dateheader {
+    width: 100%;
+    height: 50px;
+    background: #79C12F;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-size: 20px;
+}
+
 #setcancle ul {
     text-align: center;
     line-height: 30px;
@@ -609,6 +666,11 @@ ul {
     position: absolute;
 }
 
+.yytime {
+    margin-top: 15px;
+    overflow: hidden;
+}
+
 .yytime li {
     float: left;
     width: 50%;
@@ -715,6 +777,10 @@ i {
     height: 35px;
 }
 
+.contact {
+    padding: 10px;
+}
+
 .contact input {
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -727,6 +793,12 @@ i {
     margin: 10px 0;
 }
 
+.address-list {
+    margin: 20px 3%;
+    color: #666;
+    padding-bottom: 20px;
+}
+
 .address-list li {
     border-radius: 5px;
     border: 1px solid #ddd;
@@ -734,12 +806,27 @@ i {
     margin-bottom: 20px;
 }
 
+.address-list .curr {
+    border: 1px solid #39b867;
+}
+
 .address-list li p {
     padding: 2px 20px;
 }
 
+.order-add1 {
+    font-size: 1.4rem;
+    color: #bbb;
+}
+
 .address-list hr {
     margin: 10px 0;
+}
+
+.address-cz {
+    overflow: hidden;
+    padding: 0 20px;
+    color: #bbb;
 }
 
 .address-cz a {
@@ -758,12 +845,38 @@ i {
     font-size: 1.4rem;
 }
 
+.am-icon-checked {
+    color: #39b867;
+}
+
+.list-detail .am-btn-primary {
+    background: none;
+    width: 70%;
+    border: 0;
+    color: #999;
+    padding: 0;
+    text-align: left;
+}
+
 .am-modal {
     width: 100%;
     left: 0;
     bottom: 0;
     margin-left: 0;
     bottom: 0;
+}
+
+.num-left {
+    width: 50%;
+    float: left;
+    position: absolute;
+    background: #39b867;
+    color: #fff;
+}
+
+.num-right {
+    width: 50%;
+    float: right;
 }
 
 .am-modal-bd {
@@ -775,6 +888,11 @@ i {
 
 .am-modal-dialog {
     overflow: hidden;
+}
+
+.numren {
+    line-height: 40px;
+    font-size: 13px;
 }
 
 .numren .cur {

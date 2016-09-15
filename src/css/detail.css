@@ -1,3 +1,7 @@
+.nav-tabs{
+    /*width: 20%;*/
+    border-right: 1px solid #dddddd;
+}
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
     border-style: solid;
     border-width: 1px 1px 1px 3px;
@@ -8,6 +12,10 @@
 
 .nav-tabs > li > a{
     margin-right: -1px;
+}
+
+.item-frame{
+    width:80%;
 }
 
 .item-size{
@@ -25,6 +33,28 @@
     width: 70%;
     height: auto;
     padding: 0 10px;
+}
+
+.good-font{
+    margin:0;
+}
+
+.good-name{
+    font-weight: bold;
+}
+
+.good-detail{
+    font-style: italic ;
+}
+
+.good-price{
+    color: red;
+    font-weight: bold;
+}
+
+.good-detail-frame{
+    height:100%;
+    border-left: 1px solid lightgray;
 }
 
 .plus-picture-position{

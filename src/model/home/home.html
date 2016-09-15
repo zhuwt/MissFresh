@@ -1,17 +1,11 @@
 <div ng-controller="thisApp.homeController as vm">
     <!--Search bar-->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group has-feedback nav-input-offset">
-                        <input type="text" class="form-control" placeholder="搜索商品">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                </div>
-            </div>
+    <header>
+        <div class="form-group has-feedback nav-input-offset">
+            <input type="text" class="form-control" placeholder="搜索商品">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
-    </nav>
+    </header>
 
     <div class="carousel-size">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
@@ -66,27 +60,27 @@
     <div class="classic-frame">
         <div>
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
         </div>
         <div>
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
         </div>
         <div>
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
             <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image">
+                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
         </div>
     </div>
 </div>

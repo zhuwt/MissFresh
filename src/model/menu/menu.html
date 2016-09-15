@@ -16,7 +16,7 @@
         <div class="list-right" id="content">
             <ul class="list-pro" ng-repeat="item in vm.goodInfo" ng-if="item.selected">
                 <li ng-repeat="subItem in item.goods">
-                    <a href="detail.html"><img src={{subItem.src}} class="list-pic"/></a>
+                    <a ng-href="#/detail"><img src={{subItem.src}} class="list-pic"/></a>
                     <div class="shop-list-mid">
                         <div class="tit"><a href="detail.html">{{subItem.goodName}}({{subItem.goodDetail}})</a></div>
                         <small>销售量:{{subItem.sellCount}}　　　好评率:{{subItem.goodEvaluate}}%</small>
@@ -26,7 +26,8 @@
                         <div class="d-stock">
                             <a ng-class="{decreaseInline:subItem.bookingCount}" ng-show="subItem.bookingCount"
                                ng-click="vm.reduceGoodsCount($parent.$index,$index)">-</a>
-                            <input ng-class="{text_box_display:subItem.bookingCount}"" ng-show="subItem.bookingCount" ng-model="subItem.bookingCount">
+                            <input ng-class="{text_box_display:subItem.bookingCount}" ng-show="subItem.bookingCount"
+                            ng-model="subItem.bookingCount">
                             <a class="increase" ng-click="vm.addGoodsCount($parent.$index,$index)">+</a>
                         </div>
                     </div>

@@ -61,7 +61,7 @@ ul {
 
 .list-left li a {
     color: #666;
-    /*text-decoration:none;*/
+    text-decoration:none;
 }
 
 .list-left .current {
@@ -167,6 +167,7 @@ ul {
     line-height: 2.5rem;
     text-align: center;
     display: inline;
+    text-decoration: none;
 }
 
 .list-cart .d-stock .text_box {
@@ -201,6 +202,7 @@ ul {
     line-height: 2.5rem;
     text-align: center;
     margin-left: -1px;
+    text-decoration: none;
 }
 
 .shop-list-mid .tit a {

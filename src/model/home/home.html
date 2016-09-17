@@ -8,7 +8,7 @@
     </header>
 
     <div class="carousel-size">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -18,11 +18,6 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <!--<div class="item" ng-class="{active:$index==0}" ng-repeat="item in vm.carousel">-->
-                <!--<img src="{{item.src}}" alt="...">-->
-                <!--<div class="carousel-caption"></div>-->
-                <!--</div>-->
-
                 <div class="item active">
                     <img src="src/resource/image/carousel/Desert.jpg" alt="...">
                     <div class="carousel-caption">
@@ -43,44 +38,18 @@
     </div>
     <!--function button-->
     <div class="button-frame">
-        <div class="buttonSide">
-            <!--<img ng-repeat="item in vm.functionButton" src={{item.src}} class="img-responsive function-button" alt="Responsive image">-->
-            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
-                 alt="Responsive image">
-            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
-                 alt="Responsive image">
-            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
-                 alt="Responsive image">
-            <img src="src/resource/image/button/button.png" class="img-responsive function-button img-circle"
-                 alt="Responsive image">
-            <div style="clear: both"></div>
-        </div>
+        <ul class="button-side">
+            <li ng-repeat="item in vm.buttonInfo"><img src={{item.imagePath}} alt="Responsive image"
+               class="img-responsive function-button img-circle" ></li>
+            <div class="clearfix"></div>
+        </ul>
     </div>
     <!--Class tile-->
     <div class="classic-frame">
-        <div>
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-        </div>
-        <div>
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-        </div>
-        <div>
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-            <img src="src/resource/image/classic/134247703836.png" class="img-responsive classic-size"
-                 alt="Responsive image" ng-click="vm.jumpToUrl('/menu')">
-        </div>
+        <ul>
+            <li ng-repeat="item in vm.classification"><a><img src={{item.imagePath}} class="img-responsive classic-size"
+                                                              alt="Responsive image" ng-click="vm.jumpToUrl(item.url)"></a>
+            </li>
+        </ul>
     </div>
 </div>

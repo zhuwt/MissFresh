@@ -3,35 +3,25 @@
         <h1 style="height: 57px;line-height: 57px;color: white;">小鲜来了</h1>
     </header>
     <div class="login-title">
-        <a ng-class="{cur:vm.loginModel}" ng-click="vm.changeLoginMode()">登录帐号</a>
-        <a ng-class="{cur:!vm.loginModel}" ng-click="vm.changeLoginMode()">注册账号</a>
+        <a ng-class="{cur:vm.loginModel}" ng-click="vm.changeLoginMode(true)">登录帐号</a>
+        <a ng-class="{cur:!vm.loginModel}" ng-click="vm.changeLoginMode(false)">注册账号</a>
     </div>
     <div class="login-inner" ng-if="vm.loginModel">
-        <p style="display:none;" class="notice"></p>
-        <input type="text" placeholder="手机号码" name="username" class="input-txt" onfocus="getFocus(this);" onblur="loseFocus(this);" />
-        <input type="password" placeholder="密码" name="pw" class="input-txt" onfocus="getFocus(this);" onblur="loseFocus(this);" />
-        <input type="button" value="登录" class="submit-btn" />
-        <!-- <p class="txt"><a href="javascript:void(0)">忘记密码?</a></p>
-        <a href="javascript:void(0)http://api.fengniao.com/open/sina/index.php?sinaOpenBackurl=http://m.fengniao.com/regist.php?url=http://m.fengniao.com/login.php?url=http://m.fengniao.com/document/5336216.html" class="entrance blog-btn"><span class="bg">用微博账号登录</span></a>
-        <a href="javascript:void(0)http://api.fengniao.com/open/qqsdk/qq_login.php" class="entrance qq-btn"><span class="bg">用QQ账号登录</span></a> -->
+        <div class="alert alert-danger" ng-show="vm.popupAlert">手机号码或密码错误，请重新填写</div>
+        <input type="number" placeholder="手机号码" maxlength="11" name="username" class="input-txt"
+               ng-model="vm.phoneNo"/>
+        <input type="password" placeholder="密码" name="password" class="input-txt" ng-model="vm.password"/>
+        <input type="button" value="登录" class="submit-btn" ng-click="vm.login()"/>
     </div>
 
-    <div class="login-inner2" ng-if="!vm.loginModel">
-        <form id="form" >
-            <p style="display:none;" class="notice">密码不可以为空</p>
-            <input type="hidden" name="action" value="wapregist" />
-            <input type="hidden" name="wapurl" value="http%3A%2F%2Fm.fengniao.com%2F" />
-            <input type="hidden" name="waporcurl" value="http://m.fengniao.com/regist.php" />
-            <input type="text" placeholder="用户名" name="username" id="username" class="input-txt" onfocus="getFocus(this);" onblur="loseFocus(this);" />
-            <input type="password" placeholder="密码" name="pw" id="pw" class="input-txt" onfocus="getFocus(this);" onblur="loseFocus(this);" />
-            <input type="text" placeholder="邮箱" name="email" id="email" class="input-txt" onfocus="getFocus(this);" onblur="loseFocus(this);" />
-            <!--<p class="check-num">-->
-                <!--<input type="text" name="vaildate" id="vaildate" class="input-txt2" size="8" />-->
-                <!--<img id="validate_bg" class="num" src="http://my.fengniao.com/authcode/validate_2012.php?imgWidth=88&imgHeight=39&fontfile=heiti.ttf&fontNum=2" alt="验证码" />-->
-                <!--<a class="txt">换一换</a>-->
-            <!--</p>-->
-            <input type="button" value="快速注册" class="submit-btn" />
+    <div class="login-inner" ng-if="!vm.loginModel">
+        <form id="form">
+            <div class="alert alert-danger" ng-show="vm.popupAlert">{{vm.popupAlertMsg}}</div>
+            <input type="text" placeholder="电话号码" name="username" id="username" class="input-txt"
+                   ng-model="vm.phoneNo"/>
+            <input type="password" placeholder="密码" name="pw" id="pw" class="input-txt" ng-model="vm.password"/>
+            <input type="text" placeholder="邮箱" name="email" id="email" class="input-txt" ng-model="vm.email"/>
+            <input type="button" value="快速注册" class="submit-btn" ng-click="vm.register()"/>
         </form>
     </div>
-    <!--<div id="iptj"></div>-->
 </div>

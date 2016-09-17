@@ -5,7 +5,7 @@
     background-color: #14aebd;
 }
 
-.header-index>h1{
+.header-index > h1{
     height: 50px;
     font-size: 20px;
     background-color: #14aebd;
@@ -44,9 +44,19 @@
     margin: 10px 30px;
 }
 
-.login-inner2 {
-    margin: 25px 30px;
+.login-inner > .alert{
+    padding:7px;
+    margin-bottom: 5px;
 }
+
+/*.login-inner2 > .alert{*/
+    /*padding:7px;*/
+    /*margin-bottom: 5px;*/
+/*}*/
+
+/*.login-inner2 {*/
+    /*margin: 25px 30px;*/
+/*}*/
 
 .login-inner .notice, .login-inner2 .notice {
     font-size: 12px;

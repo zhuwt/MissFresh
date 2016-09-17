@@ -11,4 +11,5 @@ var routeApp = angular.module('thisApp',[
     ,'thisApp.order'
     ,'thisApp.login'
     ,'thisApp.account'
+    // ,'thisApp.cartModalControl'
 ]);

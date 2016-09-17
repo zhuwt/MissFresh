@@ -9,26 +9,27 @@
     </header>
     <div class="content-list" id="outer">
         <div class="list-left" id="tab">
-            <li ng-repeat="item in vm.goodInfo" ng-class="{current:item.selected}"
-                ng-click="vm.clickClassification($index)"><a>{{item.classification}}</a></li>
+            <li ng-repeat="item in vm.classification" ng-class="{current:item.selected}"
+                ng-click="vm.clickClassification($index)"><a>{{item.name}}</a></li>
         </div>
 
         <div class="list-right" id="content">
-            <ul class="list-pro" ng-repeat="item in vm.goodInfo" ng-if="item.selected">
-                <li ng-repeat="subItem in item.goods">
-                    <a ng-href="#/detail"><img src={{subItem.src}} class="list-pic"/></a>
+            <ul class="list-pro" >
+                <!--ng-repeat="item in vm.goodInfo" ng-if="item.selected"-->
+                <li ng-repeat="item in vm.goods" class="target" ng-if="item.visible">
+                    <a ng-href="#/detail"><img src={{item.src}} class="list-pic"/></a>
                     <div class="shop-list-mid">
-                        <div class="tit"><a href="detail.html">{{subItem.goodName}}({{subItem.goodDetail}})</a></div>
-                        <small>销售量:{{subItem.sellCount}}　　　好评率:{{subItem.goodEvaluate}}%</small>
-                        <div class="am-gallery-desc">￥{{subItem.price}}</div>
+                        <div class="tit"><a href="detail.html">{{item.goodName}}({{item.goodDetail}})</a></div>
+                        <small>销售量:{{item.sellCount}}　　　好评率:{{item.goodEvaluate}}%</small>
+                        <div class="am-gallery-desc">￥{{item.price}}</div>
                     </div>
                     <div class="list-cart">
                         <div class="d-stock">
-                            <a ng-class="{decreaseInline:subItem.bookingCount}" ng-show="subItem.bookingCount"
-                               ng-click="vm.reduceGoodsCount($parent.$index,$index)">-</a>
-                            <input ng-class="{text_box_display:subItem.bookingCount}" ng-show="subItem.bookingCount"
-                            ng-model="subItem.bookingCount">
-                            <a class="increase" ng-click="vm.addGoodsCount($parent.$index,$index)">+</a>
+                            <a ng-class="{decreaseInline:item.bookingCount}" ng-show="item.bookingCount"
+                               ng-click="vm.reduceGoodsCount($index)">-</a>
+                            <input ng-class="{text_box_display:item.bookingCount}" ng-show="item.bookingCount"
+                            ng-model="item.bookingCount" readonly>
+                            <a class="increase" ng-click="vm.addGoodsCount($index)">+</a>
                         </div>
                     </div>
                 </li>
@@ -38,8 +39,8 @@
     <!--底部-->
     <div style="height: 100px;"></div>
     <div class="fix-bot">
-        <a href="" class="list-js">合计：<i>0元</i><em>(0份)</em></a>
-        <a href="" class="list-jsk">选好了</a>
+        <a href="" class="list-js">合计：<i>{{vm.total}}元</i><em>({{vm.count}}份)</em></a>
+        <a href="#/cart" class="list-jsk">购物车</a>
     </div>
     <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
         <div class="am-modal-dialog">

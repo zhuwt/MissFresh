@@ -104,10 +104,16 @@
     background-origin: content-box
 }
 .shop_info {
-    padding-left: 41px;
+    padding-left: 20px;
     width: 100%;
     height: 100%;
 }
+/*.shop_info {*/
+    /*padding-left: 40px;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+/*}*/
+
 .shop_info .jd_logo img{
     width: 15px;
     height: 13px;
@@ -119,11 +125,7 @@
     height: 100px;
     position: relative;
 }
-.shop_info {
-    padding-left: 40px;
-    height: 100%;
-    width: 100%;
-}
+
 .shop_info .info_box{
     overflow: hidden;
     padding-top: 10px;
@@ -183,22 +185,22 @@
 
 
 .delete_box .delete_up{
-    width: 20px;
-    height: 5px;
+    width: 2.5rem;
+    height: 0.5rem;
     display: block;
     background: url("../resource/image/commonControl/delete_up.png");
-    background-size: 20px 5px;
+    background-size: 2.5rem 0.5rem;
     margin-left: -1px;
 
 }
 
 .delete_box .delete_down{
     margin-top: -2px;
-    width: 18px;
-    height: 18px;
+    width: 2.5rem;
+    height: 2rem;
     display: block;
     background: url("../resource/image/commonControl/delete_down.png");
-    background-size: 18px 18px;
+    background-size: 2.5rem 2rem;
 }
 
 /*弹出框*/
@@ -285,9 +287,6 @@
 
 
 
-
-/*reset.css*/
-    /*ÖØÖÃÄ¬ÈÏÑùÊ½t*/
 *,::before,::after{
     margin: 0;
     padding: 0;
@@ -324,6 +323,8 @@ textarea,input{
 }
 .f_right{
     float: right;
+    margin-left: 10px;;
+    margin-top: 2px;
 }
 .clearfix::before,
 .clearfix::after{
@@ -375,85 +376,53 @@ textarea,input{
     display: block;
     padding: 5px 20px;
     margin-top: 8px;
+    text-decoration: none;
 }
 
+.list-jsk:focus{
+    text-decoration: none;
+}
 
+.list-jsk:hover{
+    text-decoration: none;
+}
 
+.cart-list {
+    width:100%;
+    overflow: hidden;
+}
 
+.cart-list li {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    margin: 0px 3%;
+    padding: 15px 0;
+    overflow: hidden;
+}
 
+.cart-list-pic {
+    float: left;
+    width: 30%;
+    padding: 3px;
+    border: 1px solid #ddd;
+}
 
+.cart-list .am-gallery-desc {
+    color: #cb2527;
+    font-size: 1.6rem;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*.cart-goods-name{*/
-    /*width:30%;*/
-    /*padding-left: 10px;*/
-    /*background-color: lightgray;*/
-    /*border-right: 1px solid #dddddd;*/
-/*}*/
-
-/*.cart-goods-price{*/
-    /*width:40%;*/
-    /*padding-left: 10px;*/
-    /*background-color: lightgray;*/
-    /*border-right: 1px solid #dddddd;*/
-/*}*/
-
-/*.cart-goods-count{*/
-    /*width:30%;*/
-    /*padding-left: 10px;*/
-    /*background-color: lightgray;*/
-    /*!*border-right: 1px solid #dddddd;*!*/
-/*}*/
-
-
-
-/*.cart-nav-fixed-bottom{*/
-    /*width: 100%;*/
-    /*height: auto;*/
-    /*position: fixed;*/
-    /*bottom: 0;*/
-    /*background-color: #222;*/
-/*}*/
-
-/*.cart-confirm-button{*/
-    /*width:25%;*/
-    /*background-color: #d9534f;*/
-    /*color: white;*/
-    /*border: 0;*/
-    /*border-radius: 0px;*/
-/*}*/
+.clear-cart{
+    /*border-radius: 50%;*/
+    font-size: 1.6rem;
+    background: #39b867;
+    color: #fff;
+    float: right;
+    /*border: 1px solid #dadada;*/
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    margin-left: -1px;
+    text-decoration: none;
+}

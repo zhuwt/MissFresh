@@ -7,6 +7,11 @@ ul {
     margin: 0;
 }
 
+/*.target{*/
+    /*padding-top: 50px;*/
+    /*margin-top: -50px;*/
+/*}*/
+
 .sq-head {
     position: fixed;
     top: 0;
@@ -103,7 +108,7 @@ ul {
 
 .list-pro {
     overflow: hidden;
-    padding-bottom: 60px;
+    padding-bottom: 10px;
     margin-top: 60px;
 }
 
@@ -141,7 +146,7 @@ ul {
 }
 
 .list-cart .d-stock {
-    width: 7.5rem;
+    /*width: 7.5rem;*/
     float: right;
 }
 
@@ -188,6 +193,7 @@ ul {
     height: 2.5rem;
     line-height: 2.5rem;
     text-align: center;
+    background-color: transparent;
 }
 
 .list-cart .d-stock .increase {

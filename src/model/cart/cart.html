@@ -9,137 +9,43 @@
     <!--店铺-->
     <div class="jd_shop">
         <div class="jd_shop_tit">
-            <div class="check_box">
-                <a href="#" class="jd_check_box"></a>
-            </div>
+            <!--<div class="check_box">-->
+            <!--<a href="#" class="jd_check_box"></a>-->
+            <!--</div>-->
             <div class="shop_info">
                 <div class="jd_logo f_left">
                     <!--<img src="images/buy-logo.png" alt="">-->
                     <span>小鲜来了</span>
                 </div>
                 <!--<div class="f_right tip m_r10">-->
-                    <!--您享受满79元免运费服务-->
+                <!--您享受满79元免运费服务-->
                 <!--</div>-->
-
             </div>
         </div>
-        <div class="jd_shop_con">
-            <div class="product">
-                <div class="check_box">
-                    <a href="#" class="jd_check_box" checked></a>
+        <ul class="cart-list">
+            <!--ng-repeat="item in vm.goodInfo" ng-if="item.selected"-->
+            <li ng-repeat="item in vm.goods" ng-if="item.bookingCount">
+                <a ng-href="#/detail"><img src={{item.src}} class="cart-list-pic"/></a>
+                <div class="shop-list-mid">
+                    <div class="tit"><a href="detail.html">{{item.goodName}}({{item.goodDetail}})</a></div>
+                    <small>销售量:{{item.sellCount}}　　　好评率:{{item.goodEvaluate}}%</small>
+                    <div class="am-gallery-desc">￥{{item.price}}</div>
                 </div>
-                <div class="shop_info clearfix">
-                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/tomato.jpg" alt=""></a>
-                    <div class="info_box">
-                        <a class="p_name" href="#">西红柿1000g</a>
-                        <p class="p_price">&yen;1000.00</p>
-                        <div class="p_opition">
-                            <div class="change_num f_left">
-                                <span>-</span>
-                                <input type="tel">
-                                <span>+</span>
-                            </div>
-                            <div class="delete_box f_right">
-                                <span class="delete_up"></span>
-                                <span class="delete_down"></span>
-                            </div>
+                <div class="list-cart">
+                    <div class="d-stock">
+                        <a ng-class="{decreaseInline:item.bookingCount}" ng-show="item.bookingCount"
+                           ng-click="vm.reduceGoodsCount($index)">-</a>
+                        <input ng-class="{text_box_display:item.bookingCount}" ng-show="item.bookingCount"
+                               ng-model="item.bookingCount" readonly>
+                        <div class="delete_box f_right">
+                            <span class="delete_up"></span>
+                            <span class="delete_down"></span>
                         </div>
+                        <a class="increase" ng-click="vm.addGoodsCount($index)">+</a>
                     </div>
                 </div>
-            </div>
-            <div class="product">
-                <div class="check_box">
-                    <a href="#" class="jd_check_box" checked></a>
-                </div>
-                <div class="shop_info clearfix">
-                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/broccoli.jpg" alt=""></a>
-                    <div class="info_box">
-                        <a class="p_name" href="#">西兰花500g</a>
-                        <p class="p_price">&yen;1000.00</p>
-                        <div class="p_opition">
-                            <div class="change_num f_left">
-                                <span>-</span>
-                                <input type="tel">
-                                <span>+</span>
-                            </div>
-                            <div class="delete_box f_right">
-                                <span class="delete_up"></span>
-                                <span class="delete_down"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="check_box">
-                    <a href="#" class="jd_check_box" checked></a>
-                </div>
-                <div class="shop_info clearfix">
-                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/egg.jpg" alt=""></a>
-                    <div class="info_box">
-                        <a class="p_name" href="#">鸡蛋500g</a>
-                        <p class="p_price">&yen;1000.00</p>
-                        <div class="p_opition">
-                            <div class="change_num f_left">
-                                <span>-</span>
-                                <input type="tel">
-                                <span>+</span>
-                            </div>
-                            <div class="delete_box f_right">
-                                <span class="delete_up"></span>
-                                <span class="delete_down"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="check_box">
-                    <a href="#" class="jd_check_box" checked></a>
-                </div>
-                <div class="shop_info clearfix">
-                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/cherry.jpg" alt=""></a>
-                    <div class="info_box">
-                        <a class="p_name" href="#">樱桃500g</a>
-                        <p class="p_price">&yen;1000.00</p>
-                        <div class="p_opition">
-                            <div class="change_num f_left">
-                                <span>-</span>
-                                <input type="tel">
-                                <span>+</span>
-                            </div>
-                            <div class="delete_box f_right">
-                                <span class="delete_up"></span>
-                                <span class="delete_down"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="check_box">
-                    <a href="#" class="jd_check_box" checked></a>
-                </div>
-                <div class="shop_info clearfix">
-                    <a href="#" class="img_box f_left"><img src="src/resource/image/detail/lemon.jpg" alt=""></a>
-                    <div class="info_box">
-                        <a class="p_name" href="#">柠檬300g</a>
-                        <p class="p_price">&yen;1000.00</p>
-                        <div class="p_opition">
-                            <div class="change_num f_left">
-                                <span>-</span>
-                                <input type="tel">
-                                <span>+</span>
-                            </div>
-                            <div class="delete_box f_right">
-                                <span class="delete_up"></span>
-                                <span class="delete_down"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
     <div class="jd_win">
         <div class="jd_win_box">
@@ -154,7 +60,7 @@
 
     <!-- boot -->
     <div class="fix-bot">
-        <a href="" class="list-js">合计：<i>0元</i><em>(0份)</em></a>
-        <a href="" class="list-jsk">去结账</a>
+        <a class="list-js">合计：<i>{{vm.total}}元</i><em>({{vm.count}}份)</em></a>
+        <a class="list-jsk" ng-click="vm.bill()">去结账</a>
     </div>
 </div>

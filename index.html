@@ -48,8 +48,6 @@
     <link rel="stylesheet" href="src/css/orders.css">
     <link rel="stylesheet" href="src/css/login.css">
 
-
-
     <!-- 内容为空-->
     <!--<link rel="stylesheet" href="src/css/order.css">-->
 
@@ -57,10 +55,10 @@
 <body>
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
-            <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
+            <h3 class="modal-title" id="modal-title">{{vm.dialogTitle}}</h3>
         </div>
         <div class="modal-body" id="modal-body">
-            <p>information</p>
+            <p>{{vm.content}}</p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>

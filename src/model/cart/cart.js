@@ -36,24 +36,24 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
         vm.bill = function () {
             vm.open = function (size) {
                 var modalInstance = $uibModal.open({
-                    animation: vm.animationsEnabled,
-                    ariaLabelledBy: 'modal-title',
-                    ariaDescribedBy: 'modal-body',
+                    animation: true,
+                    ariaLabelledBy: "标题信息",
+                    ariaDescribedBy: "您确定清空购物车吗",
                     templateUrl: 'myModalContent.html',
                     controller: 'thisApp.cartModalControl',
                     controllerAs: 'vm',
                     size: size,
                     resolve: {
                         items: function () {
-                            return vm.items;
+                            return vm;
                         }
                     }
                 });
 
-                modalInstance.result.then(function (selectedItem) {
-                    vm.selected = selectedItem;
+                modalInstance.result.then(function (vm) {
+                    console.log(vm);
                 }, function () {
-                    $log.info('Modal dismissed at: ' + new Date());
+                    console.log('Click on other place!');
                 });
             };
             vm.open();
@@ -443,11 +443,15 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
 
 angular.module('thisApp.cart').controller('thisApp.cartModalControl', function ($uibModalInstance, items) {
     var vm = this;
+    vm.dialogTitle = "标题信息";
+    vm.content = '您确定清空购物车吗？';
     vm.ok = function () {
-        $uibModalInstance.close();
+        console.log("Click on 'OK' button.");
+        $uibModalInstance.close(vm);
     };
 
     vm.cancel = function () {
+        console.log("Click on 'Cancel' button.");
         $uibModalInstance.dismiss('cancel');
     };
 });

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="component/angular-bootstrap/ui-bootstrap-csp.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="component/bootstrap/dist/css/bootstrap.css">
+    <link href="component/bootstrap/dist/css/bootstrap-theme.css">
     <script src="component/bootstrap/dist/js/bootstrap.js"></script>
     <!-- amaze UI -->
     <script src="component/amazeui.min.js"></script>
@@ -33,6 +34,8 @@
     <script src="src/model/login/login.js"></script>
     <script src="src/model/account/account.js"></script>
     <script src="src/model/orders/orders.js"></script>
+    <script src="src/model/address/address.js"></script>
+    <script src="src/model/address/editAddress.js"></script>
 
     <!--custom css-->
     <link rel="stylesheet" href="src/css/amazeui.min.css">
@@ -48,23 +51,25 @@
     <link rel="stylesheet" href="src/css/orders.css">
     <link rel="stylesheet" href="src/css/login.css">
 
+    <link rel="stylesheet" href="src/css/address.css">
+
     <!-- 内容为空-->
     <!--<link rel="stylesheet" href="src/css/order.css">-->
 
 </head>
 <body>
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title" id="modal-title">{{vm.dialogTitle}}</h3>
-        </div>
-        <div class="modal-body" id="modal-body">
-            <p>{{vm.content}}</p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
-        </div>
-    </script>
+    <!--<script type="text/ng-template" id="myModalContent.html">-->
+        <!--<div class="modal-header">-->
+            <!--<h3 class="modal-title" id="modal-title">{{vm.dialogTitle}}</h3>-->
+        <!--</div>-->
+        <!--<div class="modal-body" id="modal-body">-->
+            <!--<p>{{vm.content}}</p>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+            <!--<button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>-->
+            <!--<button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>-->
+        <!--</div>-->
+    <!--</script>-->
     <div ng-view class="full-height"></div>
 </body>
 </html>

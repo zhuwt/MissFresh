@@ -12,12 +12,22 @@ ul {
     /*margin-top: -50px;*/
 /*}*/
 
+
+
+.menu-header-text{
+    line-height: 44px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0;
+}
+
 .sq-head {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
-    background: #fff;
+    background: #f5f5f5;
     border-bottom: 1px solid #ddd;
 }
 
@@ -175,14 +185,25 @@ ul {
     text-decoration: none;
 }
 
-.list-cart .d-stock .text_box {
-    display: none;
+/*.list-cart .d-stock .text_box {*/
+    /*display: none;*/
+    /*float: left;*/
+    /*border: 0;*/
+    /*width: 2.5rem;*/
+    /*height: 2.5rem;*/
+    /*line-height: 2.5rem;*/
+    /*text-align: center;*/
+
+/*}*/
+
+.eat-list .d-stock .text_box {
     float: left;
     border: 0;
     width: 2.5rem;
     height: 2.5rem;
     line-height: 2.5rem;
     text-align: center;
+    background-color: transparent;
 }
 
 .list-cart .d-stock .text_box_display {
@@ -362,16 +383,10 @@ ul {
     height: 2.5rem;
     line-height: 2.5rem;
     text-align: center;
+    text-decoration: none;
 }
 
-.eat-list .d-stock .text_box {
-    float: left;
-    border: 0;
-    width: 2.5rem;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    text-align: center;
-}
+
 
 .eat-list .d-stock .increase {
     border-radius: 50%;
@@ -385,6 +400,7 @@ ul {
     line-height: 2.5rem;
     text-align: center;
     margin-left: -1px;
+    text-decoration: none;
 }
 
 .eat-list li {
@@ -603,6 +619,7 @@ ul {
 }
 
 #datetitle h1 {
+    line-height: 50px;
     font-weight: normal;
     color: #ff5500;
     font-size: 18px;
@@ -672,6 +689,7 @@ ul {
     height: 50px;
     bottom: 0px;
     position: absolute;
+    background-color: white;
 }
 
 .yytime {

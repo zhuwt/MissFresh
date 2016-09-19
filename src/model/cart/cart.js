@@ -2,7 +2,7 @@
  * Created by zhuwt on 2016/9/7.
  */
 angular.module('thisApp.cart', ['ui.bootstrap'])
-    .controller('thisApp.cartController', function ($uibModal) {
+    .controller('thisApp.cartController', function ($location) {
         var vm = this;
         var imageSourcePath = 'src/resource/image/detail/';
         vm.total = 0;
@@ -33,30 +33,46 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
             }
         };
 
-        vm.bill = function () {
-            vm.open = function (size) {
-                var modalInstance = $uibModal.open({
-                    animation: true,
-                    ariaLabelledBy: "标题信息",
-                    ariaDescribedBy: "您确定清空购物车吗",
-                    templateUrl: 'myModalContent.html',
-                    controller: 'thisApp.cartModalControl',
-                    controllerAs: 'vm',
-                    size: size,
-                    resolve: {
-                        items: function () {
-                            return vm;
-                        }
-                    }
-                });
+        vm.clearCart = function () {
+            if (window.confirm('确定清空购物车吗?')){
+                for (var i=0;i<vm.goods.length;i++){
+                    vm.goods[i].bookingCount = 0;
+                }
+                vm.total = 0;
+                vm.count = 0;
+            }
+            // window.confirm('确定清空购物车吗?');
+            // vm.open = function (size) {
+            //     var modalInstance = $uibModal.open({
+            //         animation: true,
+            //         ariaLabelledBy: "标题信息",
+            //         ariaDescribedBy: "您确定清空购物车吗",
+            //         templateUrl: 'myModalContent.html',
+            //         controller: 'thisApp.cartModalControl',
+            //         controllerAs: 'vm',
+            //         size: size,
+            //         resolve: {
+            //             items: function () {
+            //                 return vm;
+            //             }
+            //         }
+            //     });
+            //
+            //     modalInstance.result.then(function (vm) {
+            //         console.log(vm);
+            //     }, function () {
+            //         console.log('Click on other place!');
+            //     });
+            // };
+            // vm.open();
+        };
 
-                modalInstance.result.then(function (vm) {
-                    console.log(vm);
-                }, function () {
-                    console.log('Click on other place!');
-                });
-            };
-            vm.open();
+        vm.pay = function () {
+            $location.path('/order');
+        };
+        
+        vm.back = function () {
+            $location.path('/menu');
         };
 
         vm.goods = [
@@ -447,6 +463,7 @@ angular.module('thisApp.cart').controller('thisApp.cartModalControl', function (
     vm.content = '您确定清空购物车吗？';
     vm.ok = function () {
         console.log("Click on 'OK' button.");
+        vm.result = 0;
         $uibModalInstance.close(vm);
     };
 

@@ -1,9 +1,9 @@
-<div ng-controller="thisApp.orderController as vm" style="height: 100%">
+<div ng-controller="thisApp.orderController as vm" style="height: 100%;background-color: white;">
     <header data-am-widget="header" class="am-header am-header-default sq-head">
         <div class="am-header-left am-header-nav">
-            <a href="index.html" class="">继续购买</a>
+            <a ng-click="vm.backToMenu()">继续购买</a>
         </div>
-        <div class="am-header-right am-header-nav">
+        <div class="am-header-right am-header-nav" ng-click="vm.clearCart()">
             <button type="button" class="am-btn am-btn-warning" id="doc-confirm-toggle" style="background: none; border: 0; font-size: 24px;">
                 <i class="am-header-icon am-icon-trash"></i>
             </button>
@@ -11,22 +11,13 @@
     </header>
     <div style="height: 49px;"></div>
     <ul class="eat-list">
-        <li>
-            <span class="name">青菜</span>
-            <em class="price">￥2.0</em>
+        <li ng-repeat="item in vm.goods" ng-if="item.bookingCount">
+            <span class="name">{{item.goodName}}</span>
+            <em class="price">￥{{item.price}}</em>
             <div class="d-stock ">
-                <a class="decrease">-</a>
-                <input id="num" readonly="" class="text_box" name="" type="text" value="1">
-                <a class="increase">+</a>
-            </div>
-        </li>
-        <li>
-            <span class="name">莴笋</span>
-            <em class="price">￥2.0</em>
-            <div class="d-stock ">
-                <a class="decrease">-</a>
-                <input id="num" readonly="" class="text_box" name="" type="text" value="1">
-                <a class="increase">+</a>
+                <a class="decrease" ng-click="vm.reduceGoodsCount($index)">-</a>
+                <input class="text_box" name="" type="text" ng-model="item.bookingCount" readonly>
+                <a class="increase" ng-click="vm.addGoodsCount($index)">+</a>
             </div>
         </li>
     </ul>
@@ -39,7 +30,7 @@
         <div id="datePlugin"></div>
         <li class="time" ng-click="vm.popAddress()">
             <span>送餐地址：</span>
-            <a href="add.html" class="address"><p>陕西省西安市高新区高新一路</p></a>
+            <a class="address"><p>陕西省西安市高新区高新一路</p></a>
             <i class="am-icon-angle-right"></i>
         </li>
     </ul>
@@ -47,7 +38,7 @@
     <textarea placeholder="备注说明" class="bz-infor"></textarea>
     <div class="juli"></div>
     <div class="pricebox">
-        <p>总价：<i>12.00</i>元（含运费10元）（<em>1</em>份）</p>
+        <p>总价：<i>{{vm.total+10}}</i>元（含运费10元）（<em>vm.count</em>份）</p>
         <p>请选择支付方式并确认下单：</p>
         <button class="paybtn" type="button" > 微信支付</button>
     </div>

@@ -1,7 +1,7 @@
 <div ng-controller="thisApp.cartController as vm" style="height: 100%">
     <!--顶部通栏-->
     <header class="jd_topBar">
-        <a href="#" class="icon_back"></a>
+        <a class="icon_back" ng-click="vm.back()"></a>
         <h3>购物车</h3>
         <!--<a href="#"class="icon_menu"></a>-->
     </header>
@@ -20,6 +20,10 @@
                 <!--<div class="f_right tip m_r10">-->
                 <!--您享受满79元免运费服务-->
                 <!--</div>-->
+                <div class="delete_box f_right" ng-click="vm.clearCart()">
+                    <span class="delete_up"></span>
+                    <span class="delete_down"></span>
+                </div>
             </div>
         </div>
         <ul class="cart-list">
@@ -37,30 +41,26 @@
                            ng-click="vm.reduceGoodsCount($index)">-</a>
                         <input ng-class="{text_box_display:item.bookingCount}" ng-show="item.bookingCount"
                                ng-model="item.bookingCount" readonly>
-                        <div class="delete_box f_right">
-                            <span class="delete_up"></span>
-                            <span class="delete_down"></span>
-                        </div>
                         <a class="increase" ng-click="vm.addGoodsCount($index)">+</a>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
-    <div class="jd_win">
-        <div class="jd_win_box">
-            <div class="jd_win_tit">你确定删除该商品吗？</div>
-            <div class="jd_btn clearfix">
-                <a href="#" class="cancle f_left">取消</a>
-                <a href="#" class="submit f_right">确定</a>
-            </div>
+    <!--<div class="jd_win">-->
+        <!--<div class="jd_win_box">-->
+            <!--<div class="jd_win_tit">你确定删除该商品吗？</div>-->
+            <!--<div class="jd_btn clearfix">-->
+                <!--<a href="#" class="cancle f_left">取消</a>-->
+                <!--<a href="#" class="submit f_right">确定</a>-->
+            <!--</div>-->
 
-        </div>
-    </div>
+        <!--</div>-->
+    <!--</div>-->
 
     <!-- boot -->
     <div class="fix-bot">
         <a class="list-js">合计：<i>{{vm.total}}元</i><em>({{vm.count}}份)</em></a>
-        <a class="list-jsk" ng-click="vm.bill()">去结账</a>
+        <a class="list-jsk" ng-click="vm.pay()">去结账</a>
     </div>
 </div>

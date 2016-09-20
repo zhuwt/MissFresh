@@ -10,7 +10,7 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
         .when('/home', {
             templateUrl: 'src/model/home/home.html'
         })
-        .when('/menu', {
+        .when('/menu/:id', {
             templateUrl: 'src/model/menu/menu.html'
         })
         .when('/detail', {

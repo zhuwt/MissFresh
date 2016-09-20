@@ -34,12 +34,13 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
         };
 
         vm.clearCart = function () {
-            if (window.confirm('确定清空购物车吗?')){
+            if (window.confirm('清空购物车并重新选购？')){
                 for (var i=0;i<vm.goods.length;i++){
                     vm.goods[i].bookingCount = 0;
                 }
                 vm.total = 0;
                 vm.count = 0;
+                $location.path('/menu');
             }
             // window.confirm('确定清空购物车吗?');
             // vm.open = function (size) {

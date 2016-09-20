@@ -2,7 +2,7 @@
  * Created by zhuwt on 2016/9/10.
  */
 angular.module('thisApp.menu', [])
-    .controller('thisApp.menuController', function () {
+    .controller('thisApp.menuController', function ($routeParams) {
         // $location,$anchorScroll
         var vm = this;
         var imageSourcePath = 'src/resource/image/detail/';

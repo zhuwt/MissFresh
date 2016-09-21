@@ -21,16 +21,28 @@
     height: auto;
 }
 
-.buttonSide{
-    width: 96%;
-    margin:0 auto;
+.button-side{
+    /*width: 96%;*/
+    margin:0 10% 0 5%;
     height: auto;
 }
 
-.button-side>li>img{
+.button-side>li{
+    width:25%;
     float: left;
-    margin-left: 4%;
-    width:20%;
+    padding-left:5%;
+    text-align: center;
+}
+
+.button-side>li>a{
+    text-decoration: none;
+}
+
+.button-side>li>a>img{
+    width: 100%;
+    /*float: left;*/
+    /*margin-left: 4%;*/
+    /*width:20%;*/
 }
 
 .classic-frame{

@@ -8,11 +8,11 @@
     </header>
 
     <div class="carousel-size">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
                 <li data-target="#carousel-example-generic" data-slide-to="2"></li>
             </ol>
 
@@ -34,13 +34,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
         </div>
     </div>
     <!--function button-->
     <div class="button-frame">
         <ul class="button-side">
-            <li ng-repeat="item in vm.buttonInfo"><img src={{item.imagePath}} alt="Responsive image"
-               class="img-responsive function-button img-circle" ></li>
+            <li ng-repeat="item in vm.buttonInfo">
+                <a ng-href={{item.url}}>
+                    <img src={{item.imagePath}} alt="Responsive image" class="img-responsive img-circle">
+                    <p>{{item.contentName}}</p>
+                </a>
+            </li>
             <div class="clearfix"></div>
         </ul>
     </div>

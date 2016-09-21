@@ -13,4 +13,5 @@ var routeApp = angular.module('thisApp',[
     ,'thisApp.account'
     ,'thisApp.address'
     ,'thisApp.editAddress'
+    ,'thisApp.password'
 ]);

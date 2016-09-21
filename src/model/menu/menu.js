@@ -10,6 +10,11 @@ angular.module('thisApp.menu', [])
         vm.total = 0;
 
         vm.clickClassification = function (index) {
+            if ($routeParams.id >= vm.classification.length)
+                index = 0;
+            else
+                index = $routeParams.id;
+
             for (var i=0;i<vm.classification.length;i++)
                 vm.classification[i].selected = false;
 
@@ -449,5 +454,5 @@ angular.module('thisApp.menu', [])
                 limited:10
             }
         ];
-        vm.clickClassification(0);
+        vm.clickClassification($routeParams);
     });

@@ -6,15 +6,23 @@
 
 .order-header {
     width: 100%;
-    background-color: #D7152D;
+    background-color: #ffffff;
     text-align: center;
 }
 
-.order-header > h1 {
-    height: 50px;
-    line-height: 50px;
-    color: #FFFFFD;
-    font-size: 22px;
+.order-header > h3 {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 18px;
+    margin:0;
+
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+    /*color: #FFFFFD;*/
+    /*font-size: 22px;*/
+    /*font-weight: normal;*/
 }
 
 .weui_navbar {

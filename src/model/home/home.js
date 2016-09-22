@@ -1,7 +1,7 @@
 /**
  * Created by Bucky.Zhu on 07/18/2016.
  */
-angular.module('thisApp.home', [])
+angular.module('thisApp.home', ['ui.bootstrap'])
     .controller('thisApp.homeController', function ($location,$timeout) {
         var vm = this;
         var imagePaht = 'src/resource/image/classic/';
@@ -10,6 +10,27 @@ angular.module('thisApp.home', [])
         vm.jumpToUrl = function (url) {
             $location.path(url);
         };
+
+        vm.Interval = 2000;
+        vm.noWrapSlides = true;
+        vm.active = 0;
+        var slides = vm.slides = [
+            {
+                id:0,
+                image:'src/resource/image/carousel/Desert.jpg',
+                text:'1'
+
+            }
+            ,{
+                id:1,
+                image:'src/resource/image/carousel/Chrysanthemum.jpg',
+                text:'2'
+            }
+            ,{
+                id:2,
+                image:'src/resource/image/carousel/Hydrangeas.jpg',
+                text:'3'
+            }];
 
         vm.images = [
             {
@@ -30,17 +51,17 @@ angular.module('thisApp.home', [])
             {
                 imagePath:buttonImagePaht + 'button.png',
                 contentName:'我的订单',
-                url:'/cart'
+                url:'#/orders'
             }
             ,{
                 imagePath:buttonImagePaht + 'button.png',
                 contentName:'我的订单',
-                url:'/cart'
+                url:'#/orders'
             }
             ,{
                 imagePath:buttonImagePaht + 'button.png',
-                contentName:'我的订单',
-                url:'/cart'
+                contentName:'购物车',
+                url:'#/cart'
             }
             ,{
                 imagePath:buttonImagePaht + 'button.png',

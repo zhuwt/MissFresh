@@ -6,47 +6,19 @@
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
     </header>
-
-    <div class="carousel-size">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="src/resource/image/carousel/Desert.jpg" alt="...">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="src/resource/image/carousel/Chrysanthemum.jpg" alt="...">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="src/resource/image/carousel/Hydrangeas.jpg" alt="...">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
+    <!-- carousel -->
+    <div style="height: 305px">
+        <div uib-carousel active="active" interval="vm.Interval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="slide in vm.slides track by slide.id" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;width: 100%">
+                <!--<div class="carousel-caption">-->
+                <!--<h4>Slide {{slide.id}}</h4>-->
+                <!--<p>{{slide.text}}</p>-->
+                <!--</div>-->
             </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
-
         </div>
     </div>
+
     <!--function button-->
     <div class="button-frame">
         <ul class="button-side">

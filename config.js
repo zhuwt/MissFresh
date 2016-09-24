@@ -34,6 +34,9 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
         .when('/account', {
             templateUrl: 'src/model/account/account.html'
         })
+        .when('/password', {
+            templateUrl: 'src/model/password/password.html'
+        })
         .otherwise({
             redirectTo: '/home'
         });

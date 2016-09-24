@@ -7,7 +7,7 @@
         </div>
     </header>
     <!-- carousel -->
-    <div style="height: 305px">
+    <div style="width: 100%">
         <div uib-carousel active="active" interval="vm.Interval" no-wrap="noWrapSlides">
             <div uib-slide ng-repeat="slide in vm.slides track by slide.id" index="slide.id">
                 <img ng-src="{{slide.image}}" style="margin:auto;width: 100%">

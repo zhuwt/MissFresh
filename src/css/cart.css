@@ -185,7 +185,17 @@
 
 .delete_box{
     margin-top: 5px;
-    margin-right: 5px;
+    margin-right: 3%;
+    /*top:15px;*/
+    /*right:0;*/
+    /*position: absolute;*/
+    /*float: right;*/
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url("../resource/image/commonControl/ashcan.png");
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+    /*border: 0;*/
 }
 
 .delete_box .delete_up{
@@ -396,7 +406,7 @@ textarea,input{
 .cart-list li {
     position: relative;
     border-bottom: 1px solid #ddd;
-    margin: 0px 3%;
+    margin: 0 3%;
     padding: 15px 0;
     overflow: hidden;
 }
@@ -426,4 +436,17 @@ textarea,input{
     text-align: center;
     margin-left: -1px;
     text-decoration: none;
+}
+
+.ashcan{
+    top:15px;
+    right:0;
+    position: absolute;
+    float: right;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url("../resource/image/commonControl/ashcan.png");
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+    border: 0;
 }

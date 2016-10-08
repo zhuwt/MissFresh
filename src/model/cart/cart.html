@@ -21,19 +21,23 @@
                 <!--您享受满79元免运费服务-->
                 <!--</div>-->
                 <div class="delete_box f_right" ng-click="vm.clearCart()">
-                    <span class="delete_up"></span>
-                    <span class="delete_down"></span>
+                    <!--<span class="delete_up"></span>-->
+                    <!--<span class="delete_down"></span>-->
                 </div>
             </div>
         </div>
         <ul class="cart-list">
             <!--ng-repeat="item in vm.goodInfo" ng-if="item.selected"-->
-            <li ng-repeat="item in vm.goods" ng-if="item.bookingCount">
+            <li ng-repeat="item in vm.goods" ng-if="item.displayInCart">
+                <span class="ashcan" ng-click="vm.clearItem($index)"></span>
                 <a ng-href="#/detail"><img src={{item.src}} class="cart-list-pic"/></a>
                 <div class="shop-list-mid">
-                    <div class="tit"><a href="detail.html">{{item.goodName}}({{item.goodDetail}})</a></div>
+                    <div class="tit" style="width: 60%;">
+                        <a href="detail.html">{{item.goodName}}({{item.goodDetail}})</a>
+                    </div>
+                    <div class="clearfix"></div>
                     <small>销售量:{{item.sellCount}}　　　好评率:{{item.goodEvaluate}}%</small>
-                    <div class="am-gallery-desc">￥{{item.price}}</div>
+                    <div class="am-gallery-desc">￥{{item.price}}/{{item.unit}}</div>
                 </div>
                 <div class="list-cart">
                     <div class="d-stock">
@@ -47,6 +51,9 @@
             </li>
         </ul>
     </div>
+    <div style="height: 50px;width: 100%;">
+
+    </div>
     <!--<div class="jd_win">-->
         <!--<div class="jd_win_box">-->
             <!--<div class="jd_win_tit">你确定删除该商品吗？</div>-->
@@ -59,8 +66,8 @@
     <!--</div>-->
 
     <!-- boot -->
-    <div class="fix-bot">
+    <header class="fix-bot">
         <a class="list-js">合计：<i>{{vm.total}}元</i><em>({{vm.count}}份)</em></a>
         <a class="list-jsk" ng-click="vm.pay()">去结账</a>
-    </div>
+    </header>
 </div>

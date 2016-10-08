@@ -37,6 +37,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
             if (window.confirm('清空购物车并重新选购？')){
                 for (var i=0;i<vm.goods.length;i++){
                     vm.goods[i].bookingCount = 0;
+                    vm.goods[i].displayInCart = false;
                 }
                 vm.total = 0;
                 vm.count = 0;
@@ -68,6 +69,12 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
             // vm.open();
         };
 
+        vm.clearItem = function (index) {
+            vm.goods[index].bookingCount = 0;
+            vm.goods[index].displayInCart = false;
+            vm.calculate();
+        };
+
         vm.pay = function () {
             $location.path('/order');
         };
@@ -87,7 +94,9 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 22,
                 goodEvaluate: 97,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 5,
+                displayInCart:true,
                 limited:10
             }
             , {
@@ -100,7 +109,9 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'300g',
                 bookingCount: 2,
+                displayInCart:true,
                 limited:10
             }
             , {
@@ -113,7 +124,9 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'500g',
                 bookingCount: 9,
+                displayInCart:true,
                 limited:10
             }
             ,{
@@ -126,6 +139,96 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 22,
                 goodEvaluate: 97,
                 price: 3.5,
+                unit:'1000g',
+                bookingCount: 0,
+                displayInCart:false,
+                limited:10
+            }
+            , {
+                anchor:'',
+                visible:false,
+                classification:'蔬菜',
+                src: imageSourcePath + 'broccoli.jpg',
+                goodName: '西兰花',
+                goodDetail: '花椰菜300g',
+                sellCount: 11,
+                goodEvaluate: 96,
+                price: 5.5,
+                unit:'300g',
+                bookingCount: 4,
+                displayInCart:true,
+                limited:10
+            }
+            , {
+                anchor:'',
+                visible:false,
+                classification:'蔬菜',
+                src: imageSourcePath + 'egg.jpg',
+                goodName: '鸡蛋',
+                goodDetail: '长白山农家土鸡蛋500g',
+                sellCount: 11,
+                goodEvaluate: 96,
+                price: 5.5,
+                unit:'500g',
+                bookingCount: 0,
+                displayInCart:false,
+                limited:10
+            }
+            ,{
+                anchor:'',
+                visible:false,
+                classification:'蔬菜',
+                src: imageSourcePath + 'tomato.jpg',
+                goodName: '西红柿',
+                goodDetail: '有机番茄1000g',
+                sellCount: 22,
+                goodEvaluate: 97,
+                price: 3.5,
+                unit:'1000g',
+                bookingCount: 0,
+                displayInCart:false,
+                limited:10
+            }
+            , {
+                anchor:'',
+                visible:false,
+                classification:'蔬菜',
+                src: imageSourcePath + 'broccoli.jpg',
+                goodName: '西兰花',
+                goodDetail: '花椰菜300g',
+                sellCount: 11,
+                goodEvaluate: 96,
+                price: 5.5,
+                unit:'300g',
+                bookingCount: 0,
+                displayInCart:true,
+                limited:10
+            }
+            , {
+                anchor:'',
+                visible:false,
+                classification:'蔬菜',
+                src: imageSourcePath + 'egg.jpg',
+                goodName: '鸡蛋',
+                goodDetail: '长白山农家土鸡蛋500g',
+                sellCount: 11,
+                goodEvaluate: 96,
+                price: 5.5,
+                unit:'500g',
+                bookingCount: 0,
+                limited:10
+            }
+            ,{
+                anchor:'',
+                visible:false,
+                classification:'蔬菜',
+                src: imageSourcePath + 'tomato.jpg',
+                goodName: '西红柿',
+                goodDetail: '有机番茄1000g',
+                sellCount: 22,
+                goodEvaluate: 97,
+                price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -139,6 +242,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'300g',
                 bookingCount: 0,
                 limited:10
             }
@@ -152,84 +256,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
-                bookingCount: 0,
-                limited:10
-            }
-            ,{
-                anchor:'',
-                visible:false,
-                classification:'蔬菜',
-                src: imageSourcePath + 'tomato.jpg',
-                goodName: '西红柿',
-                goodDetail: '有机番茄1000g',
-                sellCount: 22,
-                goodEvaluate: 97,
-                price: 3.5,
-                bookingCount: 0,
-                limited:10
-            }
-            , {
-                anchor:'',
-                visible:false,
-                classification:'蔬菜',
-                src: imageSourcePath + 'broccoli.jpg',
-                goodName: '西兰花',
-                goodDetail: '花椰菜300g',
-                sellCount: 11,
-                goodEvaluate: 96,
-                price: 5.5,
-                bookingCount: 0,
-                limited:10
-            }
-            , {
-                anchor:'',
-                visible:false,
-                classification:'蔬菜',
-                src: imageSourcePath + 'egg.jpg',
-                goodName: '鸡蛋',
-                goodDetail: '长白山农家土鸡蛋500g',
-                sellCount: 11,
-                goodEvaluate: 96,
-                price: 5.5,
-                bookingCount: 0,
-                limited:10
-            }
-            ,{
-                anchor:'',
-                visible:false,
-                classification:'蔬菜',
-                src: imageSourcePath + 'tomato.jpg',
-                goodName: '西红柿',
-                goodDetail: '有机番茄1000g',
-                sellCount: 22,
-                goodEvaluate: 97,
-                price: 3.5,
-                bookingCount: 0,
-                limited:10
-            }
-            , {
-                anchor:'',
-                visible:false,
-                classification:'蔬菜',
-                src: imageSourcePath + 'broccoli.jpg',
-                goodName: '西兰花',
-                goodDetail: '花椰菜300g',
-                sellCount: 11,
-                goodEvaluate: 96,
-                price: 5.5,
-                bookingCount: 0,
-                limited:10
-            }
-            , {
-                anchor:'',
-                visible:false,
-                classification:'蔬菜',
-                src: imageSourcePath + 'egg.jpg',
-                goodName: '鸡蛋',
-                goodDetail: '长白山农家土鸡蛋500g',
-                sellCount: 11,
-                goodEvaluate: 96,
-                price: 5.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -256,6 +283,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -269,6 +297,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -282,6 +311,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 55,
                 goodEvaluate: 99,
                 price: 1.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -295,6 +325,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -308,6 +339,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -321,6 +353,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 55,
                 goodEvaluate: 99,
                 price: 1.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -334,6 +367,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -347,6 +381,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -373,6 +408,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             },
@@ -386,6 +422,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 5,
                 goodEvaluate: 92,
                 price: 7.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -399,6 +436,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -412,6 +450,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 5,
                 goodEvaluate: 92,
                 price: 7.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -425,6 +464,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -438,6 +478,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 5,
                 goodEvaluate: 92,
                 price: 7.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -451,6 +492,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }

@@ -86,6 +86,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 22,
                 goodEvaluate: 97,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -99,6 +100,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'300g',
                 bookingCount: 0,
                 limited:10
             }
@@ -112,6 +114,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'500g',
                 bookingCount: 0,
                 limited:10
             }
@@ -125,6 +128,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 22,
                 goodEvaluate: 97,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -138,6 +142,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'300g',
                 bookingCount: 0,
                 limited:10
             }
@@ -151,6 +156,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'500g',
                 bookingCount: 0,
                 limited:10
             }
@@ -164,6 +170,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 22,
                 goodEvaluate: 97,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -177,6 +184,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'300g',
                 bookingCount: 0,
                 limited:10
             }
@@ -190,6 +198,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'500g',
                 bookingCount: 0,
                 limited:10
             }
@@ -203,6 +212,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 22,
                 goodEvaluate: 97,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -216,6 +226,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'300g',
                 bookingCount: 0,
                 limited:10
             }
@@ -229,6 +240,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 11,
                 goodEvaluate: 96,
                 price: 5.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -255,6 +267,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -268,6 +281,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -281,6 +295,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 55,
                 goodEvaluate: 99,
                 price: 1.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -294,6 +309,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -307,6 +323,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -320,6 +337,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 55,
                 goodEvaluate: 99,
                 price: 1.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -333,6 +351,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -346,6 +365,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 25,
                 goodEvaluate: 99,
                 price: 4.6,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -372,6 +392,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             },
@@ -385,6 +406,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 5,
                 goodEvaluate: 92,
                 price: 7.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -398,6 +420,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -411,6 +434,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 5,
                 goodEvaluate: 92,
                 price: 7.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -424,6 +448,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -437,6 +462,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 5,
                 goodEvaluate: 92,
                 price: 7.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }
@@ -450,6 +476,7 @@ angular.module('thisApp.menu', [])
                 sellCount: 7,
                 goodEvaluate: 94,
                 price: 3.5,
+                unit:'1000g',
                 bookingCount: 0,
                 limited:10
             }

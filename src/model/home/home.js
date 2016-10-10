@@ -50,8 +50,8 @@ angular.module('thisApp.home', ['ui.bootstrap'])
         vm.buttonInfo = [
             {
                 imagePath:buttonImagePaht + 'button.png',
-                contentName:'我的订单',
-                url:'#/orders'
+                contentName:'精选套餐',
+                url:'#/meals'
             }
             ,{
                 imagePath:buttonImagePaht + 'button.png',

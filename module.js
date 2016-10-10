@@ -15,4 +15,5 @@ var routeApp = angular.module('thisApp',[
     ,'thisApp.editAddress'
     ,'thisApp.password'
     ,'ui.bootstrap'
+    ,'thisApp.meals'
 ]);

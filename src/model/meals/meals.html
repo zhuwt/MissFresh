@@ -1,0 +1,13 @@
+<div ng-controller="thisApp.mealsController as vm" style="height: 100%">
+    <header class="jd_topBar">
+        <a class="icon_back" href="#/home"></a>
+        <h3>精选套餐</h3>
+    </header>
+    <ul>
+        <li ng-repeat="item in vm.meals" class="meals-item">
+            <a ng-href={{item.href}}>
+                <img class="meal-image-size" ng-src={{item.src}}>
+            </a>
+        </li>
+    </ul>
+</div>

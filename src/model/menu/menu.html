@@ -19,7 +19,7 @@
             <ul class="list-pro" >
                 <!--ng-repeat="item in vm.goodInfo" ng-if="item.selected"-->
                 <li ng-repeat="item in vm.goods" class="target" ng-if="item.visible">
-                    <a ng-href="#/detail"><img src={{item.src}} class="list-pic"/></a>
+                    <a ng-href="#/detail/1"><img src={{item.src}} class="list-pic"/></a>
                     <div class="shop-list-mid">
                         <div class="tit"><a href="detail.html">{{item.goodName}}({{item.goodDetail}})</a></div>
                         <small>销售量:{{item.sellCount}}　　　好评率:{{item.goodEvaluate}}%</small>

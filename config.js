@@ -10,10 +10,16 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
         .when('/home', {
             templateUrl: 'src/model/home/home.html'
         })
+        .when('/meals', {
+            templateUrl: 'src/model/meals/meals.html'
+        })
         .when('/menu/:id', {
             templateUrl: 'src/model/menu/menu.html'
         })
-        .when('/detail', {
+        .when('/detail/:id', {
+            templateUrl: 'src/model/detail/detail.html'
+        })
+        .when('/detail/meals/:id', {
             templateUrl: 'src/model/detail/detail.html'
         })
         .when('/cart', {

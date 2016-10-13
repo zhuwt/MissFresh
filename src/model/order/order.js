@@ -1,20 +1,44 @@
 /**
  * Created by zhuwt on 2016/9/10.
  */
-angular.module('thisApp.order', [])
+angular.module('thisApp.order', ['mobiscroll-datetime'])
     .controller('thisApp.orderController', function ($location) {
         var vm = this;
         var imageSourcePath = 'src/resource/image/detail/';
         vm.total = 0;
         vm.count = 0;
 
-        //TODO: Why first invoke date control must failed each time?
-        angular.element(endTime).date({theme:"datetime"});
 
-        vm.popDate = function(){
-            // console.log(angular.element(endTime));
-            angular.element(endTime).date({theme:"datetime"});
+        var mindDate = new Date();
+        var maxDate = new Date();
+        var today = mindDate.toString();
+        mindDate.setHours(mindDate.getHours()+1);
+        maxDate.setDate(maxDate.getDate()+2);
+        vm.settings = {
+            theme: 'android-holo-light', // Specify theme like: theme: 'ios' or omit setting to use default
+            lang: 'zh', // Specify language like: lang: 'pl' or omit setting to use default
+            display: 'bottom', // Specify display mode like: display: 'bottom' or omit setting to use default
+            // mode: $scope.mode, // More info about mode: https://docs.mobiscroll.com/3-0-0_beta5/angular/datetime#!opt-mode
+            min: mindDate, // More info about min: https://docs.mobiscroll.com/3-0-0_beta5/angular/datetime#!opt-min
+            max: maxDate,
+            // invalid: ['w0', 'w6', '5/1', '12/24', '12/25'], // More info about invalid: https://docs.mobiscroll.com/3-0-0_beta5/angular/datetime#!opt-invalid
+            invalid:[{ start: '00:00', end: '08:00' }, // Every day
+                     { start: '22:00', end: '23:59' }],
+            steps: {
+                minute: 15,
+                zeroBased: true
+            },
+            dateWheels: '|mm月dd日|',
+            timeWheels: 'HHii' // More info about timeWheels: https://docs.mobiscroll.com/3-0-0_beta5/angular/datetime#!localization-timeWheels
         };
+
+        //TODO: Why first invoke date control must failed each time?
+        // angular.element(endTime).date({theme:"datetime"});
+
+        // vm.popDate = function(){
+        //     // console.log(angular.element(endTime));
+        //     angular.element(endTime).date({theme:"datetime"});
+        // };
 
         vm.popAddress = function(){
             $location.path('/address');

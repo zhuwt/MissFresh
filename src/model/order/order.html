@@ -24,7 +24,7 @@
     <div class="juli"></div>
     <ul class="list-detail">
         <li class="time" ng-click="vm.popDate()">
-            <span>送餐时间：</span><input id="endTime" class="kbtn" placeholder="立即配送"/>
+            <span>送餐时间：</span><input ng-model="vm.mydatetime" mobiscroll-datetime="vm.settings" placeholder="Please Select..." />
             <i class="am-icon-angle-right"></i>
         </li>
         <div id="datePlugin"></div>

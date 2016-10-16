@@ -9,4 +9,10 @@ angular.module('thisApp.editAddress', [])
         vm.confirm = function () {
             $location.path('/address');
         };
+
+        vm.Cell=[
+            '金泰假日花城',
+            '绿地世纪城',
+            '紫薇田园都市'
+        ];
     });

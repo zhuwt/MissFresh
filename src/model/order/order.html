@@ -23,11 +23,24 @@
     </ul>
     <div class="juli"></div>
     <ul class="list-detail">
-        <li class="time" ng-click="vm.popDate()">
-            <span>送餐时间：</span><input ng-model="vm.mydatetime" mobiscroll-datetime="vm.settings" placeholder="Please Select..." />
-            <i class="am-icon-angle-right"></i>
+        <li class="time">
+            <!-- meal dateSettings -->
+            <div ng-if="vm.meals">
+                <span>{{vm.sendText}}</span>
+                <select class="form-control" id="weekday-select">
+                    <option ng-repeat="item in vm.weeks">{{item}}</option>
+                </select>
+                <span>送餐时间：</span>
+                <input id="weekly-time" ng-model="mytime" mobiscroll-time="vm.settings" placeholder="请选择每周送餐时间" type="text"/>
+            </div>
+            <div ng-if="!vm.meals">
+                <!-- goods dateSettings -->
+                <span>{{vm.sendText}}</span>
+                <input ng-if="!vm.meals" ng-model="vm.mydatetime" mobiscroll-datetime="vm.settings" placeholder="请选择送餐时间" />
+                <i ng-if="!vm.meals" class="am-icon-angle-right"></i>
+            </div>
         </li>
-        <div id="datePlugin"></div>
+        <!--<div id="datePlugin"></div>-->
         <li class="time" ng-click="vm.popAddress()">
             <span>送餐地址：</span>
             <a class="address"><p>陕西省西安市高新区高新一路</p></a>
@@ -43,13 +56,13 @@
         <button class="paybtn" type="button" > 微信支付</button>
     </div>
 
-    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
-        <div class="am-modal-dialog">
-            <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要清空饮品吗？</div>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-            </div>
-        </div>
-    </div>
+    <!--<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">-->
+        <!--<div class="am-modal-dialog">-->
+            <!--<div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要清空饮品吗？</div>-->
+            <!--<div class="am-modal-footer">-->
+                <!--<span class="am-modal-btn" data-am-modal-cancel>取消</span>-->
+                <!--<span class="am-modal-btn" data-am-modal-confirm>确定</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 </div>

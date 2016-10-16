@@ -76,7 +76,7 @@ angular.module('thisApp.cart', ['ui.bootstrap'])
         };
 
         vm.pay = function () {
-            $location.path('/order');
+            $location.path('/order/goods/1');
         };
         
         vm.back = function () {

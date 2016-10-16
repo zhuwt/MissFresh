@@ -28,7 +28,10 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
         .when('/orders', {
             templateUrl: 'src/model/orders/orders.html'
         })
-        .when('/order', {
+        .when('/order/goods/:id', {
+            templateUrl: 'src/model/order/order.html'
+        })
+        .when('/order/meals/:id', {
             templateUrl: 'src/model/order/order.html'
         })
         .when('/address', {

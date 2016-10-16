@@ -10,7 +10,7 @@ angular.module('thisApp.detail', [])
             //meals information
             if ($location.$$path.indexOf("meals") >= 0){
                 vm.single = false;
-                vm.src = "src/resource/image/meals/mealsB.jpg"
+                vm.src = "src/resource/image/meals/mealsB.jpg";
                 vm.name = "超值每周特色套餐";
                 vm.price = 199.00;
                 vm.meals = [

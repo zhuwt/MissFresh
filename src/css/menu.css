@@ -370,7 +370,7 @@ ul {
 }
 
 .eat-list .d-stock {
-    width: 7.5rem;
+    width: 10rem;
     float: right;
 }
 
@@ -985,16 +985,4 @@ i {
 
 .yd_img img {
     width: 100%;
-}
-
-#weekday-select{
-    width:70%;
-    /*float: left;*/
-}
-
-#weekly-time{
-    text-align: center;
-    width:70%;
-    /*float: right;*/
-    /*line-height: 55px;*/
 }

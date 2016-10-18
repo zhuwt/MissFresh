@@ -24,7 +24,7 @@
         <ul class="button-side">
             <li ng-repeat="item in vm.buttonInfo">
                 <a ng-href={{item.url}}>
-                    <img src={{item.imagePath}} alt="Responsive image" class="img-responsive img-circle">
+                    <img src="{{item.imageName}}" alt="Responsive image" class="img-responsive img-circle">
                     <p>{{item.contentName}}</p>
                 </a>
             </li>
@@ -34,7 +34,7 @@
     <!--Class tile-->
     <div class="classic-frame">
         <ul>
-            <li ng-repeat="item in vm.classification"><a><img src={{item.imagePath}} class="img-responsive classic-size"
+            <li ng-repeat="item in vm.classification"><a><img src={{item.imageName}} class="img-responsive classic-size"
                                                               alt="Responsive image" ng-click="vm.jumpToUrl(item.url)"></a>
             </li>
         </ul>

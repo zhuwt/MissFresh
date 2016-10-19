@@ -19,8 +19,12 @@
             <div class="alert alert-danger" ng-show="vm.popupAlert">{{vm.popupAlertMsg}}</div>
             <input type="text" placeholder="电话号码" name="username" id="username" class="input-txt"
                    ng-model="vm.phoneNo"/>
-            <input type="password" placeholder="密码" name="pw" id="pw" class="input-txt" ng-model="vm.password"/>
-            <input type="text" placeholder="邮箱" name="email" id="email" class="input-txt" ng-model="vm.email"/>
+            <input type="password" placeholder="密码" name="pw" class="input-txt" ng-model="vm.password"/>
+            <input type="password" placeholder="确认密码" name="pw" class="input-txt" ng-model="vm.password1"/>
+            <div>
+                <input type="text" placeholder="验证码" name="checkCode" class="input-txt-code" ng-model="vm.checkCode"/>
+                <button class="Check-button" ng-click="vm.sendCode()">获取验证码</button>
+            </div>
             <input type="button" value="快速注册" class="submit-btn" ng-click="vm.register()"/>
         </form>
     </div>

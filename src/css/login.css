@@ -101,6 +101,27 @@
     background-color: #fff;
 }
 
+.input-txt-code {
+    width: 70%;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #999;
+    padding: 0 10px;
+    display: block;
+    border: 1px solid #dddddd;
+    height: 39px;
+    line-height: normal;
+    background-color: #fff;
+}
+
+.Check-button{
+    width:30%;
+    height: 39px;
+    float: right;
+
+}
+
 .submit-btn {
     padding: 0 10px;
     margin: 15px 0 5px;

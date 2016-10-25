@@ -13,7 +13,7 @@ angular.module('thisApp.login', [])
 
         //login function
         vm.login = function () {
-            $http.get("http://localhost:8912/Account?telNo=" + vm.phoneNo + "&password=" + vm.password)
+            $http.get("http://192.168.1.9:8912/Account?telNo=" + vm.phoneNo + "&password=" + vm.password)
                 .then(function successCallback(response) {
                     console.log(response);
                     if (response.data){

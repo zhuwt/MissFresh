@@ -1,10 +1,18 @@
 <div ng-controller="thisApp.homeController as vm">
     <!--Search bar-->
     <header>
-        <div class="form-group has-feedback nav-input-offset">
-            <input type="text" class="form-control" placeholder="搜索商品">
-            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-        </div>
+        <ul class="nav-ul">
+            <li class="header-left">
+                <img ng-src="src/resource/image/commonResource/brand.jpg" class="brand-header img-rounded">
+            </li>
+            <li class="header-end">
+                <div class="form-group has-feedback nav-input-offset">
+                    <input type="text" class="form-control" placeholder="搜索商品">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
     </header>
     <!-- carousel -->
     <div style="width: 100%">

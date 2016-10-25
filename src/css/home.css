@@ -1,5 +1,29 @@
+.nav-ul{
+    width: 100%;
+}
+
+.header-left{
+    float: left;
+    width:auto;
+}
+
+.header-end{
+    float: none;
+    width: auto;
+}
+
 .nav-input-offset{
-    margin: 10px;
+    margin-left: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow:auto
+}
+
+.brand-header{
+    width:34px;
+    height: 34px;
+    margin: 0 10px;
 }
 
 .navbar{

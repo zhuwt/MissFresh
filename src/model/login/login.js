@@ -2,7 +2,7 @@
  * Created by zhuwt on 2016/9/12.
  */
 angular.module('thisApp.login', [])
-    .controller('thisApp.loginController', function ($location, $http) {
+    .controller('thisApp.loginController', function ($location, $http,authService) {
         var vm = this;
         vm.loginModel = true;
         vm.popupAlert = false;
@@ -13,25 +13,12 @@ angular.module('thisApp.login', [])
 
         //login function
         vm.login = function () {
-            $http.get("http://192.168.1.9:8912/Account?telNo=" + vm.phoneNo + "&password=" + vm.password)
-                .then(function successCallback(response) {
-                    console.log(response);
-                    if (response.data){
-                        $location.path("#/menu");
-                    }
-                    else{
-                        vm.popupAlert = true;
-                    }
-                }, function errorCallback(response) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                    console.log(response);
+            authService.login(vm.phoneNo,vm.password,function (data) {
+                if (data)
+                    $location.path("#/home");
+                else
                     vm.popupAlert = true;
-                });
-
-            // vm.popupAlert = (vm.phoneNo != '11111111111' || vm.password != 'admin');
-            // if (vm.phoneNo == '11111111111' && vm.password == 'admin')
-            //     $location.path("#/menu");
+            });
         };
 
         vm.change = function () {
@@ -47,33 +34,20 @@ angular.module('thisApp.login', [])
                 return;
             }
 
-            $http.put(
-                "http://localhost:8912/Account",
-                {
-                    code: vm.checkCode,
-                    customer: {
-                        telNo: vm.phoneNo,
-                        password: vm.password
-                    }
-                }
-            ).then(function successCallback(response) {
+            authService.register(vm.checkCode,vm.phoneNo,vm.password,function (data) {
+                console.log(data);
                 $location.path("#/home");
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-                console.log(response);
             });
         };
         //Send check Code
         vm.sendCode = function () {
-            $http.get("http://localhost:8912/Account/Check?telNo=" + vm.phoneNo)
-                .then(function successCallback(response) {
-                    console.log(response);
-                }, function errorCallback(response) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                    console.log(response);
-                });
+            if (vm.phoneNo == '' || vm.phoneNo.length != 11){
+                window.alert('请输入一个合理的手机号码!');
+                return ;
+            }
+            authService.verification(vm.phoneNo,function (data) {
+                window.alert('send');
+            });
         };
 
         //Change login and register model

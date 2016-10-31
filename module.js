@@ -16,4 +16,7 @@ var routeApp = angular.module('thisApp',[
     ,'thisApp.password'
     ,'ui.bootstrap'
     ,'thisApp.meals'
+    ,'thisApp.category'
+    ,'thisApp.auth'
+    ,'thisApp.goods'
 ]);

@@ -2,10 +2,10 @@
  * Created by Bucky.Zhu on 07/18/2016.
  */
 angular.module('thisApp.home', ['ui.bootstrap'])
-    .controller('thisApp.homeController', function ($location,$http) {
+    .controller('thisApp.homeController', function ($location,$http,categoryService) {
         var vm = this;
-        var imagePaht = 'src/resource/image/classic/';
-        var buttonImagePaht = 'src/resource/image/button/';
+
+        var buttonImagePath = 'src/resource/image/button/';
         vm.timerObj = null;
         vm.classification = [];
         vm.jumpToUrl = function (url) {
@@ -13,19 +13,8 @@ angular.module('thisApp.home', ['ui.bootstrap'])
         };
         
         vm.getCategory = function () {
-            $http.get(
-                'http://localhost:8912/category'
-            ).then(function successCallback(response) {
-                vm.classification.length = 0;
-                for (var n=0;n<response.data.length;n++){
-                    response.data[n].imageName = imagePaht+response.data[n].imageName;
-                    response.data[n].url = "/menu/" + response.data[n].id;
-                    vm.classification.push(response.data[n]);
-                }
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-                console.log(response);
+            categoryService.getAllCategory(function (data) {
+                vm.classification = data;
             });
         };
 
@@ -69,63 +58,24 @@ angular.module('thisApp.home', ['ui.bootstrap'])
 
         vm.buttonInfo = [
             {
-                imageName:buttonImagePaht + 'button.png',
+                imageName:buttonImagePath + 'button.png',
                 contentName:'精选套餐',
                 url:'#/meals'
             }
             ,{
-                imageName:buttonImagePaht + 'button.png',
+                imageName:buttonImagePath + 'button.png',
                 contentName:'我的订单',
                 url:'#/orders'
             }
             ,{
-                imageName:buttonImagePaht + 'button.png',
+                imageName:buttonImagePath + 'button.png',
                 contentName:'购物车',
                 url:'#/cart'
             }
             ,{
-                imageName:buttonImagePaht + 'button.png',
+                imageName:buttonImagePath + 'button.png',
                 contentName:'我的信息',
                 url:'#/account'
             }
         ];
-
-        // vm.classification = [
-        //     {
-        //         imageName:imagePaht + 'tomato.jpg',
-        //         url:'/menu/0'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'broccoli.jpg',
-        //         url:'/menu/1'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'cherry.jpg',
-        //         url:'/menu/2'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'clams.jpg',
-        //         url:'/menu/3'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'egg.jpg',
-        //         url:'/menu/2'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'lemon.jpg',
-        //         url:'/menu/1'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'lettuce.jpg',
-        //         url:'/menu/0'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'mango.jpg',
-        //         url:'/menu/1'
-        //     }
-        //     ,{
-        //         imageName:imagePaht + 'squid.jpg',
-        //         url:'/menu/2'
-        //     }
-        // ];
     });

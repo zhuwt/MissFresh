@@ -12,17 +12,17 @@
     <div class="content-list" id="outer">
         <div class="list-left" id="tab">
             <li ng-repeat="item in vm.classification" ng-class="{current:item.selected}"
-                ng-click="vm.clickClassification($index)"><a>{{item.name}}</a></li>
+                ng-click="vm.clickClassification($index)"><a>{{item.category1}}</a></li>
         </div>
 
         <div class="list-right" id="content">
             <ul class="list-pro" >
                 <!--ng-repeat="item in vm.goodInfo" ng-if="item.selected"-->
                 <li ng-repeat="item in vm.goods" class="target" ng-if="item.visible">
-                    <a ng-href="#/detail/1"><img src={{item.src}} class="list-pic"/></a>
+                    <a ng-href="#/detail/1"><img src={{item.imageName}} class="list-pic"/></a>
                     <div class="shop-list-mid">
-                        <div class="tit"><a href="detail.html">{{item.goodName}}({{item.goodDetail}})</a></div>
-                        <small>销售量:{{item.sellCount}}　　　好评率:{{item.goodEvaluate}}%</small>
+                        <div class="tit"><a href="#/detail/1">{{item.name}}({{item.detailName}})</a></div>
+                        <small>销售量:{{item.sellCount}}　　　好评率:{{item.evaluate}}%</small>
                         <div class="am-gallery-desc">￥{{item.price}}/{{item.unit}}</div>
                     </div>
                     <div class="list-cart">

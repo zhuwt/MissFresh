@@ -69,3 +69,96 @@
 /*.goods-detail>div>small{*/
     /*padding: 10px;*/
 /*}*/
+
+
+.goods-detail-background{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+.goods-detail-header{
+    top:0;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    background-color: black;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.goods-detail-title{
+    font-family:serif,'Times New Roman',Times;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}
+
+.goods-detail-content{
+    bottom: 0;
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.goods-detail-name{
+    width:30%;
+    float: left;
+    font-family:serif,'Times New Roman',Times;
+    text-align: left;
+    color: white;
+    font-size: x-large;
+    padding: 5px 0;
+    margin-left: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.goods-detail-cart{
+    width:30%;
+    float: right;
+    position: relative;
+    top: 10px;
+    right: 20px;
+    font-family:serif,'Times New Roman',Times;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-weight: bolder;
+    /*font-size: x-large;*/
+    border: 1px solid lightgray;
+}
+
+.goods-detail-price{
+    width:30%;
+    position: relative;
+    /*top: 10px;*/
+    left: 20px;
+    font-family:serif,'Times New Roman',Times;
+    text-align: left;
+    color: white;
+    padding: 10px;
+    font-weight: bolder;
+    /*font-size: x-large;*/
+}
+
+.goods-detail-introduce-size{
+    width:100%;
+    height: 50%;
+}
+
+.goods-detail-introduce{
+    width:100%;
+    height: 100%;
+    font-family:serif,'Times New Roman',Times;
+    text-align: left;
+    color: white;
+    padding: 0 20px;
+    font-size: small;
+    text-overflow: ellipsis;
+    /*font-weight: bolder;*/
+    /*font-size: x-large;*/
+}

@@ -1,8 +1,8 @@
 /**
  * Created by zhuwt on 2016/9/10.
  */
-angular.module('thisApp.menu', [])
-    .controller('thisApp.menuController', function ($routeParams, categoryService, goodsService) {
+angular.module('thisApp.menu', ['ngLocalStorage'])
+    .controller('thisApp.menuController', function ($routeParams, $localStorage, categoryService, goodsService) {
         // $location,$anchorScroll
         var vm = this;
         // var imageSourcePath = 'src/resource/image/detail/';
@@ -21,6 +21,7 @@ angular.module('thisApp.menu', [])
                     var classificationIndex = parseInt($routeParams.id);
                     var index = classificationIndex >= vm.classification.length ? 0 : classificationIndex;
                     vm.clickClassification(index);
+                    vm.calculate();
                 });
             });
         };
@@ -43,6 +44,7 @@ angular.module('thisApp.menu', [])
                 return;
 
             vm.goods[index].bookingCount++;
+            $localStorage.put(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
             vm.calculate();
         };
 
@@ -51,6 +53,10 @@ angular.module('thisApp.menu', [])
                 return;
 
             vm.goods[index].bookingCount--;
+            if (vm.goods[index].bookingCount == 0)
+                $localStorage.remove(vm.goods[index].id.toString());
+            else
+                $localStorage.put(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
             vm.calculate();
         };
 
@@ -58,10 +64,35 @@ angular.module('thisApp.menu', [])
             vm.total = 0;
             vm.count = 0;
             for (var i = 0; i < vm.goods.length; i++) {
+                if (vm.goods[i].bookingCount == 0)
+                    continue;
+
                 vm.count += vm.goods[i].bookingCount;
-                vm.total += vm.goods[i].bookingCount * vm.goods[i].price;
+                // var temp = (vm.goods[i].bookingCount * vm.goods[i].price);
+                vm.total = FloatAdd(vm.total,(vm.goods[i].bookingCount * vm.goods[i].price));
+                // vm.total += vm.goods[i].bookingCount * vm.goods[i].price;
             }
         };
+
+        //加法函数，用来得到精确的加法结果
+        //说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
+        //调用：FloatAdd(arg1,arg2)
+        //返回值：arg1加上arg2的精确结果
+        function FloatAdd(arg1, arg2) {
+            var r1, r2, m;
+            try {
+                r1 = arg1.toString().split(".")[1].length
+            } catch (e) {
+                r1 = 0
+            }
+            try {
+                r2 = arg2.toString().split(".")[1].length
+            } catch (e) {
+                r2 = 0
+            }
+            m = Math.pow(10, Math.max(r1, r2))
+            return (arg1 * m + arg2 * m) / m
+        }
 
         // vm.scrollTo = function (anchor) {
         //     $location.hash(anchor);

@@ -1,36 +1,25 @@
 <div ng-controller="thisApp.detailController as vm" style="height: 100%;background-color: #f5f5f5">
-    <div class="am-header-left am-header-nav return">
-        <a href="javascript:history.back()" class="" style="border: 0;">
-            <i class="am-icon-chevron-left"></i>
-        </a>
+    <div>
+        <img class="goods-detail-background" ng-src="src/resource/image/detail/detail1.jpg">
     </div>
-    <div class="share">
-        <!--<i class="am-icon-share-alt"></i>-->
-    </div>
-    <div class="banner"><img ng-src={{vm.src}}></div>
-    <div class="detail" style="background-color: white;">
-        <span>{{vm.name}}</span>
-        <p>￥{{vm.price}}</p>
-        <a class="shopcart" ng-if="vm.single">加入购物车</a>
-        <a class="shopcart" ng-if="!vm.single">购买套餐</a>
-    </div>
-
-
-    <div class="goods-detail">
-        <div class="goods-common">
-            <h3>商品简介</h3>
+    <header class="goods-detail-header">
+        <h1 class="goods-detail-title">商品详情</h1>
+    </header>
+    <div class="goods-detail-content">
+        <div>
+            <p class="goods-detail-name">草莓</p>
+            <p class="goods-detail-cart">加入购物车</p>
+            <div class="clearfix"></div>
         </div>
-        <div class="goods-content" ng-if="vm.single">
-            <small>{{vm.detailInformation}}</small>
+        <div>
+            <p class="goods-detail-price">￥8.00</p>
         </div>
-        <div class="goods-content" ng-if="!vm.single">
-            <ul>
-                <li ng-repeat="item in vm.meals"><small>{{item}}</small></li>
-            </ul>
-
+        <div class="goods-detail-introduce-size">
+            <p class="goods-detail-introduce">
+                西兰花是一种很受人们欢迎的蔬菜，它味道鲜美，营养
+                也很高，还有很高的药用价值。西兰花中的维生素种类非常齐全，尤其是叶酸的含量丰富，
+                这也是它营养价值高于一般蔬菜的一个重要原因
+            </p>
         </div>
     </div>
-    <!--<div class="yd_img" style="display: none;">-->
-    <!--<img src="images/mmexport.png" >-->
-    <!--</div>-->
 </div>

@@ -1,16 +1,21 @@
 /**
  * Created by zhuwt on 2016/10/26.
  */
-angular.module('thisApp.goods', []).factory('goodsService', function ($http) {
+angular.module('thisApp.goods', ['ngLocalStorage']).factory('goodsService', function ($localStorage,$rootScope,$http) {
     var basePath = 'http://localhost:8912';
-    var imageSourcePath = 'src/resource/image/detail/';
+    // var imageSourcePath = 'src/resource/image/detail/';
     return {
         getAllGoods: function (callback) {
-            $http.get(basePath + '/goods'
+            $http.get(MFGlobal.baseUrl + '/goods'
             ).then(function successCallback(response) {
                 // var category = [];
                 for (var n = 0; n < response.data.DTOObject.length; n++) {
-                    response.data.DTOObject[n].imageName = imageSourcePath + response.data.DTOObject[n].imageName;
+                    response.data.DTOObject[n].imageName = MFGlobal.detailPath + response.data.DTOObject[n].imageName;
+                    var value = $localStorage.get(response.data.DTOObject[n].id.toString());
+                    if (value == null)
+                        response.data.DTOObject[n].bookingCount = 0;
+                    else
+                        response.data.DTOObject[n].bookingCount = parseInt(value);
                 }
                 callback(response.data.DTOObject);
             }, function errorCallback(response) {

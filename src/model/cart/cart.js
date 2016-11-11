@@ -4,19 +4,18 @@
 angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
     .controller('thisApp.cartController', function ($localStorage, $location, goodsService) {
         var vm = this;
-        var imageSourcePath = 'src/resource/image/detail/';
         vm.total = 0;
         vm.count = 0;
 
         vm.initialGoods = function () {
             goodsService.getAllGoods(function (data) {
                 vm.goods = data;
-                for (var n = 0; n < vm.goods.length; n++) {
-                    vm.goods[n].displayInCart = (vm.goods[n].bookingCount > 0)
-                }
+
+
                 vm.calculate();
             });
         };
+        vm.initialGoods();
 
         vm.addGoodsCount = function (index) {
             if (vm.goods[index].bookingCount == vm.goods[index].limited)
@@ -119,7 +118,7 @@ angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
             $location.path('/menu');
         };
 
-        vm.initialGoods();
+
         // vm.goods = [
         //     {
         //         anchor: 'vegetable',

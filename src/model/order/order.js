@@ -2,7 +2,7 @@
  * Created by zhuwt on 2016/9/10.
  */
 angular.module('thisApp.order', ['mobiscroll-datetime'])
-    .controller('thisApp.orderController', function ($location) {
+    .controller('thisApp.orderController', function ($location,goodsService) {
         var vm = this;
         var imageSourcePath = 'src/resource/image/detail/';
         vm.total = 0;
@@ -135,6 +135,16 @@ angular.module('thisApp.order', ['mobiscroll-datetime'])
 
         vm.backToMenu = function () {
             $location.path('/menu');
+        };
+
+        vm.initialGoods = function () {
+            goodsService.getAllGoods(function (data) {
+                vm.goods = data;
+                for (var n = 0; n < vm.goods.length; n++) {
+                    vm.goods[n].displayInCart = (vm.goods[n].bookingCount > 0)
+                }
+                vm.calculate();
+            });
         };
 
         vm.goods = [

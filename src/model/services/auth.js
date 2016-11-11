@@ -1,13 +1,18 @@
 /**
  * Created by zhuwt on 2016/10/26.
  */
-angular.module('thisApp.auth', []).factory('authService', function ($rootScope,$http) {
+angular.module('thisApp.auth', ['ngLocalStorage']).factory('authService', function ($localStorage,$rootScope,$http) {
     return {
         login: function (telNo, password, callback) {
-            $http.get($rootScope.MFGlobal.baseUrl + "/Account?telNo=" + telNo + "&password=" + password)
+            $http.get(MFGlobal.baseUrl + "/Account?telNo=" + telNo + "&password=" + password)
                 .then(function successCallback(response) {
+                    if (response.data.status == 0)
+                        $localStorage.put("AccountId",response.data.DTOObject);
+                    else
+                        response.data.DTOObject = false;
                     console.log(response);
-                    callback(response.data);
+                    // $localStorage.set
+                    callback(response.data.DTOObject);
                 }, function errorCallback(response) {
                     // called asynchronously if an error occurs
                     // or server returns response with an error status.
@@ -17,7 +22,7 @@ angular.module('thisApp.auth', []).factory('authService', function ($rootScope,$
         },
         register: function (code, phoneNo, password, callback) {
             $http.put(
-                $rootScope.MFGlobal.baseUrl + "/Account",
+                MFGlobal.baseUrl + "/Account",
                 {
                     code: code,
                     customer: {
@@ -36,7 +41,7 @@ angular.module('thisApp.auth', []).factory('authService', function ($rootScope,$
             });
         },
         verification:function (phoneNo,callback) {
-            $http.get($rootScope.MFGlobal.baseUrl + "/Account/Check?telNo=" + phoneNo)
+            $http.get(MFGlobal.baseUrl + "/Account/Check?telNo=" + phoneNo)
                 .then(function successCallback(response) {
                     callback(response.data);
                     // console.log(response);

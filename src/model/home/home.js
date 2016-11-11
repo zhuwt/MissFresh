@@ -11,13 +11,6 @@ angular.module('thisApp.home', ['ui.bootstrap'])
     .controller('thisApp.homeController', function ($location,$http,categoryService) {
         var vm = this;
 
-        // $rootScope.MFGlobal = {};
-        // $rootScope.MFGlobal.baseUrl = 'http://localhost:8912';
-        // $rootScope.MFGlobal.category = 'src/resource/image/classic';
-        // $rootScope.MFGlobal.detailPath = 'src/resource/image/detail/';
-        // $rootScope.MFGlobal.carouselImagePath = 'src/resource/image/carousel';
-        // $rootScope.MFGlobal.buttonImagePath = 'src/resource/image/button';
-
         vm.timerObj = null;
         vm.classification = [];
         vm.jumpToUrl = function (url) {

@@ -2,8 +2,6 @@
  * Created by zhuwt on 2016/10/26.
  */
 angular.module('thisApp.goods', ['ngLocalStorage']).factory('goodsService', function ($localStorage,$rootScope,$http) {
-    var basePath = 'http://localhost:8912';
-    // var imageSourcePath = 'src/resource/image/detail/';
     return {
         getAllGoods: function (callback) {
             $http.get(MFGlobal.baseUrl + '/goods'

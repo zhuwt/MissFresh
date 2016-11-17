@@ -1,8 +1,10 @@
 /**
  * Created by Bucky.Zhu on 08/04/2016.
  */
+var MissFreshModel = angular.module('MFService', ['LocalStorageModule']);
 var routeApp = angular.module('thisApp',[
     'ngRoute'
+    ,'MFService'
     ,'thisApp.home'
     ,'thisApp.detail'
     ,'thisApp.cart'

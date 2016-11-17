@@ -1,8 +1,8 @@
 /**
  * Created by zhuwt on 2016/9/10.
  */
-angular.module('thisApp.menu', ['ngLocalStorage'])
-    .controller('thisApp.menuController', function ($routeParams, $localStorage, categoryService, goodsService) {
+angular.module('thisApp.menu', ['LocalStorageModule'])
+    .controller('thisApp.menuController', function ($routeParams, localStorageService, categoryService, goodsService) {
         // $location,$anchorScroll
         var vm = this;
         // var imageSourcePath = 'src/resource/image/detail/';
@@ -44,7 +44,7 @@ angular.module('thisApp.menu', ['ngLocalStorage'])
                 return;
 
             vm.goods[index].bookingCount++;
-            $localStorage.put(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
+            localStorageService.set(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
             vm.calculate();
         };
 
@@ -54,9 +54,9 @@ angular.module('thisApp.menu', ['ngLocalStorage'])
 
             vm.goods[index].bookingCount--;
             if (vm.goods[index].bookingCount == 0)
-                $localStorage.remove(vm.goods[index].id.toString());
+                localStorageService.remove(vm.goods[index].id.toString());
             else
-                $localStorage.put(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
+                localStorageService.set(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
             vm.calculate();
         };
 

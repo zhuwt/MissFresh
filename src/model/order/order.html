@@ -12,7 +12,7 @@
     <div style="height: 49px;"></div>
     <ul class="eat-list">
         <li ng-repeat="item in vm.goods" ng-if="item.bookingCount">
-            <span class="name">{{item.goodName}}</span>
+            <span class="name">{{item.name}}</span>
             <em class="price">￥{{item.price}}</em>
             <div class="d-stock ">
                 <a class="decrease" ng-click="vm.reduceGoodsCount($index)">-</a>
@@ -43,7 +43,7 @@
         <!--<div id="datePlugin"></div>-->
         <li class="time" ng-click="vm.popAddress()">
             <span>送餐地址：</span>
-            <a class="address"><p>陕西省西安市高新区高新一路</p></a>
+            <a class="address"><p>{{vm.defaultAddress}}</p></a>
             <i class="am-icon-angle-right"></i>
         </li>
     </ul>
@@ -53,7 +53,7 @@
     <div class="pricebox">
         <p>总价：<i>{{vm.total+10}}</i>元（含运费10元）（<em>{{vm.count}}</em>份）</p>
         <p>请选择支付方式并确认下单：</p>
-        <button class="paybtn" type="button" > 微信支付</button>
+        <button class="paybtn" type="button" ng-click="vm.pay()"> 微信支付</button>
     </div>
 
     <!--<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">-->

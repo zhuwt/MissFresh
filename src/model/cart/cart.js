@@ -1,8 +1,8 @@
 /**
  * Created by zhuwt on 2016/9/7.
  */
-angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
-    .controller('thisApp.cartController', function ($localStorage, $location, goodsService) {
+angular.module('thisApp.cart', ['ui.bootstrap', 'LocalStorageModule'])
+    .controller('thisApp.cartController', function (localStorageService, $location, goodsService) {
         var vm = this;
         vm.total = 0;
         vm.count = 0;
@@ -10,8 +10,6 @@ angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
         vm.initialGoods = function () {
             goodsService.getAllGoods(function (data) {
                 vm.goods = data;
-
-
                 vm.calculate();
             });
         };
@@ -22,7 +20,7 @@ angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
                 return;
 
             vm.goods[index].bookingCount++;
-            $localStorage.put(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
+            localStorageService.set(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
             vm.calculate();
         };
 
@@ -32,9 +30,9 @@ angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
 
             vm.goods[index].bookingCount--;
             if (vm.goods[index].bookingCount == 0)
-                $localStorage.remove(vm.goods[index].id.toString());
+                localStorageService.remove(vm.goods[index].id.toString());
             else
-                $localStorage.put(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
+                localStorageService.set(vm.goods[index].id.toString(), vm.goods[index].bookingCount.toString());
             vm.calculate();
         };
 
@@ -63,8 +61,8 @@ angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
             } catch (e) {
                 r2 = 0
             }
-            m = Math.pow(10, Math.max(r1, r2))
-            return (arg1 * m + arg2 * m) / m
+            m = Math.pow(10, Math.max(r1, r2));
+            return ((arg1 * m + arg2 * m) / m);
         }
 
         vm.clearCart = function () {
@@ -106,7 +104,7 @@ angular.module('thisApp.cart', ['ui.bootstrap', 'ngLocalStorage'])
         vm.clearItem = function (index) {
             vm.goods[index].bookingCount = 0;
             vm.goods[index].displayInCart = false;
-            $localStorage.remove(vm.goods[index].id.toString());
+            localStorageService.remove(vm.goods[index].id.toString());
             vm.calculate();
         };
 

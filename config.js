@@ -37,6 +37,9 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
         .when('/address', {
             templateUrl: 'src/model/address/address.html'
         })
+        .when('/address/:id', {
+            templateUrl: 'src/model/address/address.html'
+        })
         .when('/editAddress', {
             templateUrl: 'src/model/address/editAddress.html'
         })

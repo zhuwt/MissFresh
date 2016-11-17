@@ -1,13 +1,13 @@
 /**
  * Created by zhuwt on 2016/10/26.
  */
-angular.module('thisApp.auth', ['ngLocalStorage']).factory('authService', function ($localStorage,$rootScope,$http) {
+angular.module('thisApp.auth', ['LocalStorageModule']).factory('authService', function (localStorageService,$rootScope,$http) {
     return {
         login: function (telNo, password, callback) {
             $http.get(MFGlobal.baseUrl + "/Account?telNo=" + telNo + "&password=" + password)
                 .then(function successCallback(response) {
                     if (response.data.status == 0)
-                        $localStorage.put("AccountId",response.data.DTOObject);
+                        localStorageService.set("AccountId",response.data.DTOObject);
                     else
                         response.data.DTOObject = false;
                     console.log(response);

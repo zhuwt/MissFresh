@@ -16,13 +16,13 @@
     </header>
     <div style="height: 49px;"></div>
     <ul class="address-list">
-        <li ng-repeat="item in vm.addresses" ng-class="{curr:item.default}">
-            <p>收货人：{{item.receivePerson}}&nbsp;&nbsp;{{item.tel}}</p>
-            <p class="order-add1">收货地址：{{item.address}}</p>
+        <li ng-repeat="item in vm.addresses" ng-class="{curr:item.defaultAddress}">
+            <p>收货人：{{item.name}}&nbsp;&nbsp;{{item.tel}}</p>
+            <p class="order-add1">收货地址：{{item.Address1}}</p>
             <hr />
             <div class="address-cz">
                 <label class="am-radio am-warning" ng-click="vm.setDefault($index)">
-                    <input type="radio" name="defaultValue" ng-model="vm.radioValue" ng-value="$index"> 设为默认
+                    <input type="radio" name="defaultValue" ng-model="vm.radioValue" ng-value="$index"> 使用
                 </label>
                 <a ng-click="vm.editAddress(item.id)"><img src="src/resource/image/commonControl/bj.png" width="18" />&nbsp;编辑</a>
                 <a ng-click="vm.deleteAddress($index)">删除</a>

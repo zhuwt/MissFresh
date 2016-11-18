@@ -9,7 +9,7 @@ MissFreshModel.service('addressConfigService',function ($http,$location,localSto
             return ;
         }
 
-        $http.get(MFGlobal.baseUrl+ '/AddressConfigs/zones/'
+        $http.get(MFGlobal.baseUrl+ 'AddressConfigs/zones/'
         ).then(function successCallback(response) {
             callback(response.data.DTOObject);
         },function errorCallback(response) {
@@ -18,7 +18,7 @@ MissFreshModel.service('addressConfigService',function ($http,$location,localSto
     };
 
     this.getBuildings = function (parentId,callback) {
-        $http.get(MFGlobal.baseUrl+ '/AddressConfigs/buildings/'+parentId
+        $http.get(MFGlobal.baseUrl+ 'AddressConfigs/buildings/'+parentId
         ).then(function successCallback(response) {
             callback(response.data.DTOObject);
         },function errorCallback(response) {
@@ -27,7 +27,7 @@ MissFreshModel.service('addressConfigService',function ($http,$location,localSto
     };
 
     this.getFloors = function (parentId,callback) {
-        $http.get(MFGlobal.baseUrl+ '/AddressConfigs/floors/'+parentId
+        $http.get(MFGlobal.baseUrl+ 'AddressConfigs/floors/'+parentId
         ).then(function successCallback(response) {
             callback(response.data.DTOObject);
         },function errorCallback(response) {
@@ -36,7 +36,7 @@ MissFreshModel.service('addressConfigService',function ($http,$location,localSto
     };
 
     this.getNumbers = function (parentId,callback) {
-        $http.get(MFGlobal.baseUrl+ '/AddressConfigs/number/'+parentId
+        $http.get(MFGlobal.baseUrl+ 'AddressConfigs/number/'+parentId
         ).then(function successCallback(response) {
             callback(response.data.DTOObject);
         },function errorCallback(response) {

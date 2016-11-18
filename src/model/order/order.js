@@ -2,13 +2,13 @@
  * Created by zhuwt on 2016/9/10.
  */
 angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
-    .controller('thisApp.orderController', function ($location,goodsService,localStorageService,orderService) {
+    .controller('thisApp.orderController', function ($routeParams,$location,goodsService,localStorageService,orderService,mealsService) {
         var vm = this;
-        var imageSourcePath = 'src/resource/image/detail/';
+        // var imageSourcePath = 'src/resource/image/detail/';
         vm.total = 0;
         vm.count = 0;
         var step = 15;
-        vm.meals = true;
+        vm.mealsMode = true;
         vm.defaultAddress = '';
 
         vm.getMinDate = function () {
@@ -52,9 +52,9 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         };
 
         vm.initialDatePickerSettings = function () {
-            vm.meals = ($location.$$path.indexOf('meals') >= 0);
+            vm.mealsMode = ($location.$$path.indexOf('meals') >= 0);
 
-            if (vm.meals) {//meals
+            if (vm.mealsMode) {//meals
                 console.log('meals');
                 vm.weeks = vm.initialWeeklyDay();
                 vm.sendText = "送餐日期：";
@@ -117,10 +117,15 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         vm.calculate = function () {
             vm.total = 0;
             vm.count = 0;
-            for (var i = 0; i < vm.goods.length; i++) {
-                vm.count += vm.goods[i].bookingCount;
-                // vm.total += vm.goods[i].bookingCount * vm.goods[i].price;
-                vm.total = FloatAdd(vm.total, vm.goods[i].bookingCount * vm.goods[i].price)
+            if ($location.$$path.indexOf("meals") >= 0){//meals mode
+                vm.total = vm.meals.totalPrice;
+                vm.count = 1;
+            }else{//goods mode
+                for (var i = 0; i < vm.goods.length; i++) {
+                    vm.count += vm.goods[i].bookingCount;
+                    // vm.total += vm.goods[i].bookingCount * vm.goods[i].price;
+                    vm.total = FloatAdd(vm.total, vm.goods[i].bookingCount * vm.goods[i].price)
+                }
             }
         };
 
@@ -139,20 +144,28 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
             $location.path('/menu');
         };
 
-        vm.initialGoods = function () {
+        vm.init = function () {
             var accId = localStorageService.get("AccountId");
             if (accId == null){
                 $location.path('#/login');
                 return ;
             }
 
-            goodsService.getAllGoods(function (data) {
-                vm.goods = data;
-                vm.calculate();
-                vm.defaultAddress = localStorageService.get("defaultAddress");
-            });
+            if ($location.$$path.indexOf("meals") >= 0){//meals mode
+                mealsService.getEntireMeals($routeParams.id,function (data) {
+                    vm.meals = data;
+                    vm.calculate();
+                    vm.defaultAddress = localStorageService.get("defaultAddress");
+                });
+            }else{//goods mode
+                goodsService.getAllGoods(function (data) {
+                    vm.goods = data;
+                    vm.calculate();
+                    vm.defaultAddress = localStorageService.get("defaultAddress");
+                });
+            }
         };
-        vm.initialGoods();
+        vm.init();
 
         vm.pay = function () {
             var accId = localStorageService.get("AccountId");

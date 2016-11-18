@@ -3,17 +3,8 @@
  */
 MissFreshModel.service('orderService', function ($http) {
     this.getOrderList = function () {
-        $http.get(MFGlobal.baseUrl + '/orders'
+        $http.get(MFGlobal.baseUrl + 'orders'
         ).then(function (response) {//successCallback
-            // // var category = [];
-            // for (var n = 0; n < response.data.DTOObject.length; n++) {
-            //     response.data.DTOObject[n].imageName = MFGlobal.detailPath + response.data.DTOObject[n].imageName;
-            //     var value = $localStorage.get(response.data.DTOObject[n].id.toString());
-            //     if (value == null)
-            //         response.data.DTOObject[n].bookingCount = 0;
-            //     else
-            //         response.data.DTOObject[n].bookingCount = parseInt(value);
-            // }
             callback(response.data.DTOObject);
         }, function (response) {//errorCallback
             // called asynchronously if an error occurs
@@ -24,17 +15,8 @@ MissFreshModel.service('orderService', function ($http) {
     };
 
     this.getOrder = function () {
-        $http.get(MFGlobal.baseUrl + '/orders/' + orderId)
+        $http.get(MFGlobal.baseUrl + 'orders/' + orderId)
             .then(function (response) {//successCallback
-                // // var category = [];
-                // for (var n = 0; n < response.data.DTOObject.length; n++) {
-                //     response.data.DTOObject[n].imageName = MFGlobal.detailPath + response.data.DTOObject[n].imageName;
-                //     var value = $localStorage.get(response.data.DTOObject[n].id.toString());
-                //     if (value == null)
-                //         response.data.DTOObject[n].bookingCount = 0;
-                //     else
-                //         response.data.DTOObject[n].bookingCount = parseInt(value);
-                // }
                 callback(response.data.DTOObject);
             }, function (response) {//errorCallback
                 // called asynchronously if an error occurs
@@ -45,7 +27,7 @@ MissFreshModel.service('orderService', function ($http) {
     };
 
     this.create = function (order, callback) {
-        $http.post(MFGlobal.baseUrl + '/orders/', order)
+        $http.post(MFGlobal.baseUrl + 'orders/', order)
             .then(function (response) {//successCallback
                 if (callback) callback(response.data.DTOObject);
             }, function (response) {//errorCallback

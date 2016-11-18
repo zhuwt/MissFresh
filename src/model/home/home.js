@@ -2,11 +2,13 @@
  * Created by Bucky.Zhu on 07/18/2016.
  */
 var MFGlobal = {};
+MFGlobal.limitedMealsMacCount = 2;
 MFGlobal.baseUrl = 'http://localhost:8912';
-MFGlobal.category = 'src/resource/image/classic';
+MFGlobal.category = 'src/resource/image/classic/';
 MFGlobal.detailPath = 'src/resource/image/detail/';
-MFGlobal.carouselImagePath = 'src/resource/image/carousel';
-MFGlobal.buttonImagePath = 'src/resource/image/button';
+MFGlobal.mealsPath = 'src/resource/image/meals/';
+MFGlobal.carouselImagePath = 'src/resource/image/carousel/';
+MFGlobal.buttonImagePath = 'src/resource/image/button/';
 angular.module('thisApp.home', ['ui.bootstrap'])
     .controller('thisApp.homeController', function ($location,$http,categoryService) {
         var vm = this;
@@ -31,54 +33,54 @@ angular.module('thisApp.home', ['ui.bootstrap'])
         var slides = vm.slides = [
             {
                 id:0,
-                image:MFGlobal.carouselImagePath+'/Desert.jpg',
+                image:MFGlobal.carouselImagePath+'Desert.jpg',
                 text:'1'
 
             }
             ,{
                 id:1,
-                image:MFGlobal.carouselImagePath+'/Chrysanthemum.jpg',
+                image:MFGlobal.carouselImagePath+'Chrysanthemum.jpg',
                 text:'2'
             }
             ,{
                 id:2,
-                image:MFGlobal.carouselImagePath+'/Hydrangeas.jpg',
+                image:MFGlobal.carouselImagePath+'Hydrangeas.jpg',
                 text:'3'
             }];
 
         vm.images = [
             {
                 active: true,
-                imageName:MFGlobal.carouselImagePath+'/Desert.jpg'
+                imageName:MFGlobal.carouselImagePath+'Desert.jpg'
             }
             ,{
                 active: false,
-                imageName:MFGlobal.carouselImagePath+'/Desert.jpg'
+                imageName:MFGlobal.carouselImagePath+'Desert.jpg'
             }
             ,{
                 active: false,
-                imageName:MFGlobal.carouselImagePath+'/Hydrangeas.jpg'
+                imageName:MFGlobal.carouselImagePath+'Hydrangeas.jpg'
             }
         ];
 
         vm.buttonInfo = [
             {
-                imageName:MFGlobal.buttonImagePath + '/button.png',
+                imageName:MFGlobal.buttonImagePath + 'button.png',
                 contentName:'精选套餐',
                 url:'#/meals'
             }
             ,{
-                imageName:MFGlobal.buttonImagePath + '/button.png',
+                imageName:MFGlobal.buttonImagePath + 'button.png',
                 contentName:'我的订单',
                 url:'#/orders'
             }
             ,{
-                imageName:MFGlobal.buttonImagePath + '/button.png',
+                imageName:MFGlobal.buttonImagePath + 'button.png',
                 contentName:'购物车',
                 url:'#/cart'
             }
             ,{
-                imageName:MFGlobal.buttonImagePath + '/button.png',
+                imageName:MFGlobal.buttonImagePath + 'button.png',
                 contentName:'我的信息',
                 url:'#/account'
             }

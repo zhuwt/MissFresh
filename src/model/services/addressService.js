@@ -9,7 +9,7 @@ MissFreshModel.service('addressService',function ($http,$location,localStorageSe
             return ;
         }
 
-        $http.get(MFGlobal.baseUrl+ '/Addresses/'+accountId
+        $http.get(MFGlobal.baseUrl+ 'Addresses/'+accountId
         ).then(function successCallback(response) {
             callback(response.data.DTOObject);
         },function errorCallback(response) {
@@ -18,7 +18,7 @@ MissFreshModel.service('addressService',function ($http,$location,localStorageSe
     };
 
     this.getDefaultAddresss = function (accountId,callback) {
-        $http.get(MFGlobal.baseUrl+ '/Address/'+accountId
+        $http.get(MFGlobal.baseUrl+ 'Address/'+accountId
         ).then(function successCallback(response) {
             callback(response.data);
         },function errorCallback(response) {
@@ -27,7 +27,7 @@ MissFreshModel.service('addressService',function ($http,$location,localStorageSe
     };
 
     this.create = function (address,callback) {
-        $http.post(MFGlobal.baseUrl+ '/Address/',
+        $http.post(MFGlobal.baseUrl+ 'Address/',
             address
         ).then(function successCallback(response) {
             callback(response.data);
@@ -37,7 +37,7 @@ MissFreshModel.service('addressService',function ($http,$location,localStorageSe
     };
 
     this.update = function (address,callback) {
-        $http.put(MFGlobal.baseUrl+ '/Address/',
+        $http.put(MFGlobal.baseUrl+ 'Address/',
             address
         ).then(function successCallback(response) {
             callback(response.data);
@@ -47,7 +47,7 @@ MissFreshModel.service('addressService',function ($http,$location,localStorageSe
     };
 
     this.delete = function (accId,callback) {
-        $http.delete(MFGlobal.baseUrl+ '/Address/?id='+ accId
+        $http.delete(MFGlobal.baseUrl+ 'Address/?id='+ accId
         ).then(function successCallback(response) {
             callback(response.data);
         },function errorCallback(response) {

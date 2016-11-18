@@ -7,19 +7,19 @@
     </header>
     <div class="goods-detail-content">
         <div>
-            <p class="goods-detail-name">草莓</p>
-            <p class="goods-detail-cart">加入购物车</p>
+            <p class="goods-detail-name">{{vm.goods.name}}</p>
+            <p class="goods-detail-cart" ng-if="vm.goodsMode">加入购物车</p>
+            <p class="goods-detail-cart" ng-if="!vm.goodsMode">购买套餐</p>
             <div class="clearfix"></div>
         </div>
         <div>
-            <p class="goods-detail-price">￥8.00</p>
+            <p class="goods-detail-price">￥{{vm.goods.price}}</p>
         </div>
         <div class="goods-detail-introduce-size">
-            <p class="goods-detail-introduce">
-                西兰花是一种很受人们欢迎的蔬菜，它味道鲜美，营养
-                也很高，还有很高的药用价值。西兰花中的维生素种类非常齐全，尤其是叶酸的含量丰富，
-                这也是它营养价值高于一般蔬菜的一个重要原因
-            </p>
+            <p class="goods-detail-introduce" ng-if="vm.goodsMode">{{vm.goods.detailInformation}}</p>
+            <ul ng-if="!vm.goodsMode">
+                <li ng-repeat="item in vm.meals.goodsList"><p>item.name</p></li>
+            </ul>
         </div>
     </div>
 </div>

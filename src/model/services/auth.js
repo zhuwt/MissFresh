@@ -4,7 +4,7 @@
 angular.module('thisApp.auth', ['LocalStorageModule']).factory('authService', function (localStorageService,$rootScope,$http) {
     return {
         login: function (telNo, password, callback) {
-            $http.get(MFGlobal.baseUrl + "/Account?telNo=" + telNo + "&password=" + password)
+            $http.get(MFGlobal.baseUrl + "Account?telNo=" + telNo + "&password=" + password)
                 .then(function successCallback(response) {
                     if (response.data.status == 0)
                         localStorageService.set("AccountId",response.data.DTOObject);
@@ -22,7 +22,7 @@ angular.module('thisApp.auth', ['LocalStorageModule']).factory('authService', fu
         },
         register: function (code, phoneNo, password, callback) {
             $http.put(
-                MFGlobal.baseUrl + "/Account",
+                MFGlobal.baseUrl + "Account",
                 {
                     code: code,
                     customer: {
@@ -41,7 +41,7 @@ angular.module('thisApp.auth', ['LocalStorageModule']).factory('authService', fu
             });
         },
         verification:function (phoneNo,callback) {
-            $http.get(MFGlobal.baseUrl + "/Account/Check?telNo=" + phoneNo)
+            $http.get(MFGlobal.baseUrl + "Account/Check?telNo=" + phoneNo)
                 .then(function successCallback(response) {
                     callback(response.data);
                     // console.log(response);

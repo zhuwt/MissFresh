@@ -5,45 +5,68 @@
             <h3>我的订单</h3>
         </header>
         <div class="weui_tab_bd">
-            <div class="weui_panel weui_panel_access" ng-click="vm.jumpToOrder()">
-                <div class="weui_panel_hd">订单编号：120348903287458</div>
+            <div class="weui_panel weui_panel_access" ng-click="vm.jumpToOrder()" ng-repeat="item in vm.orders">
+                <div class="weui_panel_hd">订单编号：{{item.orderNo}}</div>
                 <div >
                     <!--class="weui_panel_bd"-->
                     <a href="#/order" class="weui_media_box weui_media_appmsg">
                         <div class="weui_media_hd">
-                            <img class="weui_media_appmsg_thumb" src="src/resource/image/detail/tomato.jpg" alt="">
+                            <img class="weui_media_appmsg_thumb" ng-src="{{item.imangeName}}" alt="">
                         </div>
                         <div class="weui_media_bd">
-                            <h4 class="weui_media_title1">小鲜速递</h4>
-                            <p class="weui_media_desc">￥148.00</p>
+                            <h4 class="weui_media_title1">小鲜来了</h4>
+                            <p class="weui_media_desc">物品数量：{{item.totalCount}}</p>
                         </div>
                     </a>
                 </div>
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
                     </div>
-                    <div class="weui_cell_ft">订单金额：<span style="color: #f00;">￥148.00</span></div>
+                    <div class="weui_cell_ft">订单金额：<span style="color: #f00;">￥{{item.totalPrice}}</span></div>
                 </div>
             </div>
-            <div class="weui_panel weui_panel_access" ng-click="vm.jumpToOrder()">
-                <div class="weui_panel_hd">订单编号：120348903287458</div>
-                <div class="weui_panel_bd">
-                    <a href="#/order" class="weui_media_box weui_media_appmsg">
-                        <div class="weui_media_hd">
-                            <img class="weui_media_appmsg_thumb" src="src/resource/image/detail/tomato.jpg" alt="">
-                        </div>
-                        <div class="weui_media_bd">
-                            <h4 class="weui_media_title1">小鲜速递</h4>
-                            <p class="weui_media_desc">￥148.00</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="weui_cell">
-                    <div class="weui_cell_bd weui_cell_primary">
-                    </div>
-                    <div class="weui_cell_ft">订单金额：<span style="color: #f00;">￥148.00</span></div>
-                </div>
-            </div>
+
+
+
+            <!--<div class="weui_panel weui_panel_access" ng-click="vm.jumpToOrder()">-->
+                <!--<div class="weui_panel_hd">订单编号：120348903287458</div>-->
+                <!--<div >-->
+                    <!--&lt;!&ndash;class="weui_panel_bd"&ndash;&gt;-->
+                    <!--<a href="#/order" class="weui_media_box weui_media_appmsg">-->
+                        <!--<div class="weui_media_hd">-->
+                            <!--<img class="weui_media_appmsg_thumb" src="src/resource/image/detail/tomato.jpg" alt="">-->
+                        <!--</div>-->
+                        <!--<div class="weui_media_bd">-->
+                            <!--<h4 class="weui_media_title1">小鲜速递</h4>-->
+                            <!--<p class="weui_media_desc">￥148.00</p>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="weui_cell">-->
+                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                    <!--</div>-->
+                    <!--<div class="weui_cell_ft">订单金额：<span style="color: #f00;">￥148.00</span></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="weui_panel weui_panel_access" ng-click="vm.jumpToOrder()">-->
+                <!--<div class="weui_panel_hd">订单编号：120348903287458</div>-->
+                <!--<div class="weui_panel_bd">-->
+                    <!--<a href="#/order" class="weui_media_box weui_media_appmsg">-->
+                        <!--<div class="weui_media_hd">-->
+                            <!--<img class="weui_media_appmsg_thumb" src="src/resource/image/detail/tomato.jpg" alt="">-->
+                        <!--</div>-->
+                        <!--<div class="weui_media_bd">-->
+                            <!--<h4 class="weui_media_title1">小鲜速递</h4>-->
+                            <!--<p class="weui_media_desc">￥148.00</p>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="weui_cell">-->
+                    <!--<div class="weui_cell_bd weui_cell_primary">-->
+                    <!--</div>-->
+                    <!--<div class="weui_cell_ft">订单金额：<span style="color: #f00;">￥148.00</span></div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </div>

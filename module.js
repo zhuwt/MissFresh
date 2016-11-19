@@ -20,5 +20,5 @@ var routeApp = angular.module('thisApp',[
     ,'thisApp.meals'
     ,'thisApp.category'
     ,'thisApp.auth'
-    ,'thisApp.goods'
+    // ,'thisApp.goods'
 ]);

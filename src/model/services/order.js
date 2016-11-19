@@ -2,9 +2,12 @@
  * Created by bzhu on 20161117.
  */
 MissFreshModel.service('orderService', function ($http) {
-    this.getOrderList = function () {
-        $http.get(MFGlobal.baseUrl + 'orders'
+    this.getOrderList = function (id, callback) {
+        $http.get(MFGlobal.baseUrl + 'ordersList/' + id
         ).then(function (response) {//successCallback
+            for (var n = 0; n < response.data.DTOObject.length; n++) {
+                response.data.DTOObject[n].imangeName = MFGlobal.detailPath + response.data.DTOObject[n].imangeName;
+            }
             callback(response.data.DTOObject);
         }, function (response) {//errorCallback
             // called asynchronously if an error occurs

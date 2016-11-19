@@ -1,8 +1,8 @@
 /**
  * Created by bzhu on 20161117.
  */
-MissFreshModel.service('mealsService',function ($localStorage,$http) {
-    this.getMealsList = function () {
+MissFreshModel.service('mealsService',function (localStorageService,$http) {
+    this.getMealsList = function (callback) {
         $http.get(MFGlobal.baseUrl + 'meals'
         ).then(function (response) {//successCallback
             callback(response.data.DTOObject);
@@ -14,7 +14,7 @@ MissFreshModel.service('mealsService',function ($localStorage,$http) {
         });
     };
 
-    this.getEntireMeals = function (id) {
+    this.getEntireMeals = function (id,callback) {
         $http.get(MFGlobal.baseUrl + 'meals/' + id
         ).then(function (response) {//successCallback
             var value = localStorageService.get(response.data.DTOObject[n].id.toString());

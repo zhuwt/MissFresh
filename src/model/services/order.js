@@ -17,7 +17,7 @@ MissFreshModel.service('orderService', function ($http) {
         });
     };
 
-    this.getOrder = function () {
+    this.getOrder = function (orderId) {
         $http.get(MFGlobal.baseUrl + 'orders/' + orderId)
             .then(function (response) {//successCallback
                 callback(response.data.DTOObject);

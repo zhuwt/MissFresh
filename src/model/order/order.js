@@ -4,12 +4,56 @@
 angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
     .controller('thisApp.orderController', function ($routeParams,$location,goodsService,localStorageService,orderService,mealsService) {
         var vm = this;
+        var step = 15;
+
         // var imageSourcePath = 'src/resource/image/detail/';
         vm.total = 0;
         vm.count = 0;
-        var step = 15;
+        vm.createMode = true;
         vm.mealsMode = true;
         vm.defaultAddress = '';
+
+        vm.init = function () {
+            var accId = localStorageService.get("AccountId");
+            if (accId == null){
+                $location.path('#/login');
+                return ;
+            }
+
+            if ($location.$$path.indexOf("newMeals") >= 0) {    //load all meal and compare with local
+                vm.createMode = true;
+                vm.mealsMode = false;
+                mealsService.getMealsList(function (data) {
+                    vm.meals = data;
+                    vm.calculate();
+                    vm.defaultAddress = localStorageService.get("defaultAddress");
+                });
+            } else if ($location.$$path.indexOf("newGoods") >= 0) { //load all good and compare with local
+                vm.createMode = true;
+                vm.mealsMode = false;
+                goodsService.getAllGoods(function (data) {
+                    vm.goods = data;
+                    vm.calculate();
+                    vm.defaultAddress = localStorageService.get("defaultAddress");
+                });
+            } else if ($location.$$path.indexOf("goods") >= 0) {
+                vm.createMode = false;
+                vm.mealsMode = false;
+                orderService.getOrder($routeParams.id,function (data) {
+                    var order = data;
+                    vm.total = order.totalPrice;
+                    vm.count = order.totalCount;
+                    vm.goods = order.orderDetailList;
+                });
+            } else{
+                vm.createMode = false;
+                vm.mealsMode = false;
+                mealsService.getEntireMeals($routeParams.id,function (data) {
+                    vm.total =data
+                });
+            }
+        };
+        vm.init();
 
         vm.getMinDate = function () {
             var minDate = new Date();
@@ -31,7 +75,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
 
         vm.initialWeeklyDay = function () {
             var options = [];
-            var week = ['星期日（','星期一（','星期二（','星期三（','星期四（','星期五（','星期六（','星期日（'];
+            var week = consStr.weekArray;
             var offset =0;
             var daysOfOneWeek = 7;
             var today = new Date();
@@ -45,7 +89,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
                     offset = (n - todayOfWeekDay);
                     tempDate.setDate(tempDate.getDate()+offset);
                 }
-                var option = week[n] + tempDate.getFullYear().toString()+ '年' + tempDate.getMonth().toString() + '月' + tempDate.getDate().toString() + '日起）';
+                var option = week[n] + tempDate.getFullYear().toString()+ consStr.year + tempDate.getMonth().toString() + consStr.month + tempDate.getDate().toString() + consStr.day;
                 options.push(option);
             }
             return options;
@@ -57,7 +101,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
             if (vm.mealsMode) {//meals
                 console.log('meals');
                 vm.weeks = vm.initialWeeklyDay();
-                vm.sendText = "送餐日期：";
+                vm.sendText = consStr.sendDate;
                 vm.settings = {
                     theme: 'mobiscroll',
                     lang: 'zh',
@@ -73,7 +117,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
                 };
             } else {
                 console.log('goods');
-                vm.sendText = "送餐时间：";
+                vm.sendText = consStr.sendTime;
                 var minDate = new vm.getMinDate();
                 var maxDate = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate() + 1, minDate.getHours(), minDate.getMinutes(), 0);
                 vm.settings = {
@@ -130,7 +174,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         };
 
         vm.clearCart = function () {
-            if (window.confirm('确定清空购物车,重新选购商品?')) {
+            if (window.confirm(consStr.clearCart)) {
                 for (var i = 0; i < vm.goods.length; i++) {
                     vm.goods[i].bookingCount = 0;
                 }
@@ -144,29 +188,6 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
             $location.path('/menu');
         };
 
-        vm.init = function () {
-            var accId = localStorageService.get("AccountId");
-            if (accId == null){
-                $location.path('#/login');
-                return ;
-            }
-
-            if ($location.$$path.indexOf("meals") >= 0){//meals mode
-                mealsService.getEntireMeals($routeParams.id,function (data) {
-                    vm.meals = data;
-                    vm.calculate();
-                    vm.defaultAddress = localStorageService.get("defaultAddress");
-                });
-            }else{//goods mode
-                goodsService.getAllGoods(function (data) {
-                    vm.goods = data;
-                    vm.calculate();
-                    vm.defaultAddress = localStorageService.get("defaultAddress");
-                });
-            }
-        };
-        vm.init();
-
         vm.pay = function () {
             var accId = localStorageService.get("AccountId");
             if (accId == null){
@@ -176,7 +197,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
 
             vm.defaultAddress = localStorageService.get("defaultAddress");
             if (vm.defaultAddress == null){
-                window.alert('请指定一个送货地址.');
+                window.alert(consStr.needSendAddress);
                 return ;
             }
 
@@ -188,7 +209,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
 
             var receiver = localStorageService.get("receiver");
             if (receiver == null){
-                window.alert('请填写一个收货人.');
+                window.alert(consStr.needReceiver);
                 return ;
             }
 
@@ -201,21 +222,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
                 ,receiveAddress:vm.defaultAddress
                 ,tel:telNo
                 ,receivePerson:receiver
-                ,orderDetailList:[
-                    // {
-                    //     "id":"e82ca47d-b667-4f19-b9b3-21d7801ea4d5"
-                    //     ,"goodsId":"C1CE870E-285C-4F97-A103-19BFAD39ABF5"
-                    //     ,"count":"1"
-                    //     ,"price":"10"
-                    //     ,"evaluate":"100"
-                    // },{
-                    //     "id":"d5fe3a2c-95a7-4c15-9d65-a4259a259e4e"
-                    //     ,"goodsId":"1EF6BED4-5D2C-4608-BC2C-98CE566D295D"
-                    //     ,"count":"1"
-                    //     ,"price":"3.5"
-                    //     ,"evaluate":"100"
-                    // }
-                ]
+                ,orderDetailList:[]
             };
             for (var n=0;n<vm.goods.length;n++){
                 if (vm.goods[n].bookingCount > 0){
@@ -233,385 +240,6 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
                 console.log(data);
             });
         };
-        // vm.goods = [
-        //     {
-        //         anchor: 'vegetable',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'tomato.jpg',
-        //         goodName: '西红柿',
-        //         goodDetail: '有机番茄1000g',
-        //         sellCount: 22,
-        //         goodEvaluate: 97,
-        //         price: 3.5,
-        //         bookingCount: 5,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'broccoli.jpg',
-        //         goodName: '西兰花',
-        //         goodDetail: '花椰菜300g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 2,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'egg.jpg',
-        //         goodName: '鸡蛋',
-        //         goodDetail: '长白山农家土鸡蛋500g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 9,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'tomato.jpg',
-        //         goodName: '西红柿',
-        //         goodDetail: '有机番茄1000g',
-        //         sellCount: 22,
-        //         goodEvaluate: 97,
-        //         price: 3.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'broccoli.jpg',
-        //         goodName: '西兰花',
-        //         goodDetail: '花椰菜300g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'egg.jpg',
-        //         goodName: '鸡蛋',
-        //         goodDetail: '长白山农家土鸡蛋500g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'tomato.jpg',
-        //         goodName: '西红柿',
-        //         goodDetail: '有机番茄1000g',
-        //         sellCount: 22,
-        //         goodEvaluate: 97,
-        //         price: 3.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'broccoli.jpg',
-        //         goodName: '西兰花',
-        //         goodDetail: '花椰菜300g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'egg.jpg',
-        //         goodName: '鸡蛋',
-        //         goodDetail: '长白山农家土鸡蛋500g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'tomato.jpg',
-        //         goodName: '西红柿',
-        //         goodDetail: '有机番茄1000g',
-        //         sellCount: 22,
-        //         goodEvaluate: 97,
-        //         price: 3.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'broccoli.jpg',
-        //         goodName: '西兰花',
-        //         goodDetail: '花椰菜300g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '蔬菜',
-        //         src: imageSourcePath + 'egg.jpg',
-        //         goodName: '鸡蛋',
-        //         goodDetail: '长白山农家土鸡蛋500g',
-        //         sellCount: 11,
-        //         goodEvaluate: 96,
-        //         price: 5.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: 'fruit',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'cherry.jpg',
-        //         goodName: '樱桃',
-        //         goodDetail: '澳洲进口车厘子1000g',
-        //         sellCount: 55,
-        //         goodEvaluate: 99,
-        //         price: 1.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'lemon.jpg',
-        //         goodName: '柠檬',
-        //         goodDetail: '进口青柠500g',
-        //         sellCount: 25,
-        //         goodEvaluate: 99,
-        //         price: 4.6,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'mango.jpg',
-        //         goodName: '芒果',
-        //         goodDetail: '我们不是菲律宾芒果500g',
-        //         sellCount: 25,
-        //         goodEvaluate: 99,
-        //         price: 4.6,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'cherry.jpg',
-        //         goodName: '樱桃',
-        //         goodDetail: '澳洲进口车厘子1000g',
-        //         sellCount: 55,
-        //         goodEvaluate: 99,
-        //         price: 1.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'lemon.jpg',
-        //         goodName: '柠檬',
-        //         goodDetail: '进口青柠500g',
-        //         sellCount: 25,
-        //         goodEvaluate: 99,
-        //         price: 4.6,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'mango.jpg',
-        //         goodName: '芒果',
-        //         goodDetail: '我们不是菲律宾芒果500g',
-        //         sellCount: 25,
-        //         goodEvaluate: 99,
-        //         price: 4.6,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'cherry.jpg',
-        //         goodName: '樱桃',
-        //         goodDetail: '澳洲进口车厘子1000g',
-        //         sellCount: 55,
-        //         goodEvaluate: 99,
-        //         price: 1.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'lemon.jpg',
-        //         goodName: '柠檬',
-        //         goodDetail: '进口青柠500g',
-        //         sellCount: 25,
-        //         goodEvaluate: 99,
-        //         price: 4.6,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '水果',
-        //         src: imageSourcePath + 'mango.jpg',
-        //         goodName: '芒果',
-        //         goodDetail: '我们不是菲律宾芒果500g',
-        //         sellCount: 25,
-        //         goodEvaluate: 99,
-        //         price: 4.6,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: 'seafood',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'clams.jpg',
-        //         goodName: '蛤蜊',
-        //         goodDetail: '蛤蜊1000g',
-        //         sellCount: 5,
-        //         goodEvaluate: 92,
-        //         price: 7.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'squid.jpg',
-        //         goodName: '鱿鱼',
-        //         goodDetail: '新鲜鱿鱼2000g',
-        //         sellCount: 7,
-        //         goodEvaluate: 94,
-        //         price: 3.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     },
-        //     {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'clams.jpg',
-        //         goodName: '蛤蜊',
-        //         goodDetail: '蛤蜊1000g',
-        //         sellCount: 5,
-        //         goodEvaluate: 92,
-        //         price: 7.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'squid.jpg',
-        //         goodName: '鱿鱼',
-        //         goodDetail: '新鲜鱿鱼2000g',
-        //         sellCount: 7,
-        //         goodEvaluate: 94,
-        //         price: 3.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'clams.jpg',
-        //         goodName: '蛤蜊',
-        //         goodDetail: '蛤蜊1000g',
-        //         sellCount: 5,
-        //         goodEvaluate: 92,
-        //         price: 7.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'squid.jpg',
-        //         goodName: '鱿鱼',
-        //         goodDetail: '新鲜鱿鱼2000g',
-        //         sellCount: 7,
-        //         goodEvaluate: 94,
-        //         price: 3.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'clams.jpg',
-        //         goodName: '蛤蜊',
-        //         goodDetail: '蛤蜊1000g',
-        //         sellCount: 5,
-        //         goodEvaluate: 92,
-        //         price: 7.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        //     , {
-        //         anchor: '',
-        //         visible: false,
-        //         classification: '海产',
-        //         src: imageSourcePath + 'squid.jpg',
-        //         goodName: '鱿鱼',
-        //         goodDetail: '新鲜鱿鱼2000g',
-        //         sellCount: 7,
-        //         goodEvaluate: 94,
-        //         price: 3.5,
-        //         bookingCount: 0,
-        //         limited: 10
-        //     }
-        // ];
 
         // vm.calculate();
         vm.initialDatePickerSettings();

@@ -31,6 +31,9 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
         .when('/order/newGoods/', {
             templateUrl: 'src/model/order/order.html'
         })
+        .when('/order/newMeals/', {
+            templateUrl: 'src/model/order/order.html'
+        })
         .when('/order/goods/:id', {
             templateUrl: 'src/model/order/order.html'
         })

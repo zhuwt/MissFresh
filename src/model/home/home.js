@@ -1,14 +1,6 @@
 /**
  * Created by Bucky.Zhu on 07/18/2016.
  */
-var MFGlobal = {};
-MFGlobal.limitedMealsMacCount = 2;
-MFGlobal.baseUrl = 'http://localhost:8912/';
-MFGlobal.category = 'src/resource/image/classic/';
-MFGlobal.detailPath = 'src/resource/image/detail/';
-MFGlobal.mealsPath = 'src/resource/image/meals/';
-MFGlobal.carouselImagePath = 'src/resource/image/carousel/';
-MFGlobal.buttonImagePath = 'src/resource/image/button/';
 angular.module('thisApp.home', ['ui.bootstrap'])
     .controller('thisApp.homeController', function ($location,$http,categoryService) {
         var vm = this;

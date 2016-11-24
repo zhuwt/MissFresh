@@ -4,6 +4,7 @@
 var MFGlobal = {};
 MFGlobal.limitedMealsMacCount = 2;
 MFGlobal.baseUrl = 'http://localhost:8912/';
+MFGlobal.goodsURL = '#/detail/';
 MFGlobal.category = 'src/resource/image/classic/';
 MFGlobal.detailPath = 'src/resource/image/detail/';
 MFGlobal.mealsPath = 'src/resource/image/meals/';

@@ -6,26 +6,32 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         var vm = this;
         var step = 15;
 
-        // var imageSourcePath = 'src/resource/image/detail/';
         vm.total = 0;
         vm.count = 0;
         vm.createMode = true;
         vm.mealsMode = true;
         vm.defaultAddress = '';
+        vm.meals = {};
 
+        //todo:displayincart maybe discard
         vm.init = function () {
             var accId = localStorageService.get("AccountId");
             if (accId == null){
-                $location.path('#/login');
+                $location.path('/login');
                 return ;
             }
 
             if ($location.$$path.indexOf("newMeals") >= 0) {    //load all meal and compare with local
                 vm.createMode = true;
-                vm.mealsMode = false;
+                vm.mealsMode = true;
                 mealsService.getMealsList(function (data) {
-                    vm.meals = data;
-                    vm.calculate();
+                    for (var n=0;n<data.length;n++){
+                        if (data[n].bookingCount > 0){
+                            vm.meals = data[n];
+                            break;
+                        }
+                    }
+                    // vm.calculate();
                     vm.defaultAddress = localStorageService.get("defaultAddress");
                 });
             } else if ($location.$$path.indexOf("newGoods") >= 0) { //load all good and compare with local
@@ -38,7 +44,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
                 });
             } else if ($location.$$path.indexOf("goods") >= 0) {
                 vm.createMode = false;
-                vm.mealsMode = false;
+                vm.mealsMode = true;
                 orderService.getOrder($routeParams.id,function (data) {
                     var order = data;
                     vm.total = order.totalPrice;
@@ -158,6 +164,23 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
             vm.calculate();
         };
 
+        vm.addMealCount = function (index) {
+            if (vm.meals.bookingCount == 2)
+                return;
+
+            vm.meals.bookingCount++;
+            vm.calculate();
+        };
+
+        vm.reduceMealCount = function (index) {
+            if (vm.meals.bookingCount == 0)
+                return;
+
+            vm.meals.bookingCount--;
+            vm.calculate();
+        };
+
+
         vm.calculate = function () {
             vm.total = 0;
             vm.count = 0;
@@ -237,7 +260,9 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
             }
 
             orderService.create(order,function (data) {
+                //TODO:需要清理local里面的缓存信息
                 console.log(data);
+                window.alert(MFStrReousrce.order.createComplete);
             });
         };
 

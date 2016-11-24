@@ -14,6 +14,7 @@ MissFreshModel.service('goodsService',function (localStorageService,$rootScope,$
                 else
                     response.data.DTOObject[n].bookingCount = parseInt(value);
                 response.data.DTOObject[n].displayInCart = (response.data.DTOObject[n].bookingCount > 0)
+                response.data.DTOObject[n].href = MFGlobal.goodsURL + response.data.DTOObject[n].id;
             }
             callback(response.data.DTOObject);
         }, function errorCallback(response) {

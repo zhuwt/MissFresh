@@ -21,7 +21,7 @@
                 <li ng-repeat="item in vm.goods" class="target" ng-if="item.visible">
                     <a ng-href="#/detail/1"><img src={{item.imageName}} class="list-pic"/></a>
                     <div class="shop-list-mid">
-                        <div class="tit"><a href="#/detail/1">{{item.name}}({{item.detailName}})</a></div>
+                        <div class="tit"><a ng-href="#/detail/{{item.id}}">{{item.name}}({{item.detailName}})</a></div>
                         <small>销售量:{{item.sellCount}}　　　好评率:{{item.evaluate}}%</small>
                         <div class="am-gallery-desc">￥{{item.price}}/{{item.unit}}</div>
                     </div>

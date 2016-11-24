@@ -11,7 +11,7 @@
     </header>
     <div style="height: 49px;"></div>
     <ul class="eat-list">
-        <li ng-repeat="item in vm.goods" ng-if="item.bookingCount">
+        <li ng-repeat="item in vm.goods" ng-if="item.bookingCount && !vm.mealsMode">
             <span class="name">{{item.name}}</span>
             <em class="price">￥{{item.price}}</em>
             <div class="d-stock ">
@@ -20,12 +20,21 @@
                 <a class="increase" ng-click="vm.addGoodsCount($index)">+</a>
             </div>
         </li>
+        <li ng-if="!vm.mealsMode">
+            <span class="name">{{vm.meals.name}}</span>
+            <em class="price">￥{{vm.meals.totalPrice}}</em>
+            <div class="d-stock">
+                <a class="decrease" ng-click="vm.reduceMealCount()">-</a>
+                <input class="text_box" name="" type="text" ng-model="vm.meals.bookingCount" readonly>
+                <a class="increase" ng-click="vm.addMealCount($index)">+</a>
+            </div>
+        </li>
     </ul>
     <div class="juli"></div>
     <ul class="list-detail">
         <li class="time">
             <!-- meal dateSettings -->
-            <div ng-if="vm.meals">
+            <div ng-if="vm.mealsMode">
                 <span>{{vm.sendText}}</span>
                 <select class="form-control" id="weekday-select">
                     <option ng-repeat="item in vm.weeks">{{item}}</option>
@@ -33,7 +42,7 @@
                 <span>送餐时间：</span>
                 <input id="weekly-time" ng-model="mytime" mobiscroll-time="vm.settings" placeholder="请选择每周送餐时间" type="text"/>
             </div>
-            <div ng-if="!vm.meals">
+            <div ng-if="!vm.mealsMode">
                 <!-- goods dateSettings -->
                 <span>{{vm.sendText}}</span>
                 <input ng-if="!vm.meals" ng-model="vm.mydatetime" mobiscroll-datetime="vm.settings" placeholder="请选择送餐时间" />
@@ -55,7 +64,6 @@
         <p>请选择支付方式并确认下单：</p>
         <button class="paybtn" type="button" ng-click="vm.pay()"> 微信支付</button>
     </div>
-
     <!--<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">-->
         <!--<div class="am-modal-dialog">-->
             <!--<div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要清空饮品吗？</div>-->

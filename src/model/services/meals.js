@@ -10,11 +10,13 @@ MissFreshModel.service('mealsService',function (localStorageService,$http) {
                 var value = localStorageService.get(response.data.DTOObject[n].id.toString());
                 if (value == null)
                     response.data.DTOObject[n].bookingCount = 0;
-                else
+                else{
                     response.data.DTOObject[n].bookingCount = parseInt(value);
+                }
                 response.data.DTOObject[n].displayInCart = (response.data.DTOObject[n].bookingCount > 0)
+                console.log(response.data.DTOObject);
+                callback(response.data.DTOObject);
             }
-            callback(response.data.DTOObject);
         }, function (response) {//errorCallback
             // called asynchronously if an error occurs
             // or server returns response with an error status.

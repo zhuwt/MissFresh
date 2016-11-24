@@ -5,7 +5,7 @@
     </header>
     <ul>
         <li ng-repeat="item in vm.meals" class="meals-item">
-            <a ng-href={{item.href}}>
+            <a ng-href='#/detail/meals/{{item.id}}'>
                 <img class="meal-image-size" ng-src={{item.src}}>
             </a>
         </li>

@@ -109,7 +109,7 @@ angular.module('thisApp.cart', ['ui.bootstrap', 'LocalStorageModule'])
         };
 
         vm.pay = function () {
-            $location.path('/order/goods/1');
+            $location.path('/order/newGoods');
         };
 
         vm.back = function () {

@@ -5,20 +5,31 @@
     <header class="goods-detail-header">
         <h1 class="goods-detail-title">商品详情</h1>
     </header>
-    <div class="goods-detail-content">
+    <div class="goods-detail-content" ng-if="vm.goodsMode">
         <div>
             <p class="goods-detail-name">{{vm.goods.name}}</p>
             <p class="goods-detail-cart" ng-if="vm.goodsMode">加入购物车</p>
-            <p class="goods-detail-cart" ng-if="!vm.goodsMode">购买套餐</p>
             <div class="clearfix"></div>
         </div>
         <div>
             <p class="goods-detail-price">￥{{vm.goods.price}}</p>
         </div>
         <div class="goods-detail-introduce-size">
-            <p class="goods-detail-introduce" ng-if="vm.goodsMode">{{vm.goods.detailInformation}}</p>
-            <ul ng-if="!vm.goodsMode">
-                <li ng-repeat="item in vm.meals.goodsList"><p>item.name</p></li>
+            <p class="goods-detail-introduce">{{vm.goods.detailInformation}}</p>
+        </div>
+    </div>
+    <div class="goods-detail-content" ng-if="!vm.goodsMode">
+        <div>
+            <p class="goods-detail-name">{{vm.meals.name}}</p>
+            <p class="goods-detail-cart" ng-click="vm.payMeals()">购买套餐</p>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            <p class="goods-detail-price">￥{{vm.meals.price}}</p>
+        </div>
+        <div class="goods-detail-introduce-size">
+            <ul style="padding: 0 20px;">
+                <li ng-repeat="item in vm.meals.goodsList"><p style="color: white;">{{item.name}}</p></li>
             </ul>
         </div>
     </div>

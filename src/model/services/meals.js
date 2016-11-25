@@ -43,7 +43,7 @@ MissFreshModel.service('mealsService',function (localStorageService,$http) {
     };
 
     this.create = function (meals, callback) {
-        $http.post(MFGlobal.baseUrl + 'meals/', meals)
+        $http.post(MFGlobal.baseUrl + 'mealsOrders/', meals)
             .then(function (response) {//successCallback
                 if (callback) callback(response.data.DTOObject);
             }, function (response) {//errorCallback

@@ -157,7 +157,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         };
 
         vm.reduceGoodsCount = function (index) {
-            if (vm.goods[index].bookingCount == 0)
+            if (vm.goods[index].bookingCount == 1)
                 return;
 
             vm.goods[index].bookingCount--;
@@ -173,7 +173,7 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         };
 
         vm.reduceMealCount = function (index) {
-            if (vm.meals.bookingCount == 0)
+            if (vm.meals.bookingCount == 1)
                 return;
 
             vm.meals.bookingCount--;
@@ -184,9 +184,9 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         vm.calculate = function () {
             vm.total = 0;
             vm.count = 0;
-            if ($location.$$path.indexOf("meals") >= 0){//meals mode
-                vm.total = vm.meals.totalPrice;
-                vm.count = 1;
+            if ($location.$$path.indexOf("Meals") >= 0 || $location.$$path.indexOf("meals") >= 0){//meals mode
+                vm.total = vm.meals.totalPrice*vm.meals.bookingCount;
+                vm.count = vm.meals.bookingCount;
             }else{//goods mode
                 for (var i = 0; i < vm.goods.length; i++) {
                     vm.count += vm.goods[i].bookingCount;
@@ -212,6 +212,14 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
         };
 
         vm.pay = function () {
+            if ($location.$$path.indexOf("Meals") >= 0){
+                vm.createMealsOrder();
+            }else{
+                vm.createOrder();
+            }
+        };
+
+        vm.createMealsOrder = function () {
             var accId = localStorageService.get("AccountId");
             if (accId == null){
                 $location.path('#/login');
@@ -237,8 +245,55 @@ angular.module('thisApp.order', ['mobiscroll-datetime','LocalStorageModule'])
             }
 
             var order = {
-                orderType:0
-                ,orderState:0
+                orderState:0
+                ,totalPrice:vm.total
+                ,totalCount:vm.count
+                ,accountId:accId
+                ,receiveAddress:vm.defaultAddress
+                ,tel:telNo
+                ,receivePerson:receiver
+                ,orderDetail:[{
+                    mealsId:vm.meals.id
+                    ,count:vm.count
+                    ,price:vm.meals.totalPrice
+                    ,evaluate:"100"
+                }]
+            };
+
+            mealsService.create(order,function (data) {
+                //TODO:需要清理local里面的缓存信息
+                console.log(data);
+                window.alert(MFStrReousrce.order.createComplete);
+            });
+        };
+
+        vm.createOrder = function () {
+            var accId = localStorageService.get("AccountId");
+            if (accId == null){
+                $location.path('#/login');
+                return ;
+            }
+
+            vm.defaultAddress = localStorageService.get("defaultAddress");
+            if (vm.defaultAddress == null){
+                window.alert(consStr.needSendAddress);
+                return ;
+            }
+
+            var telNo = localStorageService.get("receiverTelNo");
+            if (telNo == null){
+                $location.path('#/login');
+                return ;
+            }
+
+            var receiver = localStorageService.get("receiver");
+            if (receiver == null){
+                window.alert(consStr.needReceiver);
+                return ;
+            }
+
+            var order = {
+                orderState:0
                 ,totalPrice:vm.total
                 ,totalCount:vm.count
                 ,accountId:accId

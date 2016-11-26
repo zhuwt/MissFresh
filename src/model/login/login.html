@@ -1,31 +1,39 @@
 <div ng-controller="thisApp.loginController as vm" style="height: 100%">
-    <header class="header-index">
-        <h1 style="height: 57px;line-height: 57px;color: white;">小鲜来了</h1>
-    </header>
-    <div class="login-title">
-        <a ng-class="{cur:vm.loginModel}" ng-click="vm.changeLoginMode(true)">登录帐号</a>
-        <a ng-class="{cur:!vm.loginModel}" ng-click="vm.changeLoginMode(false)">注册账号</a>
+    <div class="login-background">
+        <div class="login-frame">
+            <input type="text" class="login-input-style" placeholder="手机号码" ng-model="vm.phoneNo">
+            <input type="password" class="login-input-style" placeholder="密码" ng-model="vm.password">
+            <button type="button" class="login-login-style" ng-click="vm.login()">登陆</button>
+            <button type="button" class="login-register-style">注册</button>
+        </div>
     </div>
-    <div class="login-inner" ng-if="vm.loginModel">
-        <div class="alert alert-danger" ng-show="vm.popupAlert">手机号码或密码错误，请重新填写</div>
-        <input type="number" placeholder="手机号码" maxlength="11" name="username" class="input-txt"
-               ng-model="vm.phoneNo" ng-change="vm.change()"/>
-        <input type="password" placeholder="密码" name="password" class="input-txt" ng-model="vm.password" ng-change="vm.change()"/>
-        <input type="button" value="登录" class="submit-btn" ng-click="vm.login()"/>
-    </div>
+    <!--<header class="header-index">-->
+        <!--<h1 style="height: 57px;line-height: 57px;color: white;">小鲜来了</h1>-->
+    <!--</header>-->
+    <!--<div class="login-title">-->
+        <!--<a ng-class="{cur:vm.loginModel}" ng-click="vm.changeLoginMode(true)">登录帐号</a>-->
+        <!--<a ng-class="{cur:!vm.loginModel}" ng-click="vm.changeLoginMode(false)">注册账号</a>-->
+    <!--</div>-->
+    <!--<div class="login-inner" ng-if="vm.loginModel">-->
+        <!--<div class="alert alert-danger" ng-show="vm.popupAlert">手机号码或密码错误，请重新填写</div>-->
+        <!--<input type="number" placeholder="手机号码" maxlength="11" name="username" class="input-txt"-->
+               <!--ng-model="vm.phoneNo" ng-change="vm.change()"/>-->
+        <!--<input type="password" placeholder="密码" name="password" class="input-txt" ng-model="vm.password" ng-change="vm.change()"/>-->
+        <!--<input type="button" value="登录" class="submit-btn" ng-click="vm.login()"/>-->
+    <!--</div>-->
 
-    <div class="login-inner" ng-if="!vm.loginModel">
-        <form id="form">
-            <div class="alert alert-danger" ng-show="vm.popupAlert">{{vm.popupAlertMsg}}</div>
-            <input type="text" placeholder="电话号码" name="username" id="username" class="input-txt"
-                   ng-model="vm.phoneNo"/>
-            <input type="password" placeholder="密码" name="pw" class="input-txt" ng-model="vm.password"/>
-            <input type="password" placeholder="确认密码" name="pw" class="input-txt" ng-model="vm.password1"/>
-            <div>
-                <input type="text" placeholder="验证码" name="checkCode" class="input-txt-code" ng-model="vm.checkCode"/>
-                <button class="Check-button" ng-click="vm.sendCode()">获取验证码</button>
-            </div>
-            <input type="button" value="快速注册" class="submit-btn" ng-click="vm.register()"/>
-        </form>
-    </div>
+    <!--<div class="login-inner" ng-if="!vm.loginModel">-->
+        <!--<form id="form">-->
+            <!--<div class="alert alert-danger" ng-show="vm.popupAlert">{{vm.popupAlertMsg}}</div>-->
+            <!--<input type="text" placeholder="电话号码" name="username" id="username" class="input-txt"-->
+                   <!--ng-model="vm.phoneNo"/>-->
+            <!--<input type="password" placeholder="密码" name="pw" class="input-txt" ng-model="vm.password"/>-->
+            <!--<input type="password" placeholder="确认密码" name="pw" class="input-txt" ng-model="vm.password1"/>-->
+            <!--<div>-->
+                <!--<input type="text" placeholder="验证码" name="checkCode" class="input-txt-code" ng-model="vm.checkCode"/>-->
+                <!--<button class="Check-button" ng-click="vm.sendCode()">获取验证码</button>-->
+            <!--</div>-->
+            <!--<input type="button" value="快速注册" class="submit-btn" ng-click="vm.register()"/>-->
+        <!--</form>-->
+    <!--</div>-->
 </div>

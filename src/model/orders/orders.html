@@ -6,7 +6,7 @@
         </header>
         <div class="weui_tab_bd">
             <div class="weui_panel weui_panel_access" ng-click="vm.jumpToOrder()" ng-repeat="item in vm.orders">
-                <div class="weui_panel_hd">订单编号：{{item.orderNo}}</div>
+                <div class="weui_panel_hd">订单编号：{{item.orderNo}}（{{item.orderState}}）</div>
                 <div >
                     <!--class="weui_panel_bd"-->
                     <a href="#/order" class="weui_media_box weui_media_appmsg">

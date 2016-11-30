@@ -1,8 +1,8 @@
 /**
  * Created by Bucky.Zhu on 07/18/2016.
  */
-angular.module('thisApp.home', ['ui.bootstrap'])
-    .controller('thisApp.homeController', function ($location,$http,categoryService) {
+angular.module('thisApp.home', ['ui.bootstrap','mgcrea.ngStrap.aside'])
+    .controller('thisApp.homeController', function ($location,$http,categoryService,$scope) {
         var vm = this;
 
         vm.timerObj = null;

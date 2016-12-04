@@ -34,9 +34,13 @@ angular.module('thisApp.login', [])
                 return;
             }
 
-            authService.register(vm.checkCode,vm.phoneNo,vm.password,function (data) {
+            authService.register(vm.certCode,vm.phoneNo,vm.password,function (data) {
                 console.log(data);
-                $location.path("#/home");
+                if (data.status == 2){
+                    window.alert(data.information);
+                }else{
+                    $location.path("#/home");
+                }
             });
         };
         //Send check Code
@@ -46,13 +50,20 @@ angular.module('thisApp.login', [])
                 return ;
             }
             authService.verification(vm.phoneNo,function (data) {
-                window.alert('send');
+                if (data.status == 0){
+                    window.alert('验证码已经发送到您的手机，请填写验证码后注册账号。');
+                }else if (data.status == 2){
+                    window.alert(data.information);
+                }
+                else{
+                    window.alert('联系短信服务器失败，请联系客服人员.');
+                }
             });
         };
 
         //Change login and register model
         vm.changeLoginMode = function (modelType) {
-            vm.loginModel = modelType;
+            vm.loginModel = !vm.loginModel;
             vm.popupAlert = false;
         }
     });

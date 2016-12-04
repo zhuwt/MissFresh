@@ -6,8 +6,10 @@ angular.module('thisApp.auth', ['LocalStorageModule']).factory('authService', fu
         login: function (telNo, password, callback) {
             $http.get(MFGlobal.baseUrl + "Account?telNo=" + telNo + "&password=" + password)
                 .then(function successCallback(response) {
-                    if (response.data.status == 0)
-                        localStorageService.set("AccountId",response.data.DTOObject);
+                    if (response.data.status == 0){
+                        localStorageService.clearAll();
+                        localStorageService.set("AccountId",response.data.DTOObject.id);
+                    }
                     else
                         response.data.DTOObject = false;
                     console.log(response);
@@ -32,6 +34,12 @@ angular.module('thisApp.auth', ['LocalStorageModule']).factory('authService', fu
                 }
             ).then(function successCallback(response) {
                 callback(response.data);
+                if (response.data.status == 0){
+                    localStorageService.clearAll();
+                    localStorageService.set("AccountId",response.data.DTOObject);
+                }
+                else
+                    response.data.DTOObject = false;
 
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
@@ -41,7 +49,7 @@ angular.module('thisApp.auth', ['LocalStorageModule']).factory('authService', fu
             });
         },
         verification:function (phoneNo,callback) {
-            $http.get(MFGlobal.baseUrl + "Account/Check?telNo=" + phoneNo)
+            $http.get(MFGlobal.baseUrl + "Account/Check/" + phoneNo)
                 .then(function successCallback(response) {
                     callback(response.data);
                     // console.log(response);

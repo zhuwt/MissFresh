@@ -1,88 +1,132 @@
 <div ng-controller="thisApp.menuController as vm" style="height: 100%">
-    <!--<header class="menu-header">-->
-        <!--<h1>分类</h1>-->
-    <!--</header>-->
-    <!--<div class="btn-group full-width">-->
-        <!--<div class="btn-group">-->
-            <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
-                <!--蔬菜分类-->
-                <!--<span class="caret"></span>-->
-            <!--</button>-->
-            <!--<ul class="dropdown-menu" role="menu">-->
-                <!--<li ng-repeat="item in vm.classification" ng-click="vm.clickClassification($index)"><a href="#">{{item.category1}}</a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-        <!--<div class="btn-group">-->
-            <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
-                <!--生鲜分类-->
-                <!--<span class="caret"></span>-->
-            <!--</button>-->
-            <!--<ul class="dropdown-menu" role="menu">-->
-                <!--<li><a href="#">Dropdown link</a></li>-->
-                <!--<li><a href="#">Dropdown link</a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;Class tile&ndash;&gt;-->
-    <!--<div class="classic-frame">-->
-        <!--<ul>-->
-            <!--<li ng-repeat="item in vm.goods">-->
-                <!--<a><img src={{item.imageName}} class="img-responsive menu-goods-li"-->
-                        <!--alt="Responsive image" ng-click="vm.jumpToUrl(item.url)"></a>-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</div>-->
-
-
-
-
-
-    <header data-am-widget="header" class="am-header am-header-default sq-head ">
-        <a class="icon_back" href="javascript:history.back()"></a>
-        <h3 class="menu-header-text">小鲜来了</h3>
+    <header class="menu-header">
+        <a >
+            <img class="menu-button-left" ng-src="src/resource/image/detail/mango.jpg">
+        </a>
+        <a >
+            <img class="menu-button-right" ng-src="src/resource/image/detail/mango.jpg">
+        </a>
+        <h1 style="width: 100%;">分类</h1>
     </header>
-    <div class="content-list" id="outer">
-        <div class="list-left" id="tab">
-            <li ng-repeat="item in vm.classification" ng-class="{current:item.selected}"
-                ng-click="vm.clickClassification($index)"><a>{{item.category1}}</a></li>
-        </div>
 
-        <div class="list-right" id="content">
-            <ul class="list-pro" >
-                <!--ng-repeat="item in vm.goodInfo" ng-if="item.selected"-->
-                <li ng-repeat="item in vm.goods" class="target" ng-if="item.visible">
-                    <a ng-href="#/detail/1"><img src={{item.imageName}} class="list-pic"/></a>
-                    <div class="shop-list-mid">
-                        <div class="tit"><a ng-href="#/detail/{{item.id}}">{{item.name}}({{item.detailName}})</a></div>
-                        <small>销售量:{{item.sellCount}}　　　好评率:{{item.evaluate}}%</small>
-                        <div class="am-gallery-desc">￥{{item.price}}/{{item.unit}}</div>
-                    </div>
-                    <div class="list-cart">
-                        <div class="d-stock">
-                            <a ng-class="{decreaseInline:item.bookingCount}" ng-show="item.bookingCount"
-                               ng-click="vm.reduceGoodsCount($index)">-</a>
-                            <input ng-class="{text_box_display:item.bookingCount}" ng-show="item.bookingCount"
-                            ng-model="item.bookingCount" readonly>
-                            <a class="increase" ng-click="vm.addGoodsCount($index)">+</a>
-                        </div>
-                    </div>
+    <div class="btn-group full-width">
+        <div class="btn-group full-width">
+            <button type="button" id="menu-classification" class="btn btn-default dropdown-toggle full-width"
+                    data-toggle="dropdown">
+                蔬菜分类
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="item in vm.classification" ng-click="vm.clickClassification($index)">
+                    <a>{{item.category1}}</a>
                 </li>
             </ul>
         </div>
     </div>
-    <!--底部-->
+
+    <div>
+        <ul class="menu-goods-list">
+            <li ng-repeat="item in vm.goods" ng-if="item.visible">
+                <img ng-src={{item.imageName}} style="width: 100%;">
+                <div class="full-width menu-goods-information">
+                    <h3>{{item.name}}</h3>
+                    <div style="background-color: white;">
+                        <p class="menu-goods-price">￥{{item.price}}/{{item.unit}}</p>
+                        <img ng-src={{item.imageName}} style="width: 20px;float: right;">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <!--<div class="list-right">-->
+        <!--<ul class="list-pro">-->
+            <!--&lt;!&ndash;ng-repeat="item in vm.goodInfo" ng-if="item.selected"&ndash;&gt;-->
+            <!--<li ng-repeat="item in vm.goods" class="target" ng-if="item.visible">-->
+                <!--<a ng-href="#/detail/1"><img src={{item.imageName}} class="list-pic"/></a>-->
+                <!--<div class="shop-list-mid">-->
+                    <!--<div class="tit"><a ng-href="#/detail/{{item.id}}">{{item.name}}({{item.detailName}})</a></div>-->
+                    <!--<small>销售量:{{item.sellCount}}　　　好评率:{{item.evaluate}}%</small>-->
+                    <!--<div class="am-gallery-desc">￥{{item.price}}/{{item.unit}}</div>-->
+                <!--</div>-->
+                <!--<div class="list-cart">-->
+                    <!--<div class="d-stock">-->
+                        <!--<a ng-class="{decreaseInline:item.bookingCount}" ng-show="item.bookingCount"-->
+                           <!--ng-click="vm.reduceGoodsCount($index)">-</a>-->
+                        <!--<input ng-class="{text_box_display:item.bookingCount}" ng-show="item.bookingCount"-->
+                               <!--ng-model="item.bookingCount" readonly>-->
+                        <!--<a class="increase" ng-click="vm.addGoodsCount($index)">+</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+
     <div style="height: 100px;"></div>
     <div class="fix-bot">
         <a href="" class="list-js">合计：<i>{{vm.total}}元</i><em>({{vm.count}}份)</em></a>
         <a href="#/cart" class="list-jsk">购物车</a>
     </div>
-    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
-        <div class="am-modal-dialog">
-            <div class="am-modal-bd" style="height: 80px; line-height: 80px;"> 您确定要清空饮品吗？</div>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-            </div>
-        </div>
-    </div>
+
+
+    <!--Class tile-->
+    <!--<div class="classic-frame">-->
+    <!--<ul>-->
+    <!--<li ng-repeat="item in vm.goods">-->
+    <!--<a><img src={{item.imageName}} class="img-responsive menu-goods-li"-->
+    <!--alt="Responsive image" ng-click="vm.jumpToUrl(item.url)"></a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+
+    <!--<header data-am-widget="header" class="am-header am-header-default sq-head ">-->
+    <!--<a class="icon_back" href="javascript:history.back()"></a>-->
+    <!--<h3 class="menu-header-text">小鲜来了</h3>-->
+    <!--</header>-->
+    <!--<div class="content-list" id="outer">-->
+    <!--<div class="list-left" id="tab">-->
+    <!--<li ng-repeat="item in vm.classification" ng-class="{current:item.selected}"-->
+    <!--ng-click="vm.clickClassification($index)"><a>{{item.category1}}</a></li>-->
+    <!--</div>-->
+
+    <!--<div class="list-right" id="content">-->
+    <!--<ul class="list-pro" >-->
+    <!--&lt;!&ndash;ng-repeat="item in vm.goodInfo" ng-if="item.selected"&ndash;&gt;-->
+    <!--<li ng-repeat="item in vm.goods" class="target" ng-if="item.visible">-->
+    <!--<a ng-href="#/detail/1"><img src={{item.imageName}} class="list-pic"/></a>-->
+    <!--<div class="shop-list-mid">-->
+    <!--<div class="tit"><a ng-href="#/detail/{{item.id}}">{{item.name}}({{item.detailName}})</a></div>-->
+    <!--<small>销售量:{{item.sellCount}}　　　好评率:{{item.evaluate}}%</small>-->
+    <!--<div class="am-gallery-desc">￥{{item.price}}/{{item.unit}}</div>-->
+    <!--</div>-->
+    <!--<div class="list-cart">-->
+    <!--<div class="d-stock">-->
+    <!--<a ng-class="{decreaseInline:item.bookingCount}" ng-show="item.bookingCount"-->
+    <!--ng-click="vm.reduceGoodsCount($index)">-</a>-->
+    <!--<input ng-class="{text_box_display:item.bookingCount}" ng-show="item.bookingCount"-->
+    <!--ng-model="item.bookingCount" readonly>-->
+    <!--<a class="increase" ng-click="vm.addGoodsCount($index)">+</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;底部&ndash;&gt;-->
+    <!--<div style="height: 100px;"></div>-->
+    <!--<div class="fix-bot">-->
+    <!--<a href="" class="list-js">合计：<i>{{vm.total}}元</i><em>({{vm.count}}份)</em></a>-->
+    <!--<a href="#/cart" class="list-jsk">购物车</a>-->
+    <!--</div>-->
+    <!--<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">-->
+    <!--<div class="am-modal-dialog">-->
+    <!--<div class="am-modal-bd" style="height: 80px; line-height: 80px;"> 您确定要清空饮品吗？</div>-->
+    <!--<div class="am-modal-footer">-->
+    <!--<span class="am-modal-btn" data-am-modal-cancel>取消</span>-->
+    <!--<span class="am-modal-btn" data-am-modal-confirm>确定</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 </div>

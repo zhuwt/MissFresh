@@ -1,11 +1,4 @@
-.menu-header{
-    height: 50px;
-    border-bottom: 1px solid #dddddd;
-}
-.menu-header>h1{
-    text-align: center;
-    line-height: 50px;
-}
+
 
 .menu-goods-li{
     width: 45%;
@@ -18,9 +11,9 @@
 .full-width{
     width: 100%;
 }
-.btn-group.full-width>div{
-    width:50%;
-}
+/*.btn-group.full-width>div{*/
+    /*width:50%;*/
+/*}*/
 .btn-group.full-width>div>button{
     width:100%;
 }
@@ -117,8 +110,7 @@ ul {
 }
 
 .list-right {
-    float: right;
-    width: 75%;
+    width: 100%;
     padding-bottom: 50px;
 }
 
@@ -147,7 +139,7 @@ ul {
 .list-pro {
     overflow: hidden;
     padding-bottom: 10px;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
 }
 
 .list-pro li {
@@ -1025,4 +1017,69 @@ i {
     width:70%;
     /*float: right;*/
     /*line-height: 55px;*/
+}
+
+
+
+/*Menu page*/
+.menu-header{
+    height: 50px;
+    border-bottom: 1px solid #dddddd;
+    background-color: white;
+}
+.menu-header>h1{
+    margin:0;
+    line-height: 50px;
+    text-align: center;
+}
+
+.menu-button-left{
+    /*float: left;*/
+    height: 50px;
+    padding: 5px;
+}
+
+.menu-button-right{
+    float: right;
+    height: 50px;
+    padding: 5px;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.menu-goods-list{
+    width: 100%;
+    margin-top: 10px;
+    padding-left: 5px;
+    padding-right: 10px;
+    /*margin-left: 5px;*/
+    /*margin-right: 10px;*/
+    padding-bottom: 10px;
+}
+.menu-goods-list>li{
+    width: 50%;
+    float: left;
+    display: inline;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.menu-goods-information{
+    padding: 5px;
+    background-color: white;
+}
+
+.menu-goods-price{
+    float: left;
+    color: darkorange;
+}
+
+#menu-classification{
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+
 }

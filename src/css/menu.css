@@ -1029,20 +1029,27 @@ i {
 }
 .menu-header>h1{
     margin:0;
+    float: left;
+    width: 100%;
     line-height: 50px;
     text-align: center;
 }
 
 .menu-button-left{
-    /*float: left;*/
+    top: 0;
+    left:0;
     height: 50px;
-    padding: 5px;
+    padding: 15px;
+    position: absolute;
 }
 
 .menu-button-right{
+    top: 0;
+    right:0;
     float: right;
     height: 50px;
-    padding: 5px;
+    padding: 15px;
+    position: absolute;
 }
 
 .full-width{
@@ -1076,7 +1083,23 @@ i {
     color: darkorange;
 }
 
+.dropdown-menu{
+    margin:0;
+    padding:0;
+    border-radius: 0;
+}
+.dropdown-menu>li{
+    height: 33px;
+    border-bottom: 1px solid #dddddd;
+}
+
+#menu-droplist-caret{
+    float: right;
+    margin-top: 7px;
+}
+
 #menu-classification{
+    text-align: left;
     border-radius: 0;
     border-top: 0;
     border-left: 0;

@@ -74,6 +74,14 @@ angular.module('thisApp.menu', ['LocalStorageModule'])
             }
         };
 
+        vm.menu = function(){
+            window.alert('menu');
+        };
+
+        vm.cart = function(){
+            window.alert('cart');
+        };
+
         //加法函数，用来得到精确的加法结果
         //说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
         //调用：FloatAdd(arg1,arg2)
@@ -93,6 +101,8 @@ angular.module('thisApp.menu', ['LocalStorageModule'])
             m = Math.pow(10, Math.max(r1, r2))
             return (arg1 * m + arg2 * m) / m
         }
+
+
 
         // vm.scrollTo = function (anchor) {
         //     $location.hash(anchor);

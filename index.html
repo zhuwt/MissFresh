@@ -29,11 +29,11 @@
     <script src="src/Mobiscroll-Angular/js/mobiscroll.custom-3.0.0-beta5.min.js"></script>
     <!-- TODO:why this style file must set rel attribute?? -->
     <link rel="stylesheet" href="src/Mobiscroll-Angular/css/mobiscroll.custom-3.0.0-beta5.min.css">
-    <!-- angularStrap -->
-    <script src="component/angular-strap/dist/angular-strap.js"></script>
-    <script src="component/angular-strap/dist/angular-strap.tpl.js"></script>
     <!-- angular-localstorage-->
     <script src="component/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+    <script src="component/bootstrap-off-canvas-nav-master/src/bootstrap-off-canvas-nav.js"></script>
+    <link rel="stylesheet" href="component/bootstrap-off-canvas-nav-master/src/bootstrap-off-canvas-nav.css">
 
     <!-- controller -->
     <script src="src/model/home/home.js"></script>
@@ -85,19 +85,31 @@
     <!--<link rel="stylesheet" href="src/css/order.css">-->
 
 </head>
-<body>
-    <!--<script type="text/ng-template" id="myModalContent.html">-->
-        <!--<div class="modal-header">-->
-            <!--<h3 class="modal-title" id="modal-title">{{vm.dialogTitle}}</h3>-->
-        <!--</div>-->
-        <!--<div class="modal-body" id="modal-body">-->
-            <!--<p>{{vm.content}}</p>-->
-        <!--</div>-->
-        <!--<div class="modal-footer">-->
-            <!--<button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>-->
-            <!--<button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>-->
-        <!--</div>-->
-    <!--</script>-->
+<body class="off-canvas-nav-left">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" style="padding: 0;">
+                <ul class="nav nav-pills nav-stacked" style="position: relative;top: 40%;border-top: 1px solid #dddddd;">
+                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>首页</a></li>
+                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>精选套餐</a></li>
+                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>用户中心</a></li>
+                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>关于我们</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
     <div ng-view class="full-height"></div>
 </body>
 </html>

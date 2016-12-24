@@ -10,3 +10,4 @@ MFGlobal.detailPath = 'src/resource/image/detail/';
 MFGlobal.mealsPath = 'src/resource/image/meals/';
 MFGlobal.carouselImagePath = 'src/resource/image/carousel/';
 MFGlobal.buttonImagePath = 'src/resource/image/button/';
+MFGlobal.title = '小鲜来了';

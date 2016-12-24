@@ -273,12 +273,12 @@ footer {
     background-color: #f5f5f5
 }
 
-.usercenter-bg {
-    position: relative;
-    padding: 20% 50%;
-    background: url(../images/user_bg_4dc20b46f68d0b4cb4e8dbe0ab63b5b7.jpg) no-repeat;
-    background-size: 100% 100%
-}
+/*.usercenter-bg {*/
+    /*position: relative;*/
+    /*padding: 20% 50%;*/
+    /*background: url(../images/user_bg_4dc20b46f68d0b4cb4e8dbe0ab63b5b7.jpg) no-repeat;*/
+    /*background-size: 100% 100%*/
+/*}*/
 
 .usercenter-bg .avatar-box {
     position: absolute;
@@ -1350,4 +1350,31 @@ footer {
 
 .uc-order-box .order-list .order-list-item:last-child {
     border-bottom: 0
+}
+
+
+
+
+
+/*account css*/
+.account-function-list{
+    top: 10px;;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    border-top: 1px solid #dddddd;
+}
+.account-function-list>li{
+    height: 50px;
+    color: #343434;
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 20px;
+    border-bottom: 1px solid #dddddd;
+}
+.account-function-list>li>i{
+    float: right;
+    color: #b1b1b1;
+    line-height: 50px;
+    margin-right: 20px;
 }

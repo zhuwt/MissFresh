@@ -2,10 +2,13 @@
  * Created by zhuwt on 2016/9/7.
  */
 angular.module('thisApp.cart', ['ui.bootstrap', 'LocalStorageModule'])
-    .controller('thisApp.cartController', function (localStorageService, $location, goodsService) {
+    .controller('thisApp.cartController', function ($rootScope,localStorageService, $location, goodsService) {
         var vm = this;
         vm.total = 0;
         vm.count = 0;
+
+        $rootScope.mfGlobal_title = '购物车';
+        $rootScope.MFDisplayCart = false;
 
         vm.initialGoods = function () {
             goodsService.getAllGoods(function (data) {

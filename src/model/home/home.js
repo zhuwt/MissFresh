@@ -2,8 +2,11 @@
  * Created by Bucky.Zhu on 07/18/2016.
  */
 angular.module('thisApp.home', ['ui.bootstrap'])
-    .controller('thisApp.homeController', function ($location,$http,categoryService,$scope) {
+    .controller('thisApp.homeController', function ($rootScope,$location,$http,categoryService,$scope) {
         var vm = this;
+
+        $rootScope.mfGlobal_title = '小鲜来了';
+        $rootScope.MFDisplayCart = false;
 
         vm.timerObj = null;
         vm.classification = [];

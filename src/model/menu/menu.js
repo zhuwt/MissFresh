@@ -2,12 +2,16 @@
  * Created by zhuwt on 2016/9/10.
  */
 angular.module('thisApp.menu', ['LocalStorageModule'])
-    .controller('thisApp.menuController', function ($routeParams, localStorageService, categoryService, goodsService) {
+    .controller('thisApp.menuController', function ($rootScope,$routeParams, localStorageService, categoryService, goodsService,$location) {
         // $location,$anchorScroll
         var vm = this;
         // var imageSourcePath = 'src/resource/image/detail/';
         vm.count = 0;
         vm.total = 0;
+        vm.goodsItems = 0;
+
+        $rootScope.mfGlobal_title = '分类';
+        $rootScope.MFDisplayCart = true;
 
         vm.initial = function () {
             categoryService.getAllCategory(function (data) {
@@ -63,15 +67,18 @@ angular.module('thisApp.menu', ['LocalStorageModule'])
         vm.calculate = function () {
             vm.total = 0;
             vm.count = 0;
+            vm.goodsItems = 0;
             for (var i = 0; i < vm.goods.length; i++) {
                 if (vm.goods[i].bookingCount == 0)
                     continue;
 
+                vm.goodsItems++;
                 vm.count += vm.goods[i].bookingCount;
                 // var temp = (vm.goods[i].bookingCount * vm.goods[i].price);
                 vm.total = FloatAdd(vm.total,(vm.goods[i].bookingCount * vm.goods[i].price));
                 // vm.total += vm.goods[i].bookingCount * vm.goods[i].price;
             }
+            $rootScope.MFCount = vm.goodsItems;
         };
 
         vm.menu = function(){
@@ -80,6 +87,10 @@ angular.module('thisApp.menu', ['LocalStorageModule'])
 
         vm.cart = function(){
             window.alert('cart');
+        };
+
+        vm.goodsDetail = function(goodsId){
+            $location.path('/detail/'+goodsId);
         };
 
         //加法函数，用来得到精确的加法结果

@@ -362,14 +362,7 @@ textarea,input{
 }
 
 /*booter*/
-.fix-bot {
-    border-top: 1px solid #ddd;
-    position: fixed;
-    bottom: 0;
-    height: 4.5rem;
-    width: 100%;
-    background: #fff;
-}
+
 
 .list-js {
     font-size: 16px;
@@ -378,25 +371,13 @@ textarea,input{
     line-height: 54px;
 }
 
-.list-jsk {
-    float: right;
-    color: #FFF;
-    margin-right: 10px;
-    font-size: 16px;
-    background: #d9534f;
-    display: block;
-    padding: 5px 20px;
-    margin-top: 8px;
-    text-decoration: none;
-}
+/*.list-jsk:focus{*/
+    /*text-decoration: none;*/
+/*}*/
 
-.list-jsk:focus{
-    text-decoration: none;
-}
-
-.list-jsk:hover{
-    text-decoration: none;
-}
+/*.list-jsk:hover{*/
+    /*text-decoration: none;*/
+/*}*/
 
 .cart-list {
     width:100%;

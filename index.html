@@ -31,11 +31,12 @@
     <link rel="stylesheet" href="src/Mobiscroll-Angular/css/mobiscroll.custom-3.0.0-beta5.min.css">
     <!-- angular-localstorage-->
     <script src="component/angular-local-storage/dist/angular-local-storage.min.js"></script>
-
-    <script src="component/bootstrap-off-canvas-nav-master/src/bootstrap-off-canvas-nav.js"></script>
-    <link rel="stylesheet" href="component/bootstrap-off-canvas-nav-master/src/bootstrap-off-canvas-nav.css">
+    <!-- aside -->
+    <script src="src/custom-component/bootstrap-off-canvas-nav.js"></script>
+    <link rel="stylesheet" href="src/custom-component/bootstrap-off-canvas-nav.css">
 
     <!-- controller -->
+    <script src="src/index.js"></script>
     <script src="src/model/home/home.js"></script>
     <script src="src/model/detail/detail.js"></script>
     <script src="src/model/cart/cart.js"></script>
@@ -85,29 +86,30 @@
     <!--<link rel="stylesheet" href="src/css/order.css">-->
 
 </head>
-<body class="off-canvas-nav-left">
+<body class="off-canvas-nav-left" ng-class="{out:vm.expand}" ng-controller="thisApp.indexController as vm">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" ng-click="vm.menu()">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <a class="navbar-brand full-width" style="text-align: center"><span>{{$root.mfGlobal_title}}</span></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" style="padding: 0;">
-                <ul class="nav nav-pills nav-stacked" style="position: relative;top: 40%;border-top: 1px solid #dddddd;">
-                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>首页</a></li>
-                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>精选套餐</a></li>
-                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>用户中心</a></li>
-                    <li style="text-align: center;padding: 10px 0;border-bottom: 1px solid #dddddd;"><a>关于我们</a></li>
+                <ul class="nav nav-pills nav-stacked aside-ul">
+                    <li ng-repeat="item in vm.funcList" ng-click="vm.clickFunc($index)"><a>{{item}}</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
+            <a ng-click="vm.toCart()" ng-if="$root.MFDisplayCart">
+                <img class="menu-button-right" ng-src="src/resource/image/button/cart.png">
+                <span class="menu-badge-count badge">{{$root.MFCount}}</span>
+            </a>
         </div><!-- /.container-fluid -->
     </nav>
     <div ng-view class="full-height"></div>

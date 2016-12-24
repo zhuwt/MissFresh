@@ -1,20 +1,4 @@
-<div ng-controller="thisApp.addressController as vm" style="height: 100%;background-color: white;">
-    <header data-am-widget="header" class="am-header am-header-default sq-head ">
-        <div class="am-header-left am-header-nav">
-            <a href="javascript:history.back()" class="" style="border: 0;">
-                <i class="am-icon-chevron-left"></i>
-            </a>
-        </div>
-        <h1 class="menu-header-text">
-            <a style="color: #333;">管理收货地址</a>
-        </h1>
-        <div class="am-header-right am-header-nav">
-            <a ng-click="vm.newAddress()">
-                <i class="am-icon-plus" style="color: #999;"></i>
-            </a>
-        </div>
-    </header>
-    <div style="height: 49px;"></div>
+<div ng-controller="thisApp.addressController as vm" style="height: 100%;background-color: #f5f5f5"">
     <ul class="address-list">
         <li ng-repeat="item in vm.addresses" ng-class="{curr:item.defaultAddress}">
             <p>收货人：{{item.name}}&nbsp;&nbsp;{{item.tel}}</p>
@@ -28,30 +12,8 @@
                 <a ng-click="vm.deleteAddress($index)">删除</a>
             </div>
         </li>
-        <!--<li>-->
-            <!--<p>收货人：徐女士&nbsp;&nbsp;182********</p>-->
-            <!--<p class="order-add1">收货地址：广东省汕头市龙湖区科技中路嘉泽大厦</p>-->
-            <!--<hr />-->
-            <!--<div class="address-cz">-->
-                <!--<label class="am-radio am-warning">-->
-                    <!--<input type="radio" name="radio3" value="" data-am-ucheck > 设为默认-->
-                <!--</label>-->
-                <!--<a href=""><img src="src/resource/image/commonControl/bj.png" width="18" />&nbsp;编辑</a>-->
-                <!--<a href="">删除</a>-->
-            <!--</div>-->
-        <!--</li>-->
-        <!--<li>-->
-            <!--<p>收货人：徐女士&nbsp;&nbsp;182********</p>-->
-            <!--<p class="order-add1">收货地址：广东省汕头市龙湖区科技中路嘉泽大厦</p>-->
-            <!--<hr />-->
-            <!--<div class="address-cz">-->
-                <!--<label class="am-radio am-warning">-->
-                    <!--<input type="radio" name="radio3" value="" data-am-ucheck > 设为默认-->
-                <!--</label>-->
-                <!--<a href=""><img src="src/resource/image/commonControl/bj.png" width="18" />&nbsp;编辑</a>-->
-                <!--<a href="">删除</a>-->
-            <!--</div>-->
-        <!--</li>-->
-
     </ul>
+    <header class="menu-booter" ng-click="vm.newAddress()">
+        <a class="center" ng-click="vm.pay()"><i class="glyphicon glyphicon-plus"></i>新增地址</a>
+    </header>
 </div>

@@ -2,10 +2,14 @@
  * Created by zhuwt on 2016/9/19.
  */
 angular.module('thisApp.address', ['LocalStorageModule'])
-    .controller('thisApp.addressController', function ($location, $routeParams, addressService,localStorageService) {
+    .controller('thisApp.addressController', function ($rootScope, $location, $routeParams, addressService,localStorageService) {
         // $location,$anchorScroll
         var vm = this;
         vm.radioValue = 0;
+
+        $rootScope.mfGlobal_title = '地址管理';
+        $rootScope.MFDisplayCart = true;
+
         vm.setDefault = function (index) {
             for (var i = 0; i < vm.addresses.length; i++)
                 vm.addresses[i].defaultAddress = false;

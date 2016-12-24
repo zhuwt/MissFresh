@@ -2,8 +2,10 @@
  * Created by zhuwt on 2016/10/10.
  */
 angular.module('thisApp.meals', [])
-    .controller('thisApp.mealsController', function ($location,mealsService) {
+    .controller('thisApp.mealsController', function ($rootScope,$location,mealsService) {
         var vm = this;
+
+        $rootScope.mfGlobal_title = '精选套餐';
         // vm.meals = [
         //     {
         //         href:"#/detail/meals/1",
@@ -53,4 +55,8 @@ angular.module('thisApp.meals', [])
             });
         };
         vm.init();
+
+        vm.mealsDetail = function(mealsId){
+            $location.path('/detail/meals/'+mealsId);
+        };
     });

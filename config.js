@@ -59,3 +59,11 @@ routeApp.config(['$routeProvider',function ($routeProvider) {
             redirectTo: '/home'
         });
 }]);
+
+routeApp.run(['$rootScope','$location',function ($rootScope,$location) {
+    $rootScope.$on('$routeChangeStart', routeChangeStart);
+    function routeChangeStart(evt,next,current){
+        console.log('start change route.');
+        $rootScope.MFDisplayCart = false;
+    }
+}]);

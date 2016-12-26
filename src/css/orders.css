@@ -403,3 +403,19 @@ a.weui_media_box:active {
 .weui_cell_2 .weui_cell_ft {
     color: #383933;
 }
+
+
+
+
+
+
+/**********************************************/
+.orders-item-list{
+    top: 15px;;
+    position: relative;
+    background-color: white;
+}
+.orders-item-title{
+    height: 20px;
+    border-bottom: 1px solid #dddddd;
+}

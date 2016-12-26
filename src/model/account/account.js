@@ -6,7 +6,8 @@ angular.module('thisApp.account', [])
         // console.log('controller initial finished!');
         var vm = this;
         vm.funcList = [
-            '地址管理'
+            '我的订单'
+            ,'地址管理'
             ,'密码修改'
             ,'忘记密码'
             ,'注销登录'
@@ -16,9 +17,10 @@ angular.module('thisApp.account', [])
         vm.clickFunc = function (index) {
             switch (index){
                 case 0:
-                    $location.path('/address');
+                    $location.path('/orders');
                     break;
                 case 1:
+                    $location.path('/address');
                     break;
                 case 2:
                     break;

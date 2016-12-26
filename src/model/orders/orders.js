@@ -6,6 +6,8 @@ angular.module('thisApp.orders', [])
         var vm = this;
         vm.orders = {};
         vm.mealsOrders = {};
+
+        $rootScope.mfGlobal_title = '分类';
         
         vm.init = function () {
             var accId = localStorageService.get("AccountId");

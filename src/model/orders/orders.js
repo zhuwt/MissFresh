@@ -2,12 +2,12 @@
  * Created by zhuwt on 2016/9/13.
  */
 angular.module('thisApp.orders', [])
-    .controller('thisApp.ordersController', function ($location,localStorageService,orderService,mealsOrdersService) {
+    .controller('thisApp.ordersController', function ($rootScope,$location,localStorageService,orderService,mealsOrdersService) {
         var vm = this;
         vm.orders = {};
         vm.mealsOrders = {};
 
-        $rootScope.mfGlobal_title = '分类';
+        $rootScope.mfGlobal_title = '订单列表';
         
         vm.init = function () {
             var accId = localStorageService.get("AccountId");

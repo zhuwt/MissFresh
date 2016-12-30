@@ -97,7 +97,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand full-width" style="text-align: center"><span>{{$root.mfGlobal_title}}</span></a>
+                <a class="navbar-brand full-width" style="text-align: center" ng-if="$root.MFDisplayTitle"><span>{{$root.mfGlobal_title}}</span></a>
+                <div class="navbar-search-bar full-width" ng-if="$root.MFDisplaySearchBar">
+                    <input type="text" class="form-control" placeholder="搜索商品">
+                    <span class="glyphicon glyphicon-search"></span>
+                </div>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -108,7 +112,7 @@
             </div><!-- /.navbar-collapse -->
             <a ng-click="vm.toCart()" ng-if="$root.MFDisplayCart">
                 <img class="menu-button-right" ng-src="src/resource/image/button/cart.png">
-                <span class="menu-badge-count badge">{{$root.MFCount}}</span>
+                <!--<span class="menu-badge-count badge">{{$root.MFCount}}</span>-->
             </a>
         </div><!-- /.container-fluid -->
     </nav>

@@ -26,6 +26,8 @@ angular.module('thisApp.index', [])
             ,'/loginout'
         ];
         $rootScope.MFDisplayCart = false;
+        $rootScope.MFDisplayTitle = false;
+        $rootScope.MFDisplaySearchBar = true;
 
         vm.menu = function () {
             vm.expand = true;

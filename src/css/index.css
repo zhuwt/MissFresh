@@ -47,10 +47,15 @@ body.off-canvas-nav-left nav .navbar-toggle{
     width: 100%;
     margin-bottom: 0;
     position: fixed;
+    background-color: white;
 }
 
 .navbar-search-bar{
     margin-top: 8px;
-    padding-left: 60px;
+    padding-left: 44px;
     padding-right: 10px;
+}
+
+.ng-view-position{
+    margin-top: 50px;
 }

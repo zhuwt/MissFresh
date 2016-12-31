@@ -5,7 +5,8 @@ angular.module('thisApp.orders', [])
     .controller('thisApp.ordersController', function ($rootScope,$location,localStorageService,orderService,mealsOrdersService) {
         var vm = this;
         vm.orders = {};
-        vm.mealsOrders = {};
+        vm.mealsOrder = {};
+        vm.displayType = 0;
 
         $rootScope.mfGlobal_title = '订单列表';
         
@@ -20,61 +21,38 @@ angular.module('thisApp.orders', [])
                 vm.orders = data;
                 for (var n=0;n<vm.orders.length;n++){
                     vm.orders[n].orderState = vm.getStatus(vm.orders[n].orderState.toString());
-                    // switch (vm.orders[n].orderState.toString()){
-                    //     case '0':
-                    //         vm.orders[n].orderState = '待支付';
-                    //         break;
-                    //     case '1':
-                    //         vm.orders[n].orderState = '已支付';
-                    //         break;
-                    //     case '2':
-                    //         vm.orders[n].orderState = '出货';
-                    //         break;
-                    //     case '3':
-                    //         vm.orders[n].orderState = '派送中';
-                    //         break;
-                    //     case '4':
-                    //         vm.orders[n].orderState = '已完成';
-                    //         break;
-                    //     case '5':
-                    //         vm.orders[n].orderState = '已关闭';
-                    //         break;
-                    //     default:
-                    //         break;
-                    // }
                 }
             });
+
+        };
+        vm.init();
+
+        vm.displayMealsOrder = function(){
+            vm.displayType = 1;
+            var accId = localStorageService.get("AccountId");
+            if (accId == null){
+                return ;
+            }
+
             mealsOrdersService.getMealsOrdersList(accId,function (data) {
-                vm.mealsOrders = data;
-                for (var n=0;n<vm.mealsOrders.length;n++){
-                    vm.mealsOrders[n].imangeName = MFGlobal.mealsPath + vm.mealsOrders[n].imangeName;
-                    vm.mealsOrders[n].orderState = vm.getStatus(vm.mealsOrders[n].orderState.toString());
-                    // switch (vm.mealsOrders[n].orderState.toString()){
-                    //     case '0':
-                    //         vm.mealsOrders[n].orderState = '待支付';
-                    //         break;
-                    //     case '1':
-                    //         vm.mealsOrders[n].orderState = '已支付';
-                    //         break;
-                    //     case '2':
-                    //         vm.mealsOrders[n].orderState = '出货';
-                    //         break;
-                    //     case '3':
-                    //         vm.mealsOrders[n].orderState = '派送中';
-                    //         break;
-                    //     case '4':
-                    //         vm.mealsOrders[n].orderState = '已完成';
-                    //         break;
-                    //     case '5':
-                    //         vm.mealsOrders[n].orderState = '已关闭';
-                    //         break;
-                    //     default:
-                    //         break;
-                    // }
+                vm.mealsOrder = data[0];
+                vm.mealsOrder.orderState = vm.getStatus(vm.mealsOrder.orderState.toString());
+                for (var n=0;n<vm.mealsOrder.orderDetail.length;n++){
+                    vm.mealsOrder.orderDetail[n].imageName = MFGlobal.detailPath + vm.mealsOrder.orderDetail[n].imageName;
                 }
             });
         };
-        vm.init();
+
+        vm.displayGoodsOrder = function(){
+            vm.displayType = 0;
+            orderService.getOrderList(accId,function (data) {
+                console.log(data);
+                vm.orders = data;
+                for (var n=0;n<vm.orders.length;n++){
+                    vm.orders[n].orderState = vm.getStatus(vm.orders[n].orderState.toString());
+                }
+            });
+        };
         
         vm.getStatus = function (status) {
             switch (status){

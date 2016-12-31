@@ -3,7 +3,8 @@
  */
 var MFGlobal = {};
 MFGlobal.limitedMealsMacCount = 2;
-MFGlobal.baseUrl = 'http://123.57.81.185:59172/';
+// MFGlobal.baseUrl = 'http://123.57.81.185:59172/';
+MFGlobal.baseUrl = 'http://localhost:8912/';
 MFGlobal.goodsURL = '#/detail/';
 MFGlobal.category = 'src/resource/image/classic/';
 MFGlobal.detailPath = 'src/resource/image/detail/';

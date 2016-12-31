@@ -1,141 +1,66 @@
 <div ng-controller="thisApp.ordersController as vm" style="height: 100%;background-color: #f5f5f5">
-    <div class="orders-item">
+    <div class="full-width">
+        <div class="orders-type" style="border-right: 1px solid #dddddd" ng-click="vm.displayGoodsOrder()"><p>商品订单</p></div>
+        <div class="orders-type" ng-click="vm.displayMealsOrder()"><p>套餐订单</p></div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="orders-item" ng-repeat="item in vm.orders" ng-if="vm.displayType == 0">
         <div class="orders-item-title">
             <p class="pull-left">小鲜来了</p>
-            <p class="pull-right">正在派送</p>
+            <p class="pull-right">{{item.orderState}}</p>
             <div class="clearfix"></div>
         </div>
         <div class="order-goods-list">
             <ul class="full-width">
-                <li class="order-goods-item">
+                <li class="order-goods-item" ng-repeat="subitem in item.orderDetailList">
                     <div class="orders-goods-image">
-                        <img src="src/resource/image/detail/cherry.jpg">
+                        <img ng-src={{subitem.imageName}}>
                     </div>
                     <div class="orders-goods-information">
                         <div class="pull-right full-width">
-                            <p class="pull-left">商品名称</p>
-                            <p class="pull-right">￥99.00</p>
+                            <p class="pull-left">{{subitem.name}}</p>
+                            <p class="pull-right">￥{{subitem.price}}</p>
                         </div>
                         <p>商品详细名称</p>
-                        <p class="pull-right">x4</p>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-                <li class="order-goods-item">
-                    <div class="orders-goods-image">
-                        <img src="src/resource/image/detail/cherry.jpg">
-                    </div>
-                    <div class="orders-goods-information">
-                        <div class="pull-right full-width">
-                            <p class="pull-left">商品名称</p>
-                            <p class="pull-right">￥99.00</p>
-                        </div>
-                        <p>商品详细名称</p>
-                        <p class="pull-right">x4</p>
+                        <p class="pull-right">x{{subitem.count}}</p>
                     </div>
                     <div class="clearfix"></div>
                 </li>
             </ul>
-            <div style="background-color: white;margin-top: 2px;padding: 5px 10px;">
-                <p class="pull-right">共2件商品&nbsp&nbsp&nbsp&nbsp合计：￥99.00</p>
-                <div class="clearfix"></div>
-            </div>
+        </div>
+        <div class="orders-item-foot">
+            <p class="pull-right">共{{item.totalCount}}件商品&nbsp&nbsp&nbsp&nbsp合计：￥{{item.totalPrice}}</p>
+            <div class="clearfix"></div>
         </div>
     </div>
-
-    <div class="orders-item">
+    <!-- meals orders -->
+    <div class="orders-item" ng-if="vm.displayType == 1">
         <div class="orders-item-title">
-            <p class="pull-left">小鲜来了</p>
-            <p class="pull-right">正在捡货</p>
+            <p class="pull-left">{{vm.mealsOrder.mealsName}}</p>
+            <p class="pull-right">{{vm.mealsOrder.orderState}}</p>
             <div class="clearfix"></div>
         </div>
         <div class="order-goods-list">
             <ul class="full-width">
-                <li class="order-goods-item">
+                <li class="order-goods-item" ng-repeat="item in vm.mealsOrder.orderDetail">
                     <div class="orders-goods-image">
-                        <img src="src/resource/image/detail/cherry.jpg">
+                        <img ng-src={{item.imageName}}>
                     </div>
                     <div class="orders-goods-information">
                         <div class="pull-right full-width">
-                            <p class="pull-left">商品名称</p>
-                            <p class="pull-right">￥99.00</p>
+                            <p class="pull-left">{{item.name}}</p>
+                            <!--<p class="pull-right">{{item.price}}</p>-->
                         </div>
-                        <p>商品详细名称</p>
-                        <p class="pull-right">x4</p>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-                <li class="order-goods-item">
-                    <div class="orders-goods-image">
-                        <img src="src/resource/image/detail/cherry.jpg">
-                    </div>
-                    <div class="orders-goods-information">
-                        <div class="pull-right full-width">
-                            <p class="pull-left">商品名称</p>
-                            <p class="pull-right">￥99.00</p>
-                        </div>
-                        <p>商品详细名称</p>
-                        <p class="pull-right">x4</p>
+                        <p>{{item.detailName}}</p>
+                        <p class="pull-right">x1</p>
                     </div>
                     <div class="clearfix"></div>
                 </li>
             </ul>
-            <div style="background-color: white;margin-top: 2px;padding: 5px 10px;">
-                <p class="pull-right">共2件商品&nbsp&nbsp&nbsp&nbsp合计：￥99.00</p>
-                <div class="clearfix"></div>
-            </div>
+        </div>
+        <div class="orders-item-foot">
+            <p class="pull-right">套餐价格：￥{{vm.mealsOrder.totalPrice}}</p>
+            <div class="clearfix"></div>
         </div>
     </div>
-
-    <!--<div class="weui_tab">-->
-        <!--&lt;!&ndash;<header class="jd_topBar">&ndash;&gt;-->
-            <!--&lt;!&ndash;<a class="icon_back" href="javascript:history.back()"></a>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h3>我的订单</h3>&ndash;&gt;-->
-        <!--&lt;!&ndash;</header>&ndash;&gt;-->
-        <!--<div class="weui_tab_bd">-->
-            <!--<div class="weui_panel weui_panel_access" ng-repeat="item in vm.orders">-->
-                <!--&lt;!&ndash;ng-click="vm.jumpToOrder()"&ndash;&gt;-->
-                <!--<div class="weui_panel_hd">订单编号：{{item.orderNo}}（{{item.orderState}}）</div>-->
-                <!--<div >-->
-                    <!--&lt;!&ndash;class="weui_panel_bd"&ndash;&gt;-->
-                    <!--<a ng-href="#/order/goods/{{item.id}}" class="weui_media_box weui_media_appmsg">-->
-                        <!--<div class="weui_media_hd">-->
-                            <!--<img class="weui_media_appmsg_thumb" ng-src="{{item.imangeName}}" alt="">-->
-                        <!--</div>-->
-                        <!--<div class="weui_media_bd">-->
-                            <!--<h4 class="weui_media_title1">小鲜来了</h4>-->
-                            <!--<p class="weui_media_desc">物品数量：{{item.totalCount}}</p>-->
-                        <!--</div>-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="weui_cell">-->
-                    <!--<div class="weui_cell_bd weui_cell_primary">-->
-                    <!--</div>-->
-                    <!--<div class="weui_cell_ft">订单金额：<span style="color: #f00;">￥{{item.totalPrice}}</span></div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="weui_panel weui_panel_access" ng-repeat="item in vm.mealsOrders">-->
-                <!--&lt;!&ndash;ng-click="vm.jumpToOrder()"&ndash;&gt;-->
-                <!--<div class="weui_panel_hd">订单编号：{{item.orderNo}}（{{item.orderState}}）</div>-->
-                <!--<div >-->
-                    <!--&lt;!&ndash;class="weui_panel_bd"&ndash;&gt;-->
-                    <!--<a ng-href="#/order/meals/{{item.id}}" class="weui_media_box weui_media_appmsg">-->
-                        <!--<div class="weui_media_hd">-->
-                            <!--<img class="weui_media_appmsg_thumb" ng-src="{{item.imangeName}}" alt="">-->
-                        <!--</div>-->
-                        <!--<div class="weui_media_bd">-->
-                            <!--<h4 class="weui_media_title1">小鲜来了</h4>-->
-                            <!--<p class="weui_media_desc">物品数量：{{item.totalCount}}</p>-->
-                        <!--</div>-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div class="weui_cell">-->
-                    <!--<div class="weui_cell_bd weui_cell_primary">-->
-                    <!--</div>-->
-                    <!--<div class="weui_cell_ft">订单金额：<span style="color: #f00;">￥{{item.totalPrice}}</span></div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
 </div>

@@ -6,7 +6,8 @@ MissFreshModel.service('orderService', function ($http) {
         $http.get(MFGlobal.baseUrl + 'ordersList/' + id
         ).then(function (response) {//successCallback
             for (var n = 0; n < response.data.DTOObject.length; n++) {
-                response.data.DTOObject[n].imangeName = MFGlobal.detailPath + response.data.DTOObject[n].imangeName;
+                for (var m=0;m< response.data.DTOObject[n].orderDetailList.length; m++)
+                    response.data.DTOObject[n].orderDetailList[m].imageName = MFGlobal.detailPath + response.data.DTOObject[n].orderDetailList[m].imageName;
             }
             callback(response.data.DTOObject);
         }, function (response) {//errorCallback

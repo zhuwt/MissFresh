@@ -57,5 +57,5 @@ body.off-canvas-nav-left nav .navbar-toggle{
 }
 
 .ng-view-position{
-    margin-top: 50px;
+    padding-top: 50px;
 }

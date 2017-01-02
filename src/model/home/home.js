@@ -22,7 +22,7 @@ angular.module('thisApp.home', ['ui.bootstrap'])
 
         vm.getCategory();
 
-        vm.Interval = 2000;
+        vm.Interval = 10*1000;
         vm.noWrapSlides = true;
         vm.active = 0;
         var slides = vm.slides = [

@@ -1,44 +1,29 @@
 <div ng-controller="thisApp.editAddressController as vm" style="height: 100%;background-color: white;">
-    <header data-am-widget="header" class="am-header am-header-default sq-head ">
-        <div class="am-header-left am-header-nav">
-            <a href="javascript:history.back()" class="" style="border: 0;">
-                <i class="am-icon-chevron-left"></i>
-            </a>
-        </div>
-        <h1 class="menu-header-text">
-            <a style="color: #333;">新增收货地址</a>
-        </h1>
-    </header>
-    <div style="height: 49px;"></div>
     <ul class="contact">
         <li>
-            <select class="form-control" ng-change="vm.getBuildings()" ng-model="vm.zoneId" ng-options="item.id as item.Content for item in vm.zones">
-                <!--<option value="" disabled selected>-小区-</option>-->
-                <!--<option ng-repeat="item in vm.zones" value="{{$index}}">{{item.Content}}</option>-->
-            </select>
-            <!--<select class="form-control" ng-change="vm.getBuildings(vm.zoneIndex)" ng-model="vm.zoneIndex">-->
-                <!--&lt;!&ndash;<option value="" disabled selected>-小区-</option>&ndash;&gt;-->
-                <!--<option ng-repeat="item in vm.zones" value="{{$index}}">{{item.Content}}</option>-->
-            <!--</select>-->
+            <div class="row">
+                <div class="col-xs-6">
+                    <select class="form-control" ng-change="vm.getZone()" ng-model="vm.cityZoneId" ng-options="item.id as item.Content for item in vm.cityZones">
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <select class="form-control" ng-change="vm.getBuildings()" ng-model="vm.zoneId" ng-options="item.id as item.Content for item in vm.zones">
+                    </select>
+                </div>
+            </div>
         </li>
         <li>
             <div class="row">
                 <div class="col-xs-4">
                     <select class="form-control" ng-change="vm.getFloors()" ng-model="vm.buildingId" ng-options="item.id as item.Content for item in vm.buildings">
-                        <!--<option value="" disabled selected>-楼号-</option>-->
-                        <!--<option ng-repeat="item in vm.buildings" value="{{$index}}">{{item.Content}}</option>-->
                     </select>
                 </div>
                 <div class="col-xs-4">
                     <select class="form-control" ng-change="vm.getNumbers(vm.floorId)" ng-model="vm.floorId" ng-options="item.id as item.Content for item in vm.floors">
-                        <!--<option value="" disabled selected>-楼层-</option>-->
-                        <!--<option ng-repeat="item in vm.floors" value="{{$index}}">{{item.Content}}</option>-->
                     </select>
                 </div>
                 <div class="col-xs-4">
                     <select class="form-control" ng-model="vm.numberId" ng-options="item.id as item.Content for item in vm.number">
-                        <!--<option value="" disabled selected>-门号-</option>-->
-                        <!--<option ng-repeat="item in vm.number" value="{{$index}}">{{item.Content}}</option>-->
                     </select>
                 </div>
             </div>
@@ -46,5 +31,8 @@
         <li><input type="text" placeholder="请输入姓名" ng-model="vm.name"/></li>
         <li><input type="text" placeholder="请输入手机号" ng-model="vm.telno"/></li>
     </ul>
-    <button class="paybtn" type="button" ng-click="vm.confirm()">确定</button>
+    <!--<button class="paybtn" type="button" ng-click="vm.confirm()">确定</button>-->
+    <header class="menu-booter">
+        <a class="center" ng-click="vm.confirm()"><i class="glyphicon glyphicon-plus"></i>保存地址</a>
+    </header>
 </div>

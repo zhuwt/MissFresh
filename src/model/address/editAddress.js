@@ -5,6 +5,7 @@ angular.module('thisApp.editAddress', ['LocalStorageModule'])
     .controller('thisApp.editAddressController', function ($location,localStorageService,addressConfigService,addressService) {
         // $location,$anchorScroll
         var vm = this;
+        vm.cityZoneId = 0;
         vm.zoneId = null;
         vm.buildingId = 0;
         vm.floorId = 0;
@@ -13,8 +14,14 @@ angular.module('thisApp.editAddress', ['LocalStorageModule'])
         vm.telno = '';
 
         vm.confirm = function () {
-            if (vm.zones.length == 0 || vm.buildings.length == 0 || vm.floors.length == 0 || vm.number.length == 0){
+            if (vm.cityZoneId.length == 0 || vm.zoneId.length == 0 || vm.buildingId.length == 0 ||
+                vm.floorId.length == 0 || vm.numberId.length == 0){
                 window.alert('请填写完整地址信息');
+                return ;
+            }
+
+            if (vm.telno.length != 11){
+                window.alert('请填写合适的手机密码.');
                 return ;
             }
 
@@ -24,6 +31,7 @@ angular.module('thisApp.editAddress', ['LocalStorageModule'])
                 return ;
             }
 
+            var cityZone = vm.getContent(vm.cityZones,vm.cityZoneId);
             var zone = vm.getContent(vm.zones,vm.zoneId);
             var building = vm.getContent(vm.buildings,vm.buildingId);
             var floor = vm.getContent(vm.floors,vm.floorId);
@@ -34,7 +42,7 @@ angular.module('thisApp.editAddress', ['LocalStorageModule'])
             }
 
             addressService.create({accountId:accId,
-                Address1:zone+building+floor+number
+                Address1:cityZone+zone+building+floor+number
                 ,tel:vm.telno
                 ,name:vm.name
                 ,defaultAddress:false},function (data) {
@@ -45,18 +53,33 @@ angular.module('thisApp.editAddress', ['LocalStorageModule'])
                 $location.path('/address');
             });
         };
+
+        vm.cityZone = function (){
+            addressConfigService.getCityZones(function (data) {
+                console.log(data);
+                vm.cityZones = data;
+                if (vm.cityZones.length > 0)
+                    vm.zoneId = vm.cityZones[0].id;
+            });
+        };
+        vm.cityZone();
         
         vm.getZone = function () {
-            addressConfigService.getZones(function (data) {
+            if (!vm.cityZoneId)
+                return;
+
+            addressConfigService.getZones(vm.cityZoneId, function (data) {
                 console.log(data);
                 vm.zones = data;
                 if (vm.zones.length > 0)
                     vm.zoneId = vm.zones[0].id;
             });
         };
-        vm.getZone();
         
         vm.getBuildings = function () {
+            if (!vm.zoneId)
+                return;
+
             addressConfigService.getBuildings(vm.zoneId,function (data) {
                 console.log(data);
                 vm.buildings = data;
@@ -66,6 +89,9 @@ angular.module('thisApp.editAddress', ['LocalStorageModule'])
         };
 
         vm.getFloors = function () {
+            if (!vm.buildingId)
+                return;
+
             addressConfigService.getFloors(vm.buildingId,function (data) {
                 console.log(data);
                 vm.floors = data;
@@ -75,6 +101,9 @@ angular.module('thisApp.editAddress', ['LocalStorageModule'])
         };
 
         vm.getNumbers = function () {
+            if (!vm.floorId)
+                return;
+
             addressConfigService.getNumbers(vm.floorId,function (data) {
                 console.log(data);
                 vm.number = data;

@@ -2,14 +2,29 @@
  * Created by zhuwt on 2016/11/13.
  */
 MissFreshModel.service('addressConfigService',function ($http,$location,localStorageService) {
-    this.getZones = function (callback) {
+    this.getCityZones = function (callback) {
         var accountId = localStorageService.get("AccountId");
         if (accountId == null){
             $location.path('#/login');
             return ;
         }
 
-        $http.get(MFGlobal.baseUrl+ 'AddressConfigs/zones/'
+        $http.get(MFGlobal.baseUrl+ 'AddressConfigs/cityzones/'
+        ).then(function successCallback(response) {
+            callback(response.data.DTOObject);
+        },function errorCallback(response) {
+            window.alert(response);
+        });
+    };
+
+    this.getZones = function (parentId,callback) {
+        var accountId = localStorageService.get("AccountId");
+        if (accountId == null){
+            $location.path('#/login');
+            return ;
+        }
+
+        $http.get(MFGlobal.baseUrl+ 'AddressConfigs/zones/'+parentId
         ).then(function successCallback(response) {
             callback(response.data.DTOObject);
         },function errorCallback(response) {

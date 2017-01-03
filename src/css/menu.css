@@ -1083,14 +1083,9 @@ i {
 
 .menu-goods-list {
     width: 100%;
-    /*margin-top: 10px;*/
+    margin-top: 33px;
     padding: 10px 10px 5px 5px;
     background-color: transparent;
-    /*padding-top: 10px;*/
-    /*padding-left: 5px;*/
-    /*padding-right: 10px;*/
-    /*padding-bottom: 5px;*/
-    /*background-color: #dddddd;*/
 }
 
 .menu-goods-list > li {
@@ -1133,5 +1128,8 @@ i {
     border-top: 0;
     border-left: 0;
     border-right: 0;
-
+}
+#goods-category{
+    top: 50px;
+    position: fixed;
 }

@@ -64,5 +64,9 @@ routeApp.run(['$rootScope','$location',function ($rootScope,$location) {
     $rootScope.$on('$routeChangeStart', routeChangeStart);
     function routeChangeStart(evt,next,current){
         console.log('start change route.');
+        console.log('$location is :', $location);
+
+        //hide the nav in login page
+        $rootScope.MFDisplayNav = $location.$$path.indexOf('/login')<0;
     }
 }]);

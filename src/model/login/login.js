@@ -2,7 +2,7 @@
  * Created by zhuwt on 2016/9/12.
  */
 angular.module('thisApp.login', [])
-    .controller('thisApp.loginController', function ($location, $http,authService) {
+    .controller('thisApp.loginController', function ($rootScope,$location, $http,authService) {
         var vm = this;
         vm.loginModel = true;
         vm.popupAlert = false;
@@ -10,6 +10,8 @@ angular.module('thisApp.login', [])
         vm.telNo = '';
         vm.phoneNo = '';
         vm.password1 = '';
+
+        $rootScope.MFDisplayNav = false;
 
         //login function
         vm.login = function () {

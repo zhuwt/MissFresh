@@ -1,7 +1,7 @@
 /**
  * Created by Bucky.Zhu on 07/18/2016.
  */
-angular.module('thisApp.home', ['ui.bootstrap'])
+angular.module('thisApp.home', ['ui.bootstrap','ngAnimate'])
     .controller('thisApp.homeController', function ($rootScope,$location,$http,categoryService,$scope) {
         var vm = this;
 
@@ -22,7 +22,7 @@ angular.module('thisApp.home', ['ui.bootstrap'])
 
         vm.getCategory();
 
-        vm.Interval = 10*1000;
+        vm.Interval = 3*1000;
         vm.noWrapSlides = true;
         vm.active = 0;
         var slides = vm.slides = [
